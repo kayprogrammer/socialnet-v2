@@ -6,7 +6,8 @@ from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError, request_errors, validation_errors
 from apps.common.schemas import ResponseSchema
 
-# from apps.general.views import general_router
+from apps.general.views import general_router
+
 # from apps.accounts.views import auth_router
 
 api = NinjaAPI(
@@ -16,7 +17,7 @@ api = NinjaAPI(
     docs_url="/",
 )
 
-# api.add_router("/api/v2/general/", general_router)
+api.add_router("/api/v2/general/", general_router)
 # api.add_router("/api/v2/auth/", auth_router)
 
 

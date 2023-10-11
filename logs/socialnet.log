@@ -329,3 +329,270 @@ django.urls.exceptions.NoReverseMatch: 'djdt' is not a registered namespace
 2023-10-10 21:45:43,631 cities_light INFO     Downloading http://download.geonames.org/export/dump/admin1CodesASCII.txt into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/admin1CodesASCII.txt
 2023-10-10 21:45:44,693 cities_light INFO     Forced import of admin1CodesASCII.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
 2023-10-10 21:45:44,693 cities_light INFO     Importing admin1CodesASCII.txt
+2023-10-10 21:46:46,354 cities_light INFO     Downloading http://download.geonames.org/export/dump/admin2Codes.txt into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/admin2Codes.txt
+2023-10-10 21:46:56,751 cities_light INFO     Forced import of admin2Codes.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:46:56,751 cities_light INFO     Importing admin2Codes.txt
+2023-10-10 21:48:09,746 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:09,748 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:10,791 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:15,246 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:15,248 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:16,219 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:20,095 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:20,098 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:21,260 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:25,104 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:25,107 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:26,035 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:30,832 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:30,834 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:31,717 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:32,461 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:32,463 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:33,557 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:38,638 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:48:38,641 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:48:39,690 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:48:49,412 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/countryInfo.txt
+2023-10-10 21:48:49,412 cities_light INFO     Forced import of countryInfo.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:48:49,412 cities_light INFO     Importing countryInfo.txt
+2023-10-10 21:48:53,660 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin1CodesASCII.txt
+2023-10-10 21:48:53,660 cities_light INFO     Forced import of admin1CodesASCII.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:48:53,660 cities_light INFO     Importing admin1CodesASCII.txt
+2023-10-10 21:48:58,640 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin2Codes.txt
+2023-10-10 21:48:58,640 cities_light INFO     Forced import of admin2Codes.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:48:58,641 cities_light INFO     Importing admin2Codes.txt
+2023-10-10 21:50:14,119 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:50:14,122 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:50:15,331 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:50:38,869 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:50:38,872 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:50:39,950 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:50:44,483 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:50:44,485 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:50:45,551 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:50:46,431 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:50:46,434 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:50:47,410 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:51:49,167 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:51:49,169 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:51:50,210 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:51:51,650 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:51:51,652 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:51:52,705 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:52:17,666 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/countryInfo.txt
+2023-10-10 21:52:17,668 cities_light INFO     Forced import of countryInfo.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:52:17,668 cities_light INFO     Importing countryInfo.txt
+2023-10-10 21:52:25,611 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin1CodesASCII.txt
+2023-10-10 21:52:25,612 cities_light INFO     Forced import of admin1CodesASCII.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:52:25,612 cities_light INFO     Importing admin1CodesASCII.txt
+2023-10-10 21:52:31,690 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin2Codes.txt
+2023-10-10 21:52:31,691 cities_light INFO     Forced import of admin2Codes.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:52:31,691 cities_light INFO     Importing admin2Codes.txt
+2023-10-10 21:54:31,361 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:54:31,366 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:54:32,529 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:55:58,527 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:09,575 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/countryInfo.txt
+2023-10-10 21:56:09,576 cities_light INFO     Forced import of countryInfo.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:56:09,576 cities_light INFO     Importing countryInfo.txt
+2023-10-10 21:56:13,257 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin1CodesASCII.txt
+2023-10-10 21:56:13,257 cities_light INFO     Forced import of admin1CodesASCII.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:56:13,258 cities_light INFO     Importing admin1CodesASCII.txt
+2023-10-10 21:56:29,641 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:29,643 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:30,791 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:32,742 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:32,744 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:33,876 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:38,588 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:38,590 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:39,787 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:43,266 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:43,269 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:44,350 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:45,939 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:45,943 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:46,964 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:47,987 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:47,990 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:49,132 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:49,905 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:49,908 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:51,015 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:51,532 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:51,534 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:52,835 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:53,149 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:53,152 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:54,086 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:56,899 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:56,902 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:56:58,046 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:56:59,962 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:56:59,964 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:01,006 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:02,752 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:02,756 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:03,907 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:06,410 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:06,412 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:07,638 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:09,270 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:09,272 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:10,276 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:12,088 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:12,090 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:13,182 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:15,428 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:15,431 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:16,337 cities_light WARNING  Assuming local download is up to date for http://download.geonames.org/export/dump/admin2Codes.txt
+2023-10-10 21:57:16,337 cities_light INFO     Forced import of admin2Codes.txt because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 21:57:16,337 cities_light INFO     Importing admin2Codes.txt
+2023-10-10 21:57:16,674 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:18,634 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:18,637 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:19,784 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:20,490 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:20,492 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:21,695 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:22,562 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:22,564 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:23,605 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:28,302 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:28,305 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:29,287 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:31,094 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:31,097 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:31,898 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:33,954 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:33,958 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:34,890 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:44,072 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:44,074 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:45,191 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:54,889 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:54,891 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:55,985 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:57:58,310 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:57:58,314 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:57:59,280 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:01,024 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:01,026 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:02,058 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:04,671 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:04,673 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:05,810 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:06,961 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:06,965 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:10,077 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:10,081 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:11,075 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:32,287 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:32,290 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:33,296 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:34,186 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:34,188 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:35,214 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:38,060 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:38,063 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:39,026 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:39,609 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:39,611 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:40,748 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:58:43,766 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:58:43,768 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:58:44,833 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:59:05,071 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:59:05,074 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:59:06,115 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:59:07,723 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:59:07,725 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:59:08,789 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 21:59:09,130 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 21:59:09,133 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 21:59:10,046 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:08:28,734 cities_light INFO     Downloading http://download.geonames.org/export/dump/cities15000.zip into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/cities15000.zip
+2023-10-10 22:08:31,950 cities_light INFO     Extracting cities15000.txt from /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/cities15000.zip into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/cities15000.txt
+2023-10-10 22:08:32,002 cities_light INFO     Forced import of cities15000.zip because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 22:08:32,003 cities_light INFO     Importing cities15000.zip
+2023-10-10 22:09:09,627 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:09:09,629 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:09:12,668 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:09:18,547 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:09:18,550 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:09:21,152 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:09:23,431 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:09:23,434 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:09:26,067 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:09:30,317 cities_light WARNING  Saving Zhonghe, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Zhonghe) already exists.')
+2023-10-10 22:09:33,452 cities_light WARNING  Saving Xinglong, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Xinglong) already exists.')
+2023-10-10 22:09:39,046 cities_light WARNING  Saving Longtan, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Longtan) already exists.')
+2023-10-10 22:09:39,737 cities_light WARNING  Saving Linjiang, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Linjiang) already exists.')
+2023-10-10 22:09:43,205 cities_light WARNING  Saving Guandu, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Guandu) already exists.')
+2023-10-10 22:09:45,620 cities_light WARNING  Saving Longxing, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Longxing) already exists.')
+2023-10-10 22:09:46,097 cities_light WARNING  Saving Shuanglong, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Shuanglong) already exists.')
+2023-10-10 22:09:47,197 cities_light WARNING  Saving Sanjiao, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Sanjiao) already exists.')
+2023-10-10 22:09:47,621 cities_light WARNING  Saving Shima, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Shima) already exists.')
+2023-10-10 22:09:47,809 cities_light WARNING  Saving Taiping, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Taiping) already exists.')
+2023-10-10 22:09:51,107 cities_light WARNING  Saving E’zhou, Hubei, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_slug_efb2e768_uniq"\nDETAIL:  Key (region_id, subregion_id, slug)=(627, 9789, ezhou) already exists.')
+2023-10-10 22:09:52,627 cities_light WARNING  Saving Wushan, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Wushan) already exists.')
+2023-10-10 22:09:52,650 cities_light WARNING  Saving Zhuxi, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Zhuxi) already exists.')
+2023-10-10 22:09:52,873 cities_light WARNING  Saving Tai’an, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Tai’an) already exists.')
+2023-10-10 22:09:52,996 cities_light WARNING  Saving Xinmin, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Xinmin) already exists.')
+2023-10-10 22:09:53,020 cities_light WARNING  Saving Yong’an, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Yong’an) already exists.')
+2023-10-10 22:09:53,053 cities_light WARNING  Saving Gaofeng, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Gaofeng) already exists.')
+2023-10-10 22:09:53,263 cities_light WARNING  Saving Xinsheng, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Xinsheng) already exists.')
+2023-10-10 22:09:53,464 cities_light WARNING  Saving Tonggu, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Tonggu) already exists.')
+2023-10-10 22:09:53,531 cities_light WARNING  Saving Sanhe, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Sanhe) already exists.')
+2023-10-10 22:09:53,537 cities_light WARNING  Saving Xintian, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Xintian) already exists.')
+2023-10-10 22:09:53,675 cities_light WARNING  Saving Yihe, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Yihe) already exists.')
+2023-10-10 22:09:53,732 cities_light WARNING  Saving Longhe, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Longhe) already exists.')
+2023-10-10 22:09:53,797 cities_light WARNING  Saving Gulu, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Gulu) already exists.')
+2023-10-10 22:09:54,020 cities_light WARNING  Saving Longfeng, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Longfeng) already exists.')
+2023-10-10 22:09:54,026 cities_light WARNING  Saving Longxing, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Longxing) already exists.')
+2023-10-10 22:09:55,600 cities_light WARNING  Saving Shizuishan, Ningxia Hui Autonomous Region, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(623, 9697, Shizuishan) already exists.')
+2023-10-10 22:09:57,414 cities_light WARNING  Saving Liangping, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Liangping) already exists.')
+2023-10-10 22:09:57,419 cities_light WARNING  Saving Xinglong, Chongqing, China failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(636, 9924, Xinglong) already exists.')
+2023-10-10 22:10:02,898 cities_light WARNING  Saving Buenaventura, Valle del Cauca, Colombia failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(645, 10949, Buenaventura) already exists.')
+2023-10-10 22:10:57,229 cities_light WARNING  Saving Hayes, England, United Kingdom failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(1028, 13468, Hayes) already exists.')
+2023-10-10 22:11:20,464 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:11:20,466 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:11:23,173 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:12:57,106 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:12:57,108 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:12:59,966 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:13:07,932 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:13:07,935 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:13:10,710 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:13:13,377 cities_light WARNING  Saving Panauti, Bagmati Province, Nepal failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_slug_efb2e768_uniq"\nDETAIL:  Key (region_id, subregion_id, slug)=(2414, 27935, panauti) already exists.')
+2023-10-10 22:13:16,766 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:13:16,769 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:13:19,555 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:15:13,470 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:15:13,473 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:15:16,337 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:15:16,476 cities_light WARNING  Saving Vincent, California, United States failed: IntegrityError('duplicate key value violates unique constraint "cities_light_city_region_id_subregion_id_name_cdfc77ea_uniq"\nDETAIL:  Key (region_id, subregion_id, name)=(3637, 42283, Vincent) already exists.')
+2023-10-10 22:15:30,237 cities_light INFO     Downloading http://download.geonames.org/export/dump/alternateNames.zip into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/alternateNames.zip
+2023-10-10 22:16:27,474 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:16:27,476 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:16:30,191 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:18:01,760 cities_light INFO     Extracting alternateNames.txt from /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/alternateNames.zip into /home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/cities_light/data/alternateNames.txt
+2023-10-10 22:18:05,149 cities_light INFO     Forced import of alternateNames.zip because data do not seem to have installed successfuly yet, note that this is equivalent to --force-import-all.
+2023-10-10 22:18:05,149 cities_light INFO     Importing alternateNames.zip
+2023-10-10 22:18:07,956 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:18:07,959 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:18:10,913 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:18:14,398 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:18:14,402 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:18:17,476 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:18:19,661 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:18:19,666 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:18:22,384 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-10 22:18:27,050 jazzmin.utils WARNING  listings not found when generating links
+2023-10-10 22:18:27,052 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-10 22:18:29,484 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 16:15:38,906 jazzmin.utils WARNING  listings not found when generating links
+2023-10-11 16:15:39,014 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-11 16:15:44,056 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 16:15:45,261 django.request WARNING  Not Found: /static/media/logo.png
