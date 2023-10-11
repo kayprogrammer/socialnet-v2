@@ -1,54 +1,27 @@
-from rest_framework.permissions import BasePermission
+from ninja.security import HttpBearer
 from apps.accounts.auth import Authentication
-from apps.accounts.models import User, Jwt
-from apps.common.exceptions import RequestError
+from apps.accounts.models import User
 from apps.common.error import ErrorCode
-
-from uuid import UUID
-
-
-def get_user(bearer):
-    user = Authentication.decodeAuthorization(bearer)
-    if not user:
-        raise RequestError(
-            err_code=ErrorCode.INVALID_TOKEN,
-            err_msg="Auth Token is Invalid or Expired!",
-            status_code=401,
-        )
-    return user
+from apps.common.exceptions import RequestError
 
 
-class IsAuthenticatedCustom(BasePermission):
-    def has_permission(self, request, view):
-        http_auth = request.META.get("HTTP_AUTHORIZATION")
-        if not http_auth:
+class AuthUser(HttpBearer):
+    async def authenticate(self, request, token):
+        if not token:
             raise RequestError(
                 err_code=ErrorCode.INVALID_AUTH,
                 err_msg="Auth Bearer not provided!",
                 status_code=401,
             )
-        user = get_user(http_auth)
-        request.user = user
-        if request.user and request.user.is_authenticated:
-            return True
-        return False
 
-
-class IsAuthenticatedOrGuestCustom(BasePermission):
-    def has_permission(self, request, view):
-        http_auth = request.META.get("HTTP_AUTHORIZATION")
-        request.user = None
-        if http_auth:
-            user = get_user(http_auth)
-            request.user = user
-        return True
-
-
-def is_uuid(value):
-    try:
-        return str(UUID(value))
-    except:
-        return None
+        user = await Authentication.decodeAuthorization(token)
+        if not user:
+            raise RequestError(
+                err_code=ErrorCode.INVALID_TOKEN,
+                err_msg="Auth Token is Invalid or Expired!",
+                status_code=401,
+            )
+        return user
 
 
 def set_dict_attr(obj, data):
@@ -96,5 +69,7 @@ class TestUtil:
             {"user_id": str(verified_user.id), "username": verified_user.username}
         )
         refresh = Authentication.create_refresh_token()
-        Jwt.objects.create(user_id=verified_user.id, access=access, refresh=refresh)
+        verified_user.access = access
+        verified_user.refresh = refresh
+        verified_user.save()
         return access

@@ -596,3 +596,189 @@ django.urls.exceptions.NoReverseMatch: 'djdt' is not a registered namespace
 2023-10-11 16:15:39,014 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-11 16:15:44,056 django.request WARNING  Not Found: /static/media/banner2-icon3.png
 2023-10-11 16:15:45,261 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-11 17:03:41,059 django       ERROR    null value in column "access" violates not-null constraint
+DETAIL:  Failing row contains (pbkdf2_sha256$600000$c8hdw0Rh8f3ScmNjIIxyWl$T1GmbwcV0ZkECcdxOs7s..., null, f, 21fd92c2-3054-41c9-8b05-842ecdf831c6, John, Doe, john-doe, kenechiifeanyi@gmail.com, t, f, f, t, 2023-10-11 16:03:41.033277+00, 2023-10-11 16:03:41.0333+00, null, null, null, null, null, null).
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "access" violates not-null constraint
+DETAIL:  Failing row contains (pbkdf2_sha256$600000$c8hdw0Rh8f3ScmNjIIxyWl$T1GmbwcV0ZkECcdxOs7s..., null, f, 21fd92c2-3054-41c9-8b05-842ecdf831c6, John, Doe, john-doe, kenechiifeanyi@gmail.com, t, f, f, t, 2023-10-11 16:03:41.033277+00, 2023-10-11 16:03:41.0333+00, null, null, null, null, null, null).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 46, in register
+    user = await User.objects.acreate_user(**data.dict())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/managers.py", line 70, in acreate_user
+    await user.asave(using=self._db)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 826, in asave
+    return await sync_to_async(self.save)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/auth/base_user.py", line 76, in save
+    super().save(*args, **kwargs)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/debug_toolbar/panels/sql/tracking.py", line 252, in execute
+    return self._record(super().execute, sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/debug_toolbar/panels/sql/tracking.py", line 177, in _record
+    return method(sql, params)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+django.db.utils.IntegrityError: null value in column "access" violates not-null constraint
+DETAIL:  Failing row contains (pbkdf2_sha256$600000$c8hdw0Rh8f3ScmNjIIxyWl$T1GmbwcV0ZkECcdxOs7s..., null, f, 21fd92c2-3054-41c9-8b05-842ecdf831c6, John, Doe, john-doe, kenechiifeanyi@gmail.com, t, f, f, t, 2023-10-11 16:03:41.033277+00, 2023-10-11 16:03:41.0333+00, null, null, null, null, null, null).
+2023-10-11 17:03:41,195 django.request ERROR    Internal Server Error: /api/v2/auth/register/
+2023-10-11 17:05:05,026 jazzmin.utils WARNING  listings not found when generating links
+2023-10-11 17:05:05,030 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-11 17:05:08,307 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 17:05:10,731 jazzmin.utils WARNING  listings not found when generating links
+2023-10-11 17:05:10,733 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-11 17:05:12,075 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 17:05:18,126 jazzmin.utils WARNING  listings not found when generating links
+2023-10-11 17:05:18,129 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-11 17:05:19,298 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 17:05:21,436 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-11 17:07:02,093 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2023-10-11 17:07:11,839 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-11 17:09:41,441 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-11 17:09:43,955 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-11 17:10:15,613 django       ERROR    RequestError.__init__() missing 1 required positional argument: 'err_code'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 236, in refresh
+    raise RequestError(
+          ^^^^^^^^^^^^^
+TypeError: RequestError.__init__() missing 1 required positional argument: 'err_code'
+2023-10-11 17:10:15,667 django.request ERROR    Internal Server Error: /api/v2/auth/refresh/
+2023-10-11 17:10:58,482 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2023-10-11 17:10:59,485 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2023-10-11 17:11:44,480 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:11:51,636 django       ERROR    object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 264, in logout
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/utils.py", line 12, in authenticate
+    user = await Authentication.decodeAuthorization(token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: object NoneType can't be used in 'await' expression
+2023-10-11 17:11:51,681 django.request ERROR    Internal Server Error: /api/v2/auth/logout/
+2023-10-11 17:13:20,548 django       ERROR    RequestError.__init__() missing 1 required positional argument: 'err_code'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 264, in logout
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/utils.py", line 14, in authenticate
+    raise RequestError(
+          ^^^^^^^^^^^^^
+TypeError: RequestError.__init__() missing 1 required positional argument: 'err_code'
+2023-10-11 17:13:20,699 django.request ERROR    Internal Server Error: /api/v2/auth/logout/
+2023-10-11 17:14:02,747 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:14:06,669 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:14:33,840 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:14:38,700 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:14:50,667 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:15:27,982 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:16:01,629 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:20:17,424 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2023-10-11 17:20:31,899 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2023-10-11 17:21:58,283 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:22:51,196 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:23:55,418 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:24:12,355 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:24:22,619 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 266, in logout
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/utils.py", line 17, in authenticate
+    user = Authentication.decodeAuthorization(token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/auth.py", line 49, in decodeAuthorization
+    ).get_or_none(id=decoded["user_id"])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/managers.py", line 9, in get_or_none
+    return self.get(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2023-10-11 17:24:22,839 django.request ERROR    Internal Server Error: /api/v2/auth/logout/
+2023-10-11 17:25:58,864 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:26:00,440 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-11 17:26:41,819 django.request WARNING  Unauthorized: /api/v2/auth/logout/

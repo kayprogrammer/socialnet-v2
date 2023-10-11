@@ -42,8 +42,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     dob = models.DateField(verbose_name=(_("Date of Birth")), null=True, blank=True)
 
     # Tokens
-    access = models.TextField(editable=False)
-    refresh = models.TextField(editable=False)
+    access = models.TextField(editable=False, unique=True, null=True)
+    refresh = models.TextField(editable=False, unique=True, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]

@@ -39,14 +39,13 @@ class Authentication:
             decoded = False
         return decoded
 
-    def decodeAuthorization(token: str):
-        token = token[7:]
+    async def decodeAuthorization(token: str):
         decoded = Authentication.decode_jwt(token)
         if not decoded:
             return None
-        user = User.objects.select_related(
+        user = await User.objects.select_related(
             "city", "city__region", "city__country", "avatar"
-        ).get_or_none(id=decoded["user_id"])
+        ).aget_or_none(id=decoded["user_id"])
         if not user:
             return None
         if user.access != token:
