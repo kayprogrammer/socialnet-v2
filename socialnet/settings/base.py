@@ -18,19 +18,6 @@ SECRET_KEY = config("SECRET_KEY")
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(" ")
 
-REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "apps.common.exceptions.custom_exception_handler",
-    "DEFAULT_PAGINATION_CLASS": "apps.common.paginators.CustomPagination",
-    "PAGE_SIZE": 50,
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
-    "TEST_REQUEST_DEFAULT_FORMAT": "json",
-    "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
-    ],
-    "DEFAULT_THROTTLE_RATES": {"anon": "5000/day", "user": "10000/day"},
-}
-
 # Application definition
 
 DJANGO_APPS = [
@@ -47,7 +34,6 @@ DJANGO_APPS = [
 SITE_ID = 1
 
 THIRD_PARTY_APPS = [
-    "rest_framework",
     "corsheaders",
     "cloudinary",
     "cities_light",

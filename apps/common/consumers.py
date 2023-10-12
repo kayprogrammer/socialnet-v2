@@ -1,5 +1,5 @@
+from pydantic import ValidationError
 from channels.generic.websocket import AsyncWebsocketConsumer
-from rest_framework.exceptions import ValidationError
 from apps.common.error import ErrorCode
 import json
 

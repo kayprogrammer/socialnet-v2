@@ -830,3 +830,4 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-12 16:46:58,253 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
 2023-10-12 16:46:58,261 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
 2023-10-12 16:46:59,534 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2023-10-12 16:48:12,615 django.request WARNING  Not Found: /api/v1/general/site-detail/
