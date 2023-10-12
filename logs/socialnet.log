@@ -782,3 +782,51 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-11 17:25:58,864 django.request WARNING  Unauthorized: /api/v2/auth/logout/
 2023-10-11 17:26:00,440 django.request WARNING  Unauthorized: /api/v2/auth/logout/
 2023-10-11 17:26:41,819 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:02:34,268 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-12 16:02:34,988 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-12 16:09:28,685 django.request WARNING  Bad Request: /api/v2/auth/register/
+2023-10-12 16:10:15,446 django.request WARNING  Bad Request: /api/v2/auth/register/
+2023-10-12 16:11:14,386 django.request WARNING  Bad Request: /api/v2/auth/register/
+2023-10-12 16:13:13,061 django.request WARNING  Bad Request: /api/v2/auth/register/
+2023-10-12 16:20:44,035 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-12 16:28:54,070 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:28:54,902 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:28:55,316 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:30:53,853 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:30:54,682 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:30:55,099 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:30:56,353 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:32:08,036 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:32:08,907 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:32:09,313 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:32:10,598 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:35:23,147 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:35:24,007 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:35:24,429 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:35:25,684 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:36:15,401 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:36:16,343 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:36:16,825 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:36:18,067 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:37:29,159 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:37:29,988 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:37:30,392 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:37:31,654 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:45:15,466 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:45:16,292 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:45:16,723 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:45:17,992 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:46:23,748 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:46:24,579 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:46:24,976 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:46:26,243 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:46:52,092 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2023-10-12 16:46:52,904 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:46:53,305 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-12 16:46:54,535 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2023-10-12 16:46:55,372 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2023-10-12 16:46:56,584 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-12 16:46:57,420 django.request WARNING  Not Found: /api/v2/auth/resend-verification-email/
+2023-10-12 16:46:58,253 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2023-10-12 16:46:58,261 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2023-10-12 16:46:59,534 django.request WARNING  Not Found: /api/v2/auth/verify-email/
