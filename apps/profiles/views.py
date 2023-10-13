@@ -58,6 +58,7 @@ def get_users_queryset(current_user):
 async def retrieve_users(request, page: int = 1):
     paginator.page_size = 15
     user = request.auth
+    user = await user if user else None
     users = get_users_queryset(user)
     paginated_data = await paginator.paginate_queryset(users, page)
     return CustomResponse.success(message="Users fetched", data=paginated_data)

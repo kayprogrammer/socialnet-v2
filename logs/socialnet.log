@@ -1408,3 +1408,43 @@ response -> data -> users
 2023-10-13 14:36:53,796 django.request WARNING  Bad Request: /api/v2/profiles/
 2023-10-13 14:37:24,159 django.request WARNING  Not Found: /favicon.ico
 2023-10-13 14:38:35,395 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:41:08,873 django       ERROR    'coroutine' object has no attribute 'id'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 61, in retrieve_users
+    users = get_users_queryset(user)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 19, in get_users_queryset
+    users = users.exclude(id=current_user.id)
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'coroutine' object has no attribute 'id'
+2023-10-13 14:41:08,920 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:43:39,044 django       ERROR    'coroutine' object has no attribute 'id'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 61, in retrieve_users
+    users = get_users_queryset(user)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 19, in get_users_queryset
+    users = users.exclude(id=current_user.id)
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'coroutine' object has no attribute 'id'
+2023-10-13 14:43:39,144 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:43:47,680 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:43:49,058 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:44:21,824 django.request ERROR    Internal Server Error: /api/v2/profiles/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 265, in _get_response_async
+    self.check_response(response, callback)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 337, in check_response
+    raise ValueError(
+ValueError: The view ninja.operation.method.__call__ didn't return an HttpResponse object. It returned an unawaited coroutine instead. You may need to add an 'await' into your view.
