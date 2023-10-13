@@ -37,7 +37,6 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "cloudinary",
     "cities_light",
-    "debug_toolbar",
     "channels",
 ]
 
@@ -71,7 +70,6 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = ("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -81,6 +79,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "querycount.middleware.QueryCountMiddleware",
 ]
 
 ROOT_URLCONF = "socialnet.urls"
@@ -189,12 +188,14 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 SITE_NAME = config("SITE_NAME")
 FRONTEND_URL = config("FRONTEND_URL")
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+
 logger = logging.getLogger(__name__)
 
 LOG_LEVEL = "INFO"
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda request: True,
+}
 
 logging.config.dictConfig(
     {
@@ -232,9 +233,14 @@ logging.config.dictConfig(
                 "propagate": False,
             },
             "django.server": DEFAULT_LOGGING["loggers"]["django.server"],
+            "apps.common.middlewares": {
+                "handlers": ["console"],
+                "level": "DEBUG",
+            },
         },
     }
 )
+
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)

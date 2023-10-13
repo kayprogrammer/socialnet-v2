@@ -1448,3 +1448,135 @@ Traceback (most recent call last):
   File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 337, in check_response
     raise ValueError(
 ValueError: The view ninja.operation.method.__call__ didn't return an HttpResponse object. It returned an unawaited coroutine instead. You may need to add an 'await' into your view.
+2023-10-13 14:54:37,381 django       ERROR    6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region
+  str type expected (type=type_error.str)
+response -> data -> 0 -> country
+  str type expected (type=type_error.str)
+response -> data -> 1 -> region
+  str type expected (type=type_error.str)
+response -> data -> 1 -> country
+  str type expected (type=type_error.str)
+response -> data -> 2 -> region
+  str type expected (type=type_error.str)
+response -> data -> 2 -> country
+  str type expected (type=type_error.str)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region
+  str type expected (type=type_error.str)
+response -> data -> 0 -> country
+  str type expected (type=type_error.str)
+response -> data -> 1 -> region
+  str type expected (type=type_error.str)
+response -> data -> 1 -> country
+  str type expected (type=type_error.str)
+response -> data -> 2 -> region
+  str type expected (type=type_error.str)
+response -> data -> 2 -> country
+  str type expected (type=type_error.str)
+2023-10-13 14:54:37,432 django.request ERROR    Internal Server Error: /api/v2/profiles/cities/
+2023-10-13 14:54:56,067 django       ERROR    6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region
+  str type expected (type=type_error.str)
+response -> data -> 0 -> country
+  str type expected (type=type_error.str)
+response -> data -> 1 -> region
+  str type expected (type=type_error.str)
+response -> data -> 1 -> country
+  str type expected (type=type_error.str)
+response -> data -> 2 -> region
+  str type expected (type=type_error.str)
+response -> data -> 2 -> country
+  str type expected (type=type_error.str)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region
+  str type expected (type=type_error.str)
+response -> data -> 0 -> country
+  str type expected (type=type_error.str)
+response -> data -> 1 -> region
+  str type expected (type=type_error.str)
+response -> data -> 1 -> country
+  str type expected (type=type_error.str)
+response -> data -> 2 -> region
+  str type expected (type=type_error.str)
+response -> data -> 2 -> country
+  str type expected (type=type_error.str)
+2023-10-13 14:54:56,249 django.request ERROR    Internal Server Error: /api/v2/profiles/cities/
+2023-10-13 17:44:02,247 jazzmin.utils WARNING  listings not found when generating links
+2023-10-13 17:44:02,283 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-13 17:44:03,783 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-13 17:44:04,700 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-13 17:46:25,556 django       ERROR    6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 0 -> country__name
+  field required (type=value_error.missing)
+response -> data -> 1 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 1 -> country__name
+  field required (type=value_error.missing)
+response -> data -> 2 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 2 -> country__name
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 6 validation errors for NinjaResponseSchema
+response -> data -> 0 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 0 -> country__name
+  field required (type=value_error.missing)
+response -> data -> 1 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 1 -> country__name
+  field required (type=value_error.missing)
+response -> data -> 2 -> region__name
+  field required (type=value_error.missing)
+response -> data -> 2 -> country__name
+  field required (type=value_error.missing)
+2023-10-13 17:46:25,716 django.request ERROR    Internal Server Error: /api/v2/profiles/cities/
+2023-10-13 17:54:44,594 django.request ERROR    Internal Server Error: /api/v2/profiles/cities/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/debug_toolbar/middleware.py", line 69, in __call__
+    panel.generate_stats(request, response)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/debug_toolbar_panel.py", line 7, in generate_stats
+    sql_queries = self.get_stats(request)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/debug_toolbar_panel.py", line 24, in get_stats
+    for query in self.get_collected_queries():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'CustomSQLPanel' object has no attribute 'get_collected_queries'

@@ -7,14 +7,13 @@ from apps.common.schemas import PaginatedResponseDataSchema, ResponseSchema
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
 from pytz import UTC
-from decimal import Decimal
 
 
 class CitySchema(BaseModel):
     id: int
     name: str
-    region: str
-    country: str
+    region: str = Field(..., alias="region_name")
+    country: str = Field(..., alias="country_name")
 
     class Config:
         orm_mode = True
