@@ -2,6 +2,10 @@ from typing import Any, List
 from ninja.pagination import PaginationBase
 from ninja import Schema
 from asgiref.sync import sync_to_async
+from apps.common.error import ErrorCode
+
+from apps.common.exceptions import RequestError
+import math
 
 
 class CustomPagination(PaginationBase):
@@ -13,11 +17,26 @@ class CustomPagination(PaginationBase):
         per_page: int
 
     async def paginate_queryset(self, queryset, current_page):
+        if current_page < 1:
+            raise RequestError(
+                err_code=ErrorCode.INVALID_PAGE, err_msg="Invalid Page", status_code=404
+            )
         page_size = self.page_size
         async_queryset = await sync_to_async(list)(queryset)
-        print(async_queryset)
+        items = async_queryset[
+            (current_page - 1) * page_size : current_page * page_size
+        ]
+        if not items:
+            raise RequestError(
+                err_code=ErrorCode.INVALID_PAGE,
+                err_msg="Page number is out of range",
+                status_code=400,
+            )
+        queryset_count = await queryset.acount()
+        last_page = math.ceil(queryset_count / page_size)
         return {
-            "items": async_queryset[current_page : current_page + page_size],
-            "total": await queryset.acount(),
+            "items": items,
             "per_page": page_size,
+            "current_page": current_page,
+            "last_page": last_page,
         }

@@ -45,7 +45,6 @@ def request_exc_handler(request, exc):
 
 @api.exception_handler(AuthenticationError)
 def request_exc_handler(request, exc):
-    print(request.resolver_match.url_name)
     if request.resolver_match.url_name == "retrieve_users":
         request.auth = None
         return None

@@ -1,9 +1,8 @@
 from typing import List, Optional, Any, Union
-
-from pydantic import UUID4, BaseModel, EmailStr, validator, Field, StrictStr
+from pydantic import UUID4, BaseModel, EmailStr, validator, Field
 from datetime import datetime
 from uuid import UUID
-from apps.common.schemas import ResponseSchema
+from apps.common.schemas import PaginatedResponseDataSchema, ResponseSchema
 
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
@@ -26,27 +25,40 @@ class CitiesResponseSchema(ResponseSchema):
 
 
 class ProfileSchema(BaseModel):
-    first_name: str = Field(..., example="John", max_length=50)
-    last_name: str = Field(..., example="Doe", max_length=50)
-    username: str = Field(..., example="john-doe", readonly=True)
-    email: EmailStr = Field(..., example="johndoe@email.com", readonly=True)
-    avatar: Optional[str] = Field(..., example="https://img.com", readonly=True)
+    first_name: str = Field(..., example="John")
+    last_name: str = Field(..., example="Doe")
+    username: str = Field(..., example="john-doe")
+    email: EmailStr = Field(..., example="johndoe@email.com")
+    avatar: Optional[str] = Field(..., example="https://img.com")
     bio: Optional[str] = Field(
-        ..., example="Software Engineer | Django Ninja Developer", max_length=200
+        ..., example="Software Engineer | Django Ninja Developer"
     )
     dob: Optional[datetime]
-    city: Optional[str] = Field(..., example="Lagos", readonly=True)
-    city_id: Optional[UUID4] = Field(..., writeonly=True)
-    created_at: datetime = Field(..., readonly=True)
-    updated_at: datetime = Field(..., readonly=True)
-    file_type: Optional[str] = Field(..., example="image/jpeg", writeonly=True)
+    city: Optional[str] = Field(..., example="Lagos")
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True
 
 
+class ProfileInputSchema(BaseModel):
+    first_name: str = Field(..., example="John", max_length=50)
+    last_name: str = Field(..., example="Doe", max_length=50)
+    bio: Optional[str] = Field(
+        ..., example="Software Engineer | Django Ninja Developer", max_length=200
+    )
+    dob: Optional[datetime]
+    city_id: Optional[UUID4]
+    file_type: Optional[str] = Field(..., example="image/jpeg")
+
+
+class ProfilesResponseDataSchema(PaginatedResponseDataSchema):
+    users: List[ProfileSchema] = Field(..., alias="items")
+
+
 class ProfilesResponseSchema(ResponseSchema):
-    data: List[ProfileSchema] = []
+    data: ProfilesResponseDataSchema
 
 
 #     @validator("file_type")

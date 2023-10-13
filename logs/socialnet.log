@@ -1297,3 +1297,114 @@ response -> data -> 0 -> file_type
 response -> data -> 1 -> file_type
   field required (type=value_error.missing)
 2023-10-13 13:13:35,537 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:47:15,819 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-13 13:47:16,634 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-13 13:47:21,019 jazzmin.utils WARNING  listings not found when generating links
+2023-10-13 13:47:21,022 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-13 13:47:21,720 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-13 13:47:24,277 jazzmin.utils WARNING  listings not found when generating links
+2023-10-13 13:47:24,281 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-13 13:47:25,250 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-13 13:48:50,211 jazzmin.utils WARNING  listings not found when generating links
+2023-10-13 13:48:50,214 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-13 13:48:51,434 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-13 14:04:10,735 django.request WARNING  Not Found: /api/v2/profiles/
+2023-10-13 14:04:12,737 django.request WARNING  Not Found: /api/v2/profiles/
+2023-10-13 14:12:34,257 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:12:36,332 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:30:21,656 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+2023-10-13 14:30:21,760 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:32:26,295 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+2023-10-13 14:32:26,399 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:32:41,149 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+2023-10-13 14:32:41,196 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:35:04,293 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+2023-10-13 14:35:04,433 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:35:56,332 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> users
+  field required (type=value_error.missing)
+2023-10-13 14:35:56,449 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 14:36:21,157 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:36:33,693 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:36:47,381 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:36:53,796 django.request WARNING  Bad Request: /api/v2/profiles/
+2023-10-13 14:37:24,159 django.request WARNING  Not Found: /favicon.ico
+2023-10-13 14:38:35,395 django.request WARNING  Bad Request: /api/v2/profiles/
