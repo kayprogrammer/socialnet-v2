@@ -8,6 +8,7 @@ from apps.common.schemas import ResponseSchema
 
 from apps.general.views import general_router
 from apps.accounts.views import auth_router
+from apps.profiles.views import profiles_router
 
 api = NinjaAPI(
     title=settings.SITE_NAME,
@@ -18,6 +19,7 @@ api = NinjaAPI(
 
 api.add_router("/api/v2/general/", general_router)
 api.add_router("/api/v2/auth/", auth_router)
+api.add_router("/api/v2/profiles/", profiles_router)
 
 
 @api.get(
@@ -43,6 +45,10 @@ def request_exc_handler(request, exc):
 
 @api.exception_handler(AuthenticationError)
 def request_exc_handler(request, exc):
+    print(request.resolver_match.url_name)
+    if request.resolver_match.url_name == "retrieve_users":
+        request.auth = None
+        return None
     return Response(
         {
             "status": "failure",

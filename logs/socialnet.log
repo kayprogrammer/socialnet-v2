@@ -831,3 +831,469 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-12 16:46:58,261 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
 2023-10-12 16:46:59,534 django.request WARNING  Not Found: /api/v2/auth/verify-email/
 2023-10-12 16:48:12,615 django.request WARNING  Not Found: /api/v1/general/site-detail/
+2023-10-13 11:36:23,868 django       ERROR    'ASGIRequest' object has no attribute 'auth'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 61, in retrieve_users
+    user = await request.auth
+                 ^^^^^^^^^^^^
+AttributeError: 'ASGIRequest' object has no attribute 'auth'
+2023-10-13 11:36:23,997 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 11:50:21,625 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 11:53:43,900 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:05:08,605 django       ERROR    AuthBase.__init__() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 292, in _run_authentication
+    result = callback(request)
+             ^^^^^^^^^^^^^^^^^
+TypeError: AuthBase.__init__() takes 1 positional argument but 2 were given
+2023-10-13 12:05:08,650 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:05:44,918 django       ERROR    AuthBase.__init__() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 292, in _run_authentication
+    result = callback(request)
+             ^^^^^^^^^^^^^^^^^
+TypeError: AuthBase.__init__() takes 1 positional argument but 2 were given
+2023-10-13 12:05:45,025 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:06:01,369 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:06:07,491 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:06:20,916 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:06:52,383 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:10:23,800 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:11:12,678 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:18:15,196 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:18:37,274 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:25:35,666 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:33:22,217 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:33:42,818 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:41:15,869 django.request ERROR    Internal Server Error: /api/v2/profiles/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 259, in run
+    error = await self._run_checks(request)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 274, in _run_checks
+    error = await self._run_authentication(request)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 299, in _run_authentication
+    return self.api.on_exception(request, AuthenticationError())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/api.py", line 48, in request_exc_handler
+    print(vars(request.resolver_match.view_name))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: vars() argument must have __dict__ attribute
+2023-10-13 12:41:25,143 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:41:33,434 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:41:59,042 django.request WARNING  Unauthorized: /api/v2/profiles/
+2023-10-13 12:42:52,460 django       ERROR    'ASGIRequest' object has no attribute 'auth'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 62, in retrieve_users
+    user = await request.auth
+                 ^^^^^^^^^^^^
+AttributeError: 'ASGIRequest' object has no attribute 'auth'
+2023-10-13 12:42:52,543 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:43:12,896 django       ERROR    'ASGIRequest' object has no attribute 'auth'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 62, in retrieve_users
+    user = await request.auth
+                 ^^^^^^^^^^^^
+AttributeError: 'ASGIRequest' object has no attribute 'auth'
+2023-10-13 12:43:12,987 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:43:28,847 django       ERROR    object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 62, in retrieve_users
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+TypeError: object NoneType can't be used in 'await' expression
+2023-10-13 12:43:28,942 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:44:12,088 django       ERROR    object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 62, in retrieve_users
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+TypeError: object NoneType can't be used in 'await' expression
+2023-10-13 12:44:12,188 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:46:13,510 django       ERROR    object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 62, in retrieve_users
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+TypeError: object NoneType can't be used in 'await' expression
+2023-10-13 12:46:13,600 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:46:25,800 django       ERROR    list.count() takes exactly one argument (0 given)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 64, in retrieve_users
+    paginated_users = paginator.paginate_queryset(users)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 18, in paginate_queryset
+    "total": queryset.count(),
+             ^^^^^^^^^^^^^^^^
+TypeError: list.count() takes exactly one argument (0 given)
+2023-10-13 12:46:25,904 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:49:59,930 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:50:00,067 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:50:27,447 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:50:27,554 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:50:46,186 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:50:46,289 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:51:01,745 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:51:01,861 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:51:19,138 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:51:19,243 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:51:48,363 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-13 12:51:48,467 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 12:59:13,010 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+2023-10-13 12:59:13,207 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:02:39,231 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+2023-10-13 13:02:39,341 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:02:58,862 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+2023-10-13 13:02:58,899 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:09:38,604 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+2023-10-13 13:09:38,655 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:09:41,664 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0
+  value is not a valid dict (type=type_error.dict)
+response -> data -> 1
+  value is not a valid dict (type=type_error.dict)
+2023-10-13 13:09:41,715 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:11:53,923 django       ERROR    12 validation errors for NinjaResponseSchema
+response -> data -> 0 -> avatar
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> bio
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> dob
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> city
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> avatar
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> bio
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> dob
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> city
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 12 validation errors for NinjaResponseSchema
+response -> data -> 0 -> avatar
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> bio
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> dob
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> city
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> avatar
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> bio
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> dob
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> city
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+2023-10-13 13:11:54,032 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:13:16,813 django       ERROR    4 validation errors for NinjaResponseSchema
+response -> data -> 0 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 4 validation errors for NinjaResponseSchema
+response -> data -> 0 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> city_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+2023-10-13 13:13:16,916 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2023-10-13 13:13:35,434 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> 0 -> file_type
+  field required (type=value_error.missing)
+response -> data -> 1 -> file_type
+  field required (type=value_error.missing)
+2023-10-13 13:13:35,537 django.request ERROR    Internal Server Error: /api/v2/profiles/

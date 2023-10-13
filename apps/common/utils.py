@@ -1,8 +1,22 @@
+from django.contrib.auth.models import AnonymousUser
+from typing import Any, Optional
 from ninja.security import HttpBearer
+from ninja.security.http import HttpAuthBase
 from apps.accounts.auth import Authentication
 from apps.accounts.models import User
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
+
+
+async def get_user(token):
+    user = await Authentication.decodeAuthorization(token)
+    if not user:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_TOKEN,
+            err_msg="Auth Token is Invalid or Expired!",
+            status_code=401,
+        )
+    return user
 
 
 class AuthUser(HttpBearer):
@@ -13,15 +27,7 @@ class AuthUser(HttpBearer):
                 err_msg="Auth Bearer not provided!",
                 status_code=401,
             )
-
-        user = await Authentication.decodeAuthorization(token)
-        if not user:
-            raise RequestError(
-                err_code=ErrorCode.INVALID_TOKEN,
-                err_msg="Auth Token is Invalid or Expired!",
-                status_code=401,
-            )
-        return user
+        return await get_user(token)
 
 
 def set_dict_attr(obj, data):
