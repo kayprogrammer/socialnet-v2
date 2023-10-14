@@ -129,12 +129,11 @@ async def retrieve_user_profile(request, username: str):
         ALLOWED FILE TYPES: {", ".join(ALLOWED_IMAGE_TYPES)}
     """,
     response=ProfileUpdateResponseSchema,
-    auth=AuthUser()
+    auth=AuthUser(),
 )
 async def update_profile(request, data: ProfileUpdateSchema):
     user = await request.auth
     data = data.dict(exclude_none=True)
-    print(data)
     # Validate City ID Entry
     user.city_name = user.city.name
     city_id = data.pop("city_id", None)
@@ -175,9 +174,10 @@ async def update_profile(request, data: ProfileUpdateSchema):
     summary="Delete user's account",
     description="This endpoint deletes a particular user's account",
     response=ResponseSchema,
+    auth=AuthUser(),
 )
 async def delete_user(request, data: DeleteUserSchema):
-    user = request.user
+    user = await request.auth
 
     # Check if password is valid
     if not user.check_password(data.password):
