@@ -1,5 +1,5 @@
-from pydantic import BaseModel, validator, Field, EmailStr
-from apps.common.schemas import ResponseSchema
+from pydantic import validator, Field, EmailStr
+from apps.common.schemas import BaseModel, ResponseSchema
 
 
 class RegisterUserSchema(BaseModel):

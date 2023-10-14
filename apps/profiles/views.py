@@ -1,4 +1,3 @@
-from typing import Optional
 from django.db.models import Q, Case, When, Value, BooleanField, F
 from ninja.router import Router
 from apps.accounts.models import User
@@ -135,7 +134,7 @@ async def update_profile(request, data: ProfileUpdateSchema):
     user = await request.auth
     data = data.dict(exclude_none=True)
     # Validate City ID Entry
-    user.city_name = user.city.name
+    user.city_name = user.city.name if user.city else None
     city_id = data.pop("city_id", None)
     if city_id:
         city = await City.objects.filter(id=city_id).afirst()

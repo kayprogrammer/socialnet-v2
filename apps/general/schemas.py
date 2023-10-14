@@ -1,5 +1,4 @@
-from pydantic import BaseModel
-from apps.common.schemas import ResponseSchema
+from apps.common.schemas import BaseModel, ResponseSchema
 
 
 # Site Details

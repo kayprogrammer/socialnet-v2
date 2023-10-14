@@ -1,11 +1,10 @@
-from typing import Dict, List, Optional, Any, Union
-from pydantic import UUID4, BaseModel, EmailStr, validator, Field
+from typing import Any, Dict, List, Optional
+from pydantic import UUID4, EmailStr, validator, Field
 from datetime import datetime, date
-from apps.common.schemas import PaginatedResponseDataSchema, ResponseSchema
-
+from apps.common.schemas import BaseModel, PaginatedResponseDataSchema, ResponseSchema
+from apps.common.schema_examples import file_upload_data
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
-from pytz import UTC
 
 
 class CitySchema(BaseModel):
@@ -77,18 +76,16 @@ class ProfileResponseSchema(ResponseSchema):
 
 
 class ProfileUpdateResponseDataSchema(ProfileSchema):
-    avatar_id: UUID4
-    image_upload_status: bool
-    file_upload_data: Optional[Dict]
+    avatar: Any = Field(..., exclude=True, hidden=True)
+    avatar_id: UUID4 = Field(..., exclude=True, hidden=True)
+    image_upload_status: bool = Field(..., exclude=True, hidden=True)
+    file_upload_data: Optional[Dict] = Field(..., example=file_upload_data)
 
     @validator("file_upload_data", always=True)
     def show_file_upload_data(cls, v, values):
-        values.pop("avatar", None)
-        image_upload_status = values.pop("image_upload_status")
-        avatar_id = values.pop("avatar_id", None)
-        if image_upload_status:
+        if values["image_upload_status"]:
             return FileProcessor.generate_file_signature(
-                key=avatar_id,
+                key=values["avatar_id"],
                 folder="avatars",
             )
         return v
