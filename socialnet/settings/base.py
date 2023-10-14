@@ -351,6 +351,6 @@ CLOUDINARY_API_SECRET = config("CLOUDINARY_API_SECRET")
 SOCKET_SECRET = config("SOCKET_SECRET")
 
 # TODO
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTgyMTQyMjcsInVzZXJfaWQiOiI4NjNlMDZiMi0xMzcxLTQxOWYtOTc1NC01YjA0OGM3NjA0M2YiLCJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.n4e_27vQ_9nag072FFLZNjLvCBT2pnavoIapNnREd3o
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAzMTg5NjEsInVzZXJfaWQiOiIwYjEwMGZlMy1lODE2LTQ3MDAtYmFiYi1mZjI1NThmODY3ZDIiLCJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.oVmCZgAZov5tVRuFR6iRR0O6dcAZXoYHZ9SrbdyhZ9k
 # You can set a file limit to your cloudinary so that the presigned data can only accept a particular file size range to upload image. You can also add file type validations
 # Only create notifications for recent comments and replies after 1 hour

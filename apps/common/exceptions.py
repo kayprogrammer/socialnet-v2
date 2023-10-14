@@ -23,12 +23,14 @@ def validation_errors(exc):
     details = exc.errors
     modified_details = {}
     for error in details:
-        try:
-            field_name = error["loc"][1]
-        except:
-            field_name = error["loc"][0]
-
-        modified_details[f"{field_name}"] = error["msg"]
+        field_name = error["loc"][-1]
+        err_msg = error["msg"]
+        err_type = error["type"]
+        if err_type == "value_error.any_str.min_length":
+            err_msg = f"{error['ctx']['limit_value']} characters min"
+        elif err_type == "value_error.any_str.max_length":
+            err_msg = f"{error['ctx']['limit_value']} characters max"
+        modified_details[f"{field_name}"] = err_msg
 
     return Response(
         {
