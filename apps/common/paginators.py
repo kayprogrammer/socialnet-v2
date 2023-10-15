@@ -23,16 +23,17 @@ class CustomPagination(PaginationBase):
             )
         page_size = self.page_size
         async_queryset = await sync_to_async(list)(queryset)
+        queryset_count = await queryset.acount()
         items = async_queryset[
             (current_page - 1) * page_size : current_page * page_size
         ]
-        if not items:
+        if queryset_count > 0 and not items:
             raise RequestError(
                 err_code=ErrorCode.INVALID_PAGE,
                 err_msg="Page number is out of range",
                 status_code=400,
             )
-        queryset_count = await queryset.acount()
+
         last_page = math.ceil(queryset_count / page_size)
         return {
             "items": items,

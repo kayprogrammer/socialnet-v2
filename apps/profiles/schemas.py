@@ -93,3 +93,11 @@ class ProfileUpdateResponseDataSchema(ProfileSchema):
 
 class ProfileUpdateResponseSchema(ResponseSchema):
     data: ProfileUpdateResponseDataSchema
+
+
+class SendFriendRequestSchema(BaseModel):
+    username: str
+
+
+class AcceptFriendRequestSchema(SendFriendRequestSchema):
+    accepted: bool

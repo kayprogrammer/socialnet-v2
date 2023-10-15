@@ -3091,3 +3091,218 @@ TypeError: Object of type File is not JSON serializable
 2023-10-15 00:37:22,671 jazzmin.utils WARNING  listings not found when generating links
 2023-10-15 00:37:22,676 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-15 00:37:24,881 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:36:55,836 django.request WARNING  Unauthorized: /api/v2/profiles/friends/
+2023-10-15 19:37:43,137 django.request WARNING  Bad Request: /api/v2/profiles/friends/
+2023-10-15 19:37:46,324 django.request WARNING  Bad Request: /api/v2/profiles/friends/
+2023-10-15 19:39:01,190 django       ERROR    'list' object has no attribute 'acount'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 244, in retrieve_friends
+    paginated_data = await paginator.paginate_queryset(friends, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 26, in paginate_queryset
+    queryset_count = await queryset.acount()
+                           ^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'acount'
+2023-10-15 19:39:01,213 django.request ERROR    Internal Server Error: /api/v2/profiles/friends/
+2023-10-15 19:40:32,558 django.request WARNING  Not Found: /api/v2/profiles/friends/
+2023-10-15 19:41:07,902 django.request WARNING  Not Found: /api/v2/profiles/friends/
+2023-10-15 19:42:07,555 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:42:08,007 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-15 19:42:08,103 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-15 19:42:08,119 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:42:08,229 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-15 19:42:12,262 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 19:42:12,266 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 19:42:15,353 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:43:12,651 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 19:43:12,656 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 19:43:14,928 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:43:21,655 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 19:43:21,659 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 19:43:21,894 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            2023-10-15 19:54:54,563 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 19:54:54,758 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 19:54:57,088 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 19:54:57,919 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-15 19:59:46,176 django.request WARNING  Unauthorized: /api/v2/profiles/friends/
+2023-10-15 20:00:14,948 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:00:14,952 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:00:15,307 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:01:05,144 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2023-10-15 20:01:19,638 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:01:19,643 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:01:22,950 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:03:17,152 django.request WARNING  Bad Request: /api/v2/profiles/friends/
+2023-10-15 20:07:03,926 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-15 20:08:20,890 django       ERROR    CustomResponse.success() got an unexpected keyword argument 'status'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/accounts/views.py", line 51, in register
+    return CustomResponse.success(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CustomResponse.success() got an unexpected keyword argument 'status'
+2023-10-15 20:08:20,929 django.request ERROR    Internal Server Error: /api/v2/auth/register/
+2023-10-15 20:08:56,913 django       ERROR    unhashable type: 'dict'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 179, in _result_to_response
+    if status in self.response_models:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'dict'
+2023-10-15 20:08:56,918 django.request ERROR    Internal Server Error: /api/v2/auth/register/
+2023-10-15 20:16:35,026 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-15 20:19:35,378 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:19:35,382 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:19:35,612 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:19:38,455 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:19:38,461 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:19:38,820 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:19:40,363 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:19:40,366 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:19:40,699 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:20:37,926 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:20:37,931 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:20:38,315 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:20:46,936 django.request WARNING  Forbidden: /api/v2/profiles/friends/
+2023-10-15 20:22:56,733 django.request WARNING  Not Found: /api/v2/profiles/friends/
+2023-10-15 20:23:08,717 django.request WARNING  Unauthorized: /api/v2/profiles/friends/
+2023-10-15 20:23:33,609 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:23:33,614 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:23:33,823 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:28:47,607 django.request WARNING  Unauthorized: /api/v2/profiles/friends/requests/
+2023-10-15 20:29:36,068 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:29:36,073 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:29:36,290 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:29:41,839 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 20:29:41,843 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 20:29:42,109 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 20:29:44,265 django       ERROR    Object of type User is not JSON serializable
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 251, in retrieve_friend_requests
+    return CustomResponse.success(message="Friend Requests fetched", data=paginated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/responses.py", line 12, in success
+    return Response(response, status=status_code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 30, in __init__
+    super().__init__(data, encoder=NinjaJSONEncoder, safe=False, **kwargs)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/http/response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 25, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/serializers/json.py", line 106, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type User is not JSON serializable
+2023-10-15 20:29:44,313 django.request ERROR    Internal Server Error: /api/v2/profiles/friends/requests/
+2023-10-15 20:30:30,507 django       ERROR    Object of type User is not JSON serializable
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 251, in retrieve_friend_requests
+    return CustomResponse.success(message="Friend Requests fetched", data=paginated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/responses.py", line 12, in success
+    return Response(response, status=status_code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 30, in __init__
+    super().__init__(data, encoder=NinjaJSONEncoder, safe=False, **kwargs)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/http/response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 25, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/serializers/json.py", line 106, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type User is not JSON serializable
+2023-10-15 20:30:30,513 django.request ERROR    Internal Server Error: /api/v2/profiles/friends/requests/
+2023-10-15 20:30:59,318 django       ERROR    Object of type User is not JSON serializable
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 252, in retrieve_friend_requests
+    return CustomResponse.success(message="Friend Requests fetched", data=paginated_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/responses.py", line 12, in success
+    return Response(response, status=status_code)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 30, in __init__
+    super().__init__(data, encoder=NinjaJSONEncoder, safe=False, **kwargs)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/http/response.py", line 731, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/responses.py", line 25, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/serializers/json.py", line 106, in default
+    return super().default(o)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type User is not JSON serializable
+2023-10-15 20:30:59,324 django.request ERROR    Internal Server Error: /api/v2/profiles/friends/requests/
+2023-10-15 20:49:10,944 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-15 20:57:45,492 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2023-10-15 20:57:51,399 django       ERROR    Schema for status 200 is not set in response dict_keys([201])
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 184, in _result_to_response
+    raise ConfigError(
+ninja.errors.ConfigError: Schema for status 200 is not set in response dict_keys([201])
+2023-10-15 20:57:51,404 django.request ERROR    Internal Server Error: /api/v2/auth/register/
+2023-10-15 21:03:51,614 django.request WARNING  Unauthorized: /api/v2/profiles/friends/requests/
+2023-10-15 21:04:29,047 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 21:04:29,051 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 21:04:29,309 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-15 21:04:30,742 jazzmin.utils WARNING  listings not found when generating links
+2023-10-15 21:04:30,748 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-15 21:04:30,923 django.request WARNING  Not Found: /static/media/banner2-icon3.png

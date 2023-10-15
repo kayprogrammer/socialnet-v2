@@ -49,7 +49,7 @@ async def register(request, data: RegisterUserSchema):
     await Util.send_activation_otp(user)
 
     return CustomResponse.success(
-        message="Registration successful", data={"email": data.email}
+        message="Registration successful", data={"email": data.email}, status_code=201
     )
 
 
@@ -91,9 +91,7 @@ async def verify_email(request, data: VerifyOtpSchema):
 
     # Send welcome email
     Util.welcome_email(user)
-    return CustomResponse.success(
-        message="Account verification successful", status_code=200
-    )
+    return CustomResponse.success(message="Account verification successful")
 
 
 @auth_router.post(
@@ -116,7 +114,7 @@ async def resend_verification_email(request, data: RequestOtpSchema):
 
     # Send verification email
     await Util.send_activation_otp(user)
-    return CustomResponse.success(message="Verification email sent", status_code=200)
+    return CustomResponse.success(message="Verification email sent")
 
 
 @auth_router.post(

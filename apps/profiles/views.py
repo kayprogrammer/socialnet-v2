@@ -10,14 +10,17 @@ from apps.common.schemas import ResponseSchema
 from apps.common.utils import AuthUser, set_dict_attr
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from asgiref.sync import sync_to_async
+from apps.profiles.models import Friend
 
 from apps.profiles.schemas import (
+    AcceptFriendRequestSchema,
     CitiesResponseSchema,
     DeleteUserSchema,
     ProfileResponseSchema,
     ProfileUpdateResponseSchema,
     ProfileUpdateSchema,
     ProfilesResponseSchema,
+    SendFriendRequestSchema,
 )
 from cities_light.models import City
 import re
@@ -190,3 +193,152 @@ async def delete_user(request, data: DeleteUserSchema):
     # Delete user
     await user.adelete()
     return CustomResponse.success(message="User deleted")
+
+
+@profiles_router.get(
+    "/friends/",
+    summary="Retrieve Friends",
+    description="This endpoint retrieves friends of a user",
+    response=ProfilesResponseSchema,
+    auth=AuthUser(),
+)
+async def retrieve_friends(request, page: int = 1):
+    user = await request.auth
+    friends = (
+        Friend.objects.filter(Q(requester=user) | Q(requestee=user))
+        .filter(status="ACCEPTED")
+        .select_related("requester", "requestee")
+    )
+    friend_ids = friends.annotate(
+        friend_id=Case(
+            When(requester=user, then=F("requestee")),
+            When(requestee=user, then=F("requester")),
+        )
+    ).values_list("friend_id", flat=True)
+    friends = (
+        User.objects.filter(id__in=friend_ids)
+        .annotate(city_name=F("city__name"))
+        .select_related("avatar")
+    )
+
+    # Return paginated data
+    paginator.page_size = 20
+    paginated_data = await paginator.paginate_queryset(friends, page)
+    return CustomResponse.success(message="Friends fetched", data=paginated_data)
+
+
+@profiles_router.get(
+    "/friends/requests/",
+    summary="Retrieve Friend Requests",
+    description="This endpoint retrieves friend requests of a user",
+    response=ProfilesResponseSchema,
+    auth=AuthUser(),
+)
+async def retrieve_friend_requests(request, page: int = 1):
+    user = await request.auth
+    friend_ids = Friend.objects.filter(
+        requestee_id=user.id, status="PENDING"
+    ).values_list("requester_id", flat=True)
+    friends = (
+        User.objects.filter(id__in=friend_ids)
+        .annotate(city_name=F("city__name"))
+        .select_related("avatar")
+    )
+
+    # Return paginated data
+    paginator.page_size = 20
+    paginated_data = await paginator.paginate_queryset(friends, page)
+    return CustomResponse.success(
+        message="Friend Requests fetched", data=paginated_data
+    )
+
+
+async def get_other_user_and_friend(user, username, status=None):
+    # Get and validate username existence
+    other_user = await User.objects.aget_or_none(username=username)
+    if not other_user:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="User does not exist!",
+            status_code=404,
+        )
+
+    friend = Friend.objects.filter(
+        Q(requester=user, requestee=other_user)
+        | Q(requester=other_user, requestee=user)
+    )
+    if status:
+        friend = friend.filter(status=status)
+    friend = await friend.aget_or_none()
+    return other_user, friend
+
+
+@profiles_router.post(
+    "/friends/",
+    summary="Send Or Delete Friend Request",
+    description="This endpoint sends or delete friend requests",
+    response={201: ResponseSchema, 200: ResponseSchema},
+    auth=AuthUser(),
+)
+async def send_or_delete_friend_request(request, data: SendFriendRequestSchema):
+    user = await request.auth
+
+    other_user, friend = await get_other_user_and_friend(user, data.username)
+    message = "Friend Request sent"
+    status_code = 201
+    if friend:
+        status_code = 200
+        message = "Friend Request removed"
+        if user.id != friend.requester_id:
+            raise RequestError(
+                err_code=ErrorCode.NOT_ALLOWED,
+                err_msg="The user already sent you a friend request!",
+                status_code=403,
+            )
+
+        await friend.adelete()
+    else:
+        await Friend.objects.acreate(requester=user, requestee=other_user)
+
+    return CustomResponse.success(message=message, status_code=status_code)
+
+
+@profiles_router.put(
+    "/friends/",
+    summary="Accept Or Reject a Friend Request",
+    description="""
+        This endpoint accepts or reject a friend request
+        accepted choices:
+        - true - accepted
+        - false - rejected
+    """,
+    response=ResponseSchema,
+    auth=AuthUser(),
+)
+async def accept_or_reject_friend_request(request, data: AcceptFriendRequestSchema):
+    user = await request.auth
+    _, friend = await get_other_user_and_friend(user, data.username, "PENDING")
+    if not friend:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="No pending friend request exist between you and that user",
+            status_code=401,
+        )
+    if friend.requester_id == user.id:
+        raise RequestError(
+            err_code=ErrorCode.NOT_ALLOWED,
+            err_msg="You cannot accept or reject a friend request you sent ",
+            status_code=403,
+        )
+
+    # Update or delete friend request based on status
+    accepted = data.accepted
+    if accepted:
+        msg = "Accepted"
+        friend.status = "ACCEPTED"
+        await friend.asave()
+    else:
+        msg = "Rejected"
+        await friend.adelete()
+
+    return CustomResponse.success(message=f"Friend Request {msg}", status_code=200)
