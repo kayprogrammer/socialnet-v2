@@ -287,7 +287,7 @@ async def get_other_user_and_friend(user, username, status=None):
 
 
 @profiles_router.post(
-    "/friends/",
+    "/friends/requests/",
     summary="Send Or Delete Friend Request",
     description="This endpoint sends or delete friend requests",
     response={201: ResponseSchema, 200: ResponseSchema},
@@ -317,7 +317,7 @@ async def send_or_delete_friend_request(request, data: SendFriendRequestSchema):
 
 
 @profiles_router.put(
-    "/friends/",
+    "/friends/requests/",
     summary="Accept Or Reject a Friend Request",
     description="""
         This endpoint accepts or reject a friend request
