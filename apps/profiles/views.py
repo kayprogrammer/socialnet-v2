@@ -1,4 +1,15 @@
-from django.db.models import Q, Case, When, Value, BooleanField, F
+from django.db.models import (
+    F,
+    Q,
+    Case,
+    When,
+    Value,
+    BooleanField,
+    CharField,
+    Exists,
+    OuterRef,
+)
+from django.db.models.functions import Coalesce
 from ninja.router import Router
 from apps.accounts.models import User
 from apps.common.error import ErrorCode
@@ -10,7 +21,7 @@ from apps.common.schemas import ResponseSchema
 from apps.common.utils import AuthUser, set_dict_attr
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from asgiref.sync import sync_to_async
-from apps.profiles.models import Friend
+from apps.profiles.models import Friend, Notification
 
 from apps.profiles.schemas import (
     AcceptFriendRequestSchema,
@@ -21,6 +32,8 @@ from apps.profiles.schemas import (
     ProfileUpdateSchema,
     ProfilesResponseSchema,
     SendFriendRequestSchema,
+    NotificationsResponseSchema,
+    ReadNotificationSchema,
 )
 from cities_light.models import City
 import re
@@ -342,3 +355,117 @@ async def accept_or_reject_friend_request(request, data: AcceptFriendRequestSche
         await friend.adelete()
 
     return CustomResponse.success(message=f"Friend Request {msg}", status_code=200)
+
+
+async def get_notifications_queryset(current_user):
+    current_user_id = current_user.id
+    # Fetch current user notifications and set and post_slug, comment_slug is_read attribute for each notifications
+    notifications = (
+        Notification.objects.filter(receivers__id=current_user_id)
+        .select_related(
+            "sender",
+            "sender__avatar",
+        )
+        .annotate(
+            is_read=Exists(
+                Notification.objects.filter(id=OuterRef("pk"), read_by=current_user)
+            ),
+            post_slug=Coalesce(
+                Case(
+                    When(post__isnull=False, then=F("post__slug")),
+                    When(comment__isnull=False, then=F("comment__post__slug")),
+                    When(reply__isnull=False, then=F("reply__comment__post__slug")),
+                    default=None,
+                    output_field=CharField(),
+                ),
+                Value(None, output_field=CharField()),  # If none of the relations exist
+            ),
+            comment_slug=Coalesce(
+                Case(
+                    When(comment__isnull=False, then=F("comment__slug")),
+                    When(reply__isnull=False, then=F("reply__comment__slug")),
+                    default=None,
+                    output_field=CharField(),
+                ),
+                Value(None, output_field=CharField()),  # If none of the relations exist
+            ),
+            reply_slug=Coalesce(
+                Case(
+                    When(reply__isnull=False, then=F("reply__slug")),
+                    default=None,
+                    output_field=CharField(),
+                ),
+                Value(
+                    None, output_field=CharField()
+                ),  # If 'reply' relation does not exist
+            ),
+        )
+        .order_by("-created_at")
+    )
+    return notifications
+
+
+@profiles_router.get(
+    "/notifications/",
+    summary="Retrieve Auth User Notifications",
+    description="""
+        This endpoint retrieves a paginated list of auth user's notifications
+        Note:
+            - Use post slug to navigate to the post.
+            - Use comment slug to navigate to the comment.
+            - Use reply slug to navigate to the reply.
+
+        WEBSOCKET ENDPOINT: /api/v2/ws/notifications/ e.g (ws://{host}/api/v2/ws/notifications/) 
+            NOTE:
+            * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
+            * You can only read and not send notification messages into this socket.
+    """,
+    response=NotificationsResponseSchema,
+    auth=AuthUser(),
+)
+async def retrieve_user_notifications(request, page: int = 1):
+    user = await request.auth
+    notifications = await get_notifications_queryset(user)
+
+    # Return paginated data
+    paginator.page_size = 50
+    paginated_data = await paginator.paginate_queryset(notifications, page)
+    return CustomResponse.success(message="Notifications fetched", data=paginated_data)
+
+
+@profiles_router.post(
+    "/notifications/",
+    summary="Read Notification",
+    description="""
+        This endpoint reads a notification
+    """,
+    response=ResponseSchema,
+    auth=AuthUser(),
+)
+async def read_notification(request, data: ReadNotificationSchema):
+    user = await request.auth
+    id = data.id
+    mark_all_as_read = data.mark_all_as_read
+
+    resp_message = "Notifications read"
+    if mark_all_as_read:
+        # Mark all notifications as read
+        notifications = await sync_to_async(list)(
+            Notification.objects.filter(receivers__id=user.id)
+        )
+        await user.notifications_read.aadd(*notifications)
+    elif id:
+        # Mark single notification as read
+        notification = await Notification.objects.filter(
+            receivers__id=user.id
+        ).aget_or_none(id=id)
+        if not notification:
+            raise RequestError(
+                err_code=ErrorCode.NON_EXISTENT,
+                err_msg="User has no notification with that ID",
+                status_code=404,
+            )
+        await notification.read_by.aadd(user)
+        resp_message = "Notification read"
+
+    return CustomResponse.success(message=resp_message)

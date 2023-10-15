@@ -1,10 +1,19 @@
 from typing import Any, Dict, List, Optional
-from pydantic import UUID4, EmailStr, validator, Field
+from pydantic import EmailStr, validator, Field
 from datetime import datetime, date
 from apps.common.schemas import BaseModel, PaginatedResponseDataSchema, ResponseSchema
-from apps.common.schema_examples import file_upload_data
+from apps.common.schema_examples import user_data, file_upload_data
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
+from uuid import UUID
+
+
+def get_user(user):
+    return {
+        "name": user.full_name,
+        "slug": user.username,
+        "avatar": user.get_avatar,
+    }
 
 
 class CitySchema(BaseModel):
@@ -77,7 +86,7 @@ class ProfileResponseSchema(ResponseSchema):
 
 class ProfileUpdateResponseDataSchema(ProfileSchema):
     avatar: Any = Field(..., exclude=True, hidden=True)
-    avatar_id: UUID4 = Field(..., exclude=True, hidden=True)
+    avatar_id: UUID = Field(..., exclude=True, hidden=True)
     image_upload_status: bool = Field(..., exclude=True, hidden=True)
     file_upload_data: Optional[Dict] = Field(..., example=file_upload_data)
 
@@ -101,3 +110,40 @@ class SendFriendRequestSchema(BaseModel):
 
 class AcceptFriendRequestSchema(SendFriendRequestSchema):
     accepted: bool
+
+
+class NotificationSchema(BaseModel):
+    id: UUID
+    sender: Optional[Dict] = Field(..., example=user_data)
+    ntype: str = Field(..., example="REACTION")
+    message: str = Field(..., example="John Doe reacted to your post")
+    post_slug: Optional[str]
+    comment_slug: Optional[str]
+    reply_slug: Optional[str]
+    is_read: bool
+
+    @validator("sender", pre=True)
+    def set_sender(cls, v):
+        return get_user(v) if v else None
+
+    class Config:
+        orm_mode = True
+
+
+class ReadNotificationSchema(BaseModel):
+    mark_all_as_read: bool
+    id: Optional[UUID]
+
+    @validator("id", always=True)
+    def validate_id(cls, v, values):
+        if not v and not values["mark_all_as_read"]:
+            raise ValueError("Set ID or mark all as read as True")
+        return v
+
+
+class NotificationsResponseDataSchema(PaginatedResponseDataSchema):
+    notifications: List[NotificationSchema] = Field(..., alias="items")
+
+
+class NotificationsResponseSchema(ResponseSchema):
+    data: NotificationsResponseDataSchema
