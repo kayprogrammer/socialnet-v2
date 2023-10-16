@@ -85,10 +85,10 @@ class ProfileResponseSchema(ResponseSchema):
 
 
 class ProfileUpdateResponseDataSchema(ProfileSchema):
-    avatar: Any = Field(..., exclude=True, hidden=True)
-    avatar_id: UUID = Field(..., exclude=True, hidden=True)
+    avatar: Optional[Any] = Field(..., exclude=True, hidden=True)
+    avatar_id: Optional[UUID] = Field(..., exclude=True, hidden=True)
     image_upload_status: bool = Field(..., exclude=True, hidden=True)
-    file_upload_data: Optional[Dict] = Field(..., example=file_upload_data)
+    file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
 
     @validator("file_upload_data", always=True)
     def show_file_upload_data(cls, v, values):

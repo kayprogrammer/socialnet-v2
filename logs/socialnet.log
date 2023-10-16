@@ -3781,3 +3781,206 @@ websockets.exceptions.InvalidStatusCode: server rejected WebSocket connection: H
 2023-10-15 22:04:49,486 django.request WARNING  Not Found: /static/media/banner2-icon3.png
 2023-10-15 22:05:26,911 django.request WARNING  Unprocessable Entity: /api/v2/profiles/notifications/
 2023-10-15 22:05:35,121 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:38:32,201 django.request WARNING  Method Not Allowed: /api/v2/profiles/friends/
+2023-10-16 21:42:16,745 django.request WARNING  Unprocessable Entity: /api/v2/profiles/friends/requests/
+2023-10-16 21:44:55,119 django.request WARNING  Unprocessable Entity: /api/v2/profiles/friends/requests/
+2023-10-16 21:47:08,890 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:47:08,894 django.request WARNING  Method Not Allowed: /api/v2/profiles/friends/
+2023-10-16 21:48:10,559 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:48:11,780 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:48:13,000 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:49:45,453 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:49:46,668 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:49:47,893 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:49:51,091 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:51:59,798 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:52:01,078 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:52:03,047 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:52:07,129 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:52:08,359 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:52:08,363 django.request WARNING  Method Not Allowed: /api/v2/profiles/friends/
+2023-10-16 21:53:35,413 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:53:36,674 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:53:38,158 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:53:42,049 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:53:44,278 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:53:45,091 django.request ERROR    Internal Server Error: /api/v2/profiles/profile/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> avatar_id
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> file_upload_data
+  field required (type=value_error.missing)
+2023-10-16 21:56:54,408 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:56:55,562 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:56:56,708 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:56:59,942 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:57:01,595 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:57:03,133 django.request ERROR    Internal Server Error: /api/v2/profiles/profile/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> file_upload_data
+  field required (type=value_error.missing)
+2023-10-16 21:57:40,623 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:57:41,722 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:57:42,870 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:57:45,905 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:57:47,009 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:57:47,764 django.request ERROR    Internal Server Error: /api/v2/profiles/profile/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> file_upload_data
+  field required (type=value_error.missing)
+2023-10-16 21:58:14,870 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:58:15,981 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:58:17,197 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:58:20,287 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:58:21,417 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:58:22,168 django.request ERROR    Internal Server Error: /api/v2/profiles/profile/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> file_upload_data
+  field required (type=value_error.missing)
+2023-10-16 21:59:08,951 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 21:59:10,083 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 21:59:11,305 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 21:59:14,283 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 21:59:15,394 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 22:06:35,298 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 22:06:36,414 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 22:06:37,620 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 22:06:40,586 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 22:06:41,704 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 22:09:26,001 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-16 22:09:27,586 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-16 22:09:28,931 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2023-10-16 22:09:32,241 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2023-10-16 22:09:33,474 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
