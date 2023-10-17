@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Optional
 from pydantic import EmailStr, validator, Field
 from datetime import datetime, date
+from apps.common.models import File
 from apps.common.schemas import (
     BaseModel,
     PaginatedResponseDataSchema,
@@ -8,9 +9,10 @@ from apps.common.schemas import (
     UserDataSchema,
 )
 from apps.common.schema_examples import user_data, file_upload_data
-from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
 from uuid import UUID
+
+from apps.common.validators import validate_image_type
 
 
 class CitySchema(BaseModel):
@@ -59,10 +61,8 @@ class ProfileUpdateSchema(BaseModel):
     file_type: Optional[str] = Field(None, example="image/jpeg")
 
     @validator("file_type")
-    def validate_file_type(cls, v):
-        if v and v not in ALLOWED_IMAGE_TYPES:
-            raise ValueError("Image type not allowed!")
-        return v
+    def validate_img_type(cls, v):
+        return validate_image_type(v)
 
 
 class DeleteUserSchema(BaseModel):

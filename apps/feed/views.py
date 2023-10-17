@@ -12,7 +12,7 @@ from apps.common.schemas import ResponseSchema
 from apps.common.responses import CustomResponse
 from apps.common.utils import AuthUser
 from ninja.router import Router
-from .schemas import PostsResponseSchema
+from .schemas import PostInputResponseSchema, PostInputSchema, PostsResponseSchema
 
 feed_router = Router(tags=["Feed"])
 
@@ -33,5 +33,29 @@ async def retrieve_posts(request, page: int = 1):
         .order_by("-created_at")
     )
     paginated_data = await paginator.paginate_queryset(posts, page)
-    print(paginated_data)
     return CustomResponse.success(message="Posts fetched", data=paginated_data)
+
+
+@feed_router.post(
+    "/posts/",
+    summary="Create Post",
+    description=f"""
+        This endpoint creates a new post
+        ALLOWED FILE TYPES: {", ".join(ALLOWED_IMAGE_TYPES)}
+    """,
+    response={201: PostInputResponseSchema},
+    auth=AuthUser(),
+)
+async def create_post(request, data: PostInputSchema):
+    data = data.dict()
+    file_type = data.pop("file_type", None)
+    image_upload_status = False
+    if file_type:
+        file = await File.objects.acreate(resource_type=file_type)
+        data["image"] = file
+        image_upload_status = True
+
+    data["author"] = await request.auth
+    post = await Post.objects.acreate(**data)
+    post.image_upload_status = image_upload_status
+    return CustomResponse.success(message="Post created", data=post, status_code=201)

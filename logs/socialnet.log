@@ -4063,3 +4063,283 @@ response -> data -> items -> 0 -> author
   value is not a valid dict (type=type_error.dict)
 2023-10-17 14:24:26,180 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
 2023-10-17 14:25:32,004 django.request WARNING  Bad Request: /api/v2/feed/posts/
+2023-10-17 23:16:42,678 django.request WARNING  Unauthorized: /api/v2/feed/posts/
+2023-10-17 23:16:45,516 django.request WARNING  Unauthorized: /api/v2/feed/posts/
+2023-10-17 23:17:05,377 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+2023-10-17 23:17:05,408 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:19:08,112 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+2023-10-17 23:19:08,116 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:19:11,190 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+2023-10-17 23:19:11,194 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:19:42,450 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+2023-10-17 23:19:42,466 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:20:36,949 django.request WARNING  Unprocessable Entity: /api/v2/feed/posts/
+2023-10-17 23:20:42,418 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 218, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/mixins.py", line 15, in get_cached_value
+    return instance._state.fields_cache[cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'image'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 711, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 339, in pydantic.main.BaseModel.__init__
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 713, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1055, in pydantic.main.validate_model
+  File "pydantic/utils.py", line 439, in pydantic.utils.GetterDict.get
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 236, in __get__
+    rel_obj = self.get_object(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 199, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2023-10-17 23:20:42,481 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:23:13,949 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 218, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/mixins.py", line 15, in get_cached_value
+    return instance._state.fields_cache[cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'image'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 711, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 339, in pydantic.main.BaseModel.__init__
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 713, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1055, in pydantic.main.validate_model
+  File "pydantic/utils.py", line 439, in pydantic.utils.GetterDict.get
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 236, in __get__
+    rel_obj = self.get_object(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 199, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2023-10-17 23:23:13,956 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 23:23:46,647 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 218, in __get__
+    rel_obj = self.field.get_cached_value(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/mixins.py", line 15, in get_cached_value
+    return instance._state.fields_cache[cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'image'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 711, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 339, in pydantic.main.BaseModel.__init__
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 713, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1055, in pydantic.main.validate_model
+  File "pydantic/utils.py", line 439, in pydantic.utils.GetterDict.get
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 236, in __get__
+    rel_obj = self.get_object(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 199, in get_object
+    return qs.get(self.field.get_reverse_related_filter(instance))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 633, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2023-10-17 23:23:46,652 django.request ERROR    Internal Server Error: /api/v2/feed/posts/

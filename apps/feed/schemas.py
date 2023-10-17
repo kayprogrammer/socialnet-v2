@@ -1,6 +1,9 @@
-from pydantic import BaseModel, Field
+from uuid import UUID
+from pydantic import Field, validator
 from apps.chat.models import CHAT_TYPES
+from apps.common.models import File
 from apps.common.schemas import (
+    BaseModel,
     ResponseSchema,
     UserDataSchema,
     PaginatedResponseDataSchema,
@@ -10,7 +13,7 @@ from apps.common.validators import validate_file_type, validate_image_type
 from apps.common.schema_examples import file_upload_data, user_data, latest_message_data
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
-from typing import Optional, Dict, List
+from typing import Any, Optional, Dict, List
 
 
 class PostSchema(BaseModel):
@@ -27,9 +30,40 @@ class PostSchema(BaseModel):
         orm_mode = True
 
 
+class PostInputSchema(BaseModel):
+    text: str
+    file_type: Optional[str] = Field(None, example="image/jpeg")
+
+    @validator("file_type")
+    def validate_img_type(cls, v):
+        return validate_image_type(v)
+
+
 class PostsResponseDataSchema(PaginatedResponseDataSchema):
     posts: List[PostSchema] = Field(..., alias="items")
 
 
 class PostsResponseSchema(ResponseSchema):
     data: PostsResponseDataSchema
+
+
+class PostInputResponseDataSchema(PostSchema):
+    image: Optional[Any] = Field(..., exclude=True, hidden=True)
+    image_id: Optional[UUID] = Field(..., exclude=True, hidden=True)
+    image_upload_status: bool = Field(..., exclude=True, hidden=True)
+    file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
+    reactions_count: int = Field(None, exclude=True, hidden=True)
+    comments_count: int = Field(None, exclude=True, hidden=True)
+
+    @validator("file_upload_data", always=True)
+    def show_file_upload_data(cls, v, values):
+        if values["image_upload_status"]:
+            return FileProcessor.generate_file_signature(
+                key=values["image_id"],
+                folder="posts",
+            )
+        return v
+
+
+class PostInputResponseSchema(ResponseSchema):
+    data: PostInputResponseDataSchema
