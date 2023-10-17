@@ -1,4 +1,5 @@
-from pydantic import BaseModel as _BaseModel
+from pydantic import Field, BaseModel as _BaseModel
+from typing import Optional
 
 
 class BaseModel(_BaseModel):
@@ -21,3 +22,12 @@ class PaginatedResponseDataSchema(BaseModel):
     per_page: int
     current_page: int
     last_page: int
+
+
+class UserDataSchema(BaseModel):
+    full_name: str = Field(..., example="John Doe")
+    username: str = Field(..., example="john-doe")
+    avatar: Optional[str] = Field(None, example="https://img.url", alias="get_avatar")
+
+    class Config:
+        orm_mode = True

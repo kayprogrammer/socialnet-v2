@@ -1,19 +1,16 @@
 from typing import Any, Dict, List, Optional
 from pydantic import EmailStr, validator, Field
 from datetime import datetime, date
-from apps.common.schemas import BaseModel, PaginatedResponseDataSchema, ResponseSchema
+from apps.common.schemas import (
+    BaseModel,
+    PaginatedResponseDataSchema,
+    ResponseSchema,
+    UserDataSchema,
+)
 from apps.common.schema_examples import user_data, file_upload_data
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.file_processors import FileProcessor
 from uuid import UUID
-
-
-def get_user(user):
-    return {
-        "name": user.full_name,
-        "slug": user.username,
-        "avatar": user.get_avatar,
-    }
 
 
 class CitySchema(BaseModel):
@@ -114,17 +111,13 @@ class AcceptFriendRequestSchema(SendFriendRequestSchema):
 
 class NotificationSchema(BaseModel):
     id: UUID
-    sender: Optional[Dict] = Field(..., example=user_data)
+    sender: Optional[UserDataSchema]
     ntype: str = Field(..., example="REACTION")
     message: str = Field(..., example="John Doe reacted to your post")
     post_slug: Optional[str]
     comment_slug: Optional[str]
     reply_slug: Optional[str]
     is_read: bool
-
-    @validator("sender", pre=True)
-    def set_sender(cls, v):
-        return get_user(v) if v else None
 
     class Config:
         orm_mode = True

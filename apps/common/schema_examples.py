@@ -5,3 +5,9 @@ file_upload_data = {
     "signature": "djsdsjAushsh",
     "timestamp": "16272637829",
 }
+
+latest_message_data = {
+    "sender": user_data,
+    "text": "Cool text",
+    "file": "https://img.url",
+}

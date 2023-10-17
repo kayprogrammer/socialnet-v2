@@ -3984,3 +3984,82 @@ response -> data -> file_upload_data
 2023-10-16 22:09:28,931 django.request WARNING  Not Found: /api/v2/profiles/notifications/
 2023-10-16 22:09:32,241 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
 2023-10-16 22:09:33,474 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2023-10-17 14:19:25,037 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-17 14:19:25,821 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-17 14:22:47,045 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+2023-10-17 14:22:47,070 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 14:23:28,236 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+2023-10-17 14:23:28,240 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 14:23:56,672 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> items -> 0 -> author
+  value is not a valid dict (type=type_error.dict)
+response -> data -> items -> 0 -> get_image
+  none is not an allowed value (type=type_error.none.not_allowed)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> items -> 0 -> author
+  value is not a valid dict (type=type_error.dict)
+response -> data -> items -> 0 -> get_image
+  none is not an allowed value (type=type_error.none.not_allowed)
+2023-10-17 14:23:56,675 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 14:24:26,177 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> items -> 0 -> author
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> items -> 0 -> author
+  value is not a valid dict (type=type_error.dict)
+2023-10-17 14:24:26,180 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2023-10-17 14:25:32,004 django.request WARNING  Bad Request: /api/v2/feed/posts/
