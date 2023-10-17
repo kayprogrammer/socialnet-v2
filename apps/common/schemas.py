@@ -18,6 +18,10 @@ class ResponseSchema(BaseModel):
     message: str
 
 
+class ErrorResponseSchema(ResponseSchema):
+    status: str = "failure"
+
+
 class PaginatedResponseDataSchema(BaseModel):
     per_page: int
     current_page: int

@@ -67,3 +67,7 @@ class PostInputResponseDataSchema(PostSchema):
 
 class PostInputResponseSchema(ResponseSchema):
     data: PostInputResponseDataSchema
+
+
+class PostResponseSchema(ResponseSchema):
+    data: PostSchema
