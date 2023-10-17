@@ -4525,3 +4525,8 @@ response -> data -> comments_count
 2023-10-17 23:52:09,434 django.request WARNING  Bad Request: /api/v2/feed/posts/john-doe-35ade8f2-d5e3-4953-a242-997233135f08/
 2023-10-17 23:52:55,054 django.request WARNING  Not Found: /api/v2/feed/posts/john-doe-35ade8f2-d5e3-4953-a242-997233135f01/
 2023-10-17 23:53:57,323 django.request WARNING  Not Found: /api/v2/feed/posts/john-doe-35ade8f2-d5e3-4953-a242-997233135f08/
+2023-10-18 00:23:20,579 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-18 00:23:20,591 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-5c9e535a-c48c-4d12-b156-031e9a4d848d/
+2023-10-18 00:23:21,383 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-18 00:23:22,959 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-18 00:23:22,977 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-59eb73db-22d3-424c-85d0-7a5d1a80e49a/
