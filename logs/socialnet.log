@@ -4530,3 +4530,51 @@ response -> data -> comments_count
 2023-10-18 00:23:21,383 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
 2023-10-18 00:23:22,959 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
 2023-10-18 00:23:22,977 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-59eb73db-22d3-424c-85d0-7a5d1a80e49a/
+2023-10-18 00:25:58,736 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 00:25:59,629 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-18 22:16:29,089 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:16:29,779 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-18 22:16:30,614 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:16:37,797 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:16:37,801 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:16:37,947 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:16:43,369 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:16:43,372 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:16:43,743 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:16:45,666 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:16:45,670 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:16:45,985 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:17:16,887 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:16,892 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:17,169 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:17:20,498 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:20,502 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:20,741 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:17:23,185 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:23,189 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:27,902 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:27,905 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:28,205 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:17:29,916 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:29,919 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:30,137 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:17:31,278 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:17:31,284 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:17:35,516 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> items -> 0
+  value is not a valid dict (type=type_error.dict)
+2023-10-18 22:17:35,563 django.request ERROR    Internal Server Error: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf

@@ -2,6 +2,7 @@ from django.db.models import Count
 from asgiref.sync import sync_to_async
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
+from apps.feed.utils import get_reaction_focus_object
 from apps.profiles.models import Notification
 from apps.profiles.utils import send_notification_in_socket
 from .models import Post, Comment, Reply, Reaction, REACTION_CHOICES
@@ -17,6 +18,7 @@ from .schemas import (
     PostInputSchema,
     PostResponseSchema,
     PostsResponseSchema,
+    ReactionsResponseSchema,
 )
 
 feed_router = Router(tags=["Feed"])
@@ -142,3 +144,30 @@ async def delete_post(request, slug: str):
         )
     await post.adelete()
     return CustomResponse.success(message="Post deleted")
+
+
+async def get_reactions_queryset(focus, slug, rtype=None):
+    focus_obj = await get_reaction_focus_object(focus, slug)
+    focus_obj_field = f"{focus.lower()}_id"  # Field to filter reactions by (e.g post_id, comment_id, reply_id)
+    filter = {focus_obj_field: focus_obj.id}
+    if rtype:
+        filter["rtype"] = rtype  # Filter by reaction type if the query param is present
+    reactions = Reaction.objects.filter(**filter).select_related("user")
+    return reactions
+
+
+@feed_router.get(
+    "/reactions/{focus}/{slug}",
+    summary="Retrieve Latest Reactions of a Post, Comment, or Reply",
+    description="""
+        This endpoint retrieves paginated responses of reactions of post, comment, reply.
+    """,
+    response=ReactionsResponseSchema,
+)
+async def retrieve_reactions(
+    request, focus: str, slug: str, reaction_type: str = None, page: int = 1
+):
+    paginator.page_size = 50
+    reactions = await get_reactions_queryset(focus, slug, reaction_type)
+    paginated_data = await paginator.paginate_queryset(reactions, page)
+    return CustomResponse.success(message="Reactions fetched", data=paginated_data)

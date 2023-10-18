@@ -13,7 +13,9 @@ from apps.common.validators import validate_file_type, validate_image_type
 from apps.common.schema_examples import file_upload_data, user_data, latest_message_data
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
-from typing import Any, Optional, Dict, List
+from typing import Any, Literal, Optional, Dict, List
+
+from apps.feed.models import REACTION_CHOICES
 
 
 class PostSchema(BaseModel):
@@ -71,3 +73,28 @@ class PostInputResponseSchema(ResponseSchema):
 
 class PostResponseSchema(ResponseSchema):
     data: PostSchema
+
+
+# REACTIONS
+SCHEMA_REACTION_CHOICES = [reaction[0] for reaction in REACTION_CHOICES]
+
+
+class ReactionSchema(BaseModel):
+    id: UUID
+    user: UserDataSchema
+    rtype: str
+
+    class Config:
+        orm_mode = True
+
+
+class ReactionInputSchema(BaseModel):
+    rtype: str
+
+
+class ReactionsResponseDataSchema(PaginatedResponseDataSchema):
+    reactions: List[ReactionSchema] = Field(..., alias="items")
+
+
+class ReactionsResponseSchema(ResponseSchema):
+    data: ReactionsResponseDataSchema
