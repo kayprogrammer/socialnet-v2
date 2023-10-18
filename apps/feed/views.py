@@ -1,3 +1,4 @@
+from uuid import UUID
 from django.db.models import Count
 from asgiref.sync import sync_to_async
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
@@ -154,7 +155,7 @@ async def get_reactions_queryset(focus, slug, rtype=None):
     filter = {focus_obj_field: focus_obj.id}
     if rtype:
         filter["rtype"] = rtype  # Filter by reaction type if the query param is present
-    reactions = Reaction.objects.filter(**filter).select_related("user")
+    reactions = Reaction.objects.filter(**filter).select_related("user", "user__avatar")
     return reactions
 
 
@@ -235,3 +236,51 @@ async def create_reaction(request, focus: str, slug: str, data: ReactionInputSch
     return CustomResponse.success(
         message="Reaction created", data=reaction, status_code=201
     )
+
+
+@feed_router.delete(
+    "/reactions/{id}/",
+    summary="Remove Reaction",
+    description="""
+        This endpoint deletes a reaction.
+    """,
+    response=ResponseSchema,
+    auth=AuthUser(),
+)
+async def remove_reaction(request, id: UUID):
+    user = await request.auth
+    reaction = await Reaction.objects.select_related(
+        "post", "comment", "reply"
+    ).aget_or_none(id=id)
+    if not reaction:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="Reaction does not exist",
+            status_code=404,
+        )
+    if user.id != reaction.user_id:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_OWNER,
+            err_msg="Not yours to delete",
+            status_code=401,
+        )
+
+    # Remove Reaction Notification
+    targeted_obj = reaction.targeted_obj
+    targeted_field = f"{targeted_obj.__class__.__name__.lower()}_id"  # (post_id, comment_id or reply_id)
+    data = {
+        "sender": user,
+        "ntype": "REACTION",
+        targeted_field: targeted_obj.id,
+    }
+
+    notification = await Notification.objects.aget_or_none(**data)
+    if notification:
+        # Send to websocket and delete notification
+        await send_notification_in_socket(
+            request.is_secure(), request.get_host(), notification, status="DELETED"
+        )
+        await notification.adelete()
+
+    await reaction.adelete()
+    return CustomResponse.success(message="Reaction deleted")

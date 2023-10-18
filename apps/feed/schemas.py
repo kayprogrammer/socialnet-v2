@@ -80,7 +80,7 @@ class PostResponseSchema(ResponseSchema):
 class ReactionSchema(BaseModel):
     id: UUID
     user: UserDataSchema
-    rtype: str
+    rtype: str = "LIKE"
 
     class Config:
         orm_mode = True
