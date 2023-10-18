@@ -30,6 +30,11 @@ def validation_errors(exc):
             err_msg = f"{error['ctx']['limit_value']} characters min"
         elif err_type == "value_error.any_str.max_length":
             err_msg = f"{error['ctx']['limit_value']} characters max"
+        elif err_type == "type_error.enum":
+            allowed_enum_values = ", ".join(
+                [value.name for value in error["ctx"]["enum_values"]]
+            )
+            err_msg = f"Invalid choice! Allowed: {allowed_enum_values}"
         modified_details[f"{field_name}"] = err_msg
 
     return Response(

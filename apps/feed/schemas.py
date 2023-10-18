@@ -1,3 +1,4 @@
+from enum import Enum
 from uuid import UUID
 from pydantic import Field, validator
 from apps.chat.models import CHAT_TYPES
@@ -13,7 +14,7 @@ from apps.common.validators import validate_file_type, validate_image_type
 from apps.common.schema_examples import file_upload_data, user_data, latest_message_data
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
-from typing import Any, Literal, Optional, Dict, List
+from typing import Any, Literal, LiteralString, Optional, Dict, List
 
 from apps.feed.models import REACTION_CHOICES
 
@@ -76,9 +77,6 @@ class PostResponseSchema(ResponseSchema):
 
 
 # REACTIONS
-SCHEMA_REACTION_CHOICES = [reaction[0] for reaction in REACTION_CHOICES]
-
-
 class ReactionSchema(BaseModel):
     id: UUID
     user: UserDataSchema
@@ -89,7 +87,7 @@ class ReactionSchema(BaseModel):
 
 
 class ReactionInputSchema(BaseModel):
-    rtype: str
+    rtype: Enum("ReactionType", REACTION_CHOICES)
 
 
 class ReactionsResponseDataSchema(PaginatedResponseDataSchema):
@@ -98,3 +96,7 @@ class ReactionsResponseDataSchema(PaginatedResponseDataSchema):
 
 class ReactionsResponseSchema(ResponseSchema):
     data: ReactionsResponseDataSchema
+
+
+class ReactionResponseSchema(ResponseSchema):
+    data: ReactionSchema

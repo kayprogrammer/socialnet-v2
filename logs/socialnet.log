@@ -4578,3 +4578,79 @@ pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSch
 response -> data -> items -> 0
   value is not a valid dict (type=type_error.dict)
 2023-10-18 22:17:35,563 django.request ERROR    Internal Server Error: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf
+2023-10-18 22:45:51,344 django.request WARNING  Unauthorized: /api/v2/feed/reactions/COMMENT/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:46:09,518 django.request WARNING  Not Found: /api/v2/feed/reactions/COMMENT/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:46:14,261 django.request WARNING  Not Found: /api/v2/feed/reactions/COMMENT/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:46:17,024 django.request WARNING  Not Found: /api/v2/feed/reactions/COMMENT/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:46:35,006 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:46:35,010 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:46:35,242 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:46:37,852 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:46:37,858 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:46:38,144 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:46:42,479 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:46:42,482 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:46:42,635 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:46:44,744 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 22:46:44,748 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 22:46:44,934 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 22:47:34,127 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:47:38,759 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:47:39,800 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 22:59:03,983 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:02:27,373 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:03:03,276 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:03:04,525 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:03:45,626 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:07:29,559 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:08:08,147 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:08:09,085 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:08:09,863 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:08:46,955 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:08:54,799 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:09:28,829 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:09:43,658 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> rtype
+  str type expected (type=type_error.str)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> rtype
+  str type expected (type=type_error.str)
+2023-10-18 23:09:43,661 django.request ERROR    Internal Server Error: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:10:26,046 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 23:10:26,052 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 23:10:26,251 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 23:10:29,645 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 23:10:29,650 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 23:10:30,015 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-18 23:11:14,259 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> rtype
+  str type expected (type=type_error.str)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> rtype
+  str type expected (type=type_error.str)
+2023-10-18 23:11:14,266 django.request ERROR    Internal Server Error: /api/v2/feed/reactions/POST/john-doe-9090444f-06ec-4f3c-a095-e4099be200cf/
+2023-10-18 23:18:50,628 jazzmin.utils WARNING  listings not found when generating links
+2023-10-18 23:18:50,632 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-18 23:18:50,912 django.request WARNING  Not Found: /static/media/banner2-icon3.png

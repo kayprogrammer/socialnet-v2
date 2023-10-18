@@ -18,6 +18,8 @@ from .schemas import (
     PostInputSchema,
     PostResponseSchema,
     PostsResponseSchema,
+    ReactionInputSchema,
+    ReactionResponseSchema,
     ReactionsResponseSchema,
 )
 
@@ -157,7 +159,7 @@ async def get_reactions_queryset(focus, slug, rtype=None):
 
 
 @feed_router.get(
-    "/reactions/{focus}/{slug}",
+    "/reactions/{focus}/{slug}/",
     summary="Retrieve Latest Reactions of a Post, Comment, or Reply",
     description="""
         This endpoint retrieves paginated responses of reactions of post, comment, reply.
@@ -171,3 +173,65 @@ async def retrieve_reactions(
     reactions = await get_reactions_queryset(focus, slug, reaction_type)
     paginated_data = await paginator.paginate_queryset(reactions, page)
     return CustomResponse.success(message="Reactions fetched", data=paginated_data)
+
+
+@feed_router.post(
+    "/reactions/{focus}/{slug}/",
+    summary="Create Reaction",
+    description="""
+        This endpoint creates a new reaction
+        rtype should be any of these:
+        
+        - LIKE    - LOVE
+        - HAHA    - WOW
+        - SAD     - ANGRY
+    """,
+    response={201: ReactionResponseSchema},
+    auth=AuthUser(),
+)
+async def create_reaction(request, focus: str, slug: str, data: ReactionInputSchema):
+    user = await request.auth
+    obj = await get_reaction_focus_object(focus, slug)
+
+    data = data.dict()
+    data["user"] = user
+    rtype = data.pop("rtype").value
+    obj_field = focus.lower()  # Focus object field (e.g post, comment, reply)
+    data[obj_field] = obj
+
+    reaction = await Reaction.objects.select_related(
+        "user", "user__avatar"
+    ).aget_or_none(**data)
+    if reaction:
+        reaction.rtype = rtype
+        await reaction.asave()
+    else:
+        data["rtype"] = rtype
+        reaction = await Reaction.objects.acreate(**data)
+
+    # Create and Send Notification
+    # if obj.author_id != user.id:
+    #     ndata = {obj_field: obj}
+    #     notification, created = await Notification.objects.select_related(
+    #         "sender",
+    #         "sender__avatar",
+    #         "post",
+    #         "comment",
+    #         "comment__post",
+    #         "reply",
+    #         "reply__comment",
+    #         "reply__comment__post",
+    #     ).aget_or_create(sender=user, ntype="REACTION", **ndata)
+    #     if created:
+    #         await notification.receivers.aadd(obj.author)
+
+    #         # Send to websocket
+    #         await send_notification_in_socket(
+    #             request.is_secure(),
+    #             request.get_host(),
+    #             notification,
+    #         )
+
+    return CustomResponse.success(
+        message="Reaction created", data=reaction, status_code=201
+    )
