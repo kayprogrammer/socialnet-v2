@@ -15,6 +15,9 @@ from apps.common.responses import CustomResponse
 from apps.common.utils import AuthUser, set_dict_attr
 from ninja.router import Router
 from .schemas import (
+    CommentInputSchema,
+    CommentResponseSchema,
+    CommentsResponseSchema,
     PostInputResponseSchema,
     PostInputSchema,
     PostResponseSchema,
@@ -284,3 +287,71 @@ async def remove_reaction(request, id: UUID):
 
     await reaction.adelete()
     return CustomResponse.success(message="Reaction deleted")
+
+
+# COMMENTS
+
+
+async def get_post_object(slug):
+    post = await Post.objects.select_related("author").aget_or_none(slug=slug)
+    if not post:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="Post does not exist",
+            status_code=404,
+        )
+    return post
+
+
+@feed_router.get(
+    "/posts/{slug}/comments/",
+    summary="Retrieve Post Comments",
+    description="""
+        This endpoint retrieves comments of a particular post.
+    """,
+    response=CommentsResponseSchema,
+)
+async def retrieve_comments(request, slug: str, page: int = 1):
+    paginator.page_size = 50
+    post = await get_post_object(slug)
+    comments = (
+        Comment.objects.filter(post_id=post.id)
+        .select_related("author", "author__avatar")
+        .annotate(replies_count=Count("replies"))
+    )
+    paginated_data = await paginator.paginate_queryset(comments, page)
+    return CustomResponse.success(message="Comments Fetched", data=paginated_data)
+
+
+@feed_router.post(
+    "/posts/{slug}/comments/",
+    summary="Create Comment",
+    description="""
+        This endpoint creates a comment for a particular post.
+    """,
+    response={201: CommentResponseSchema},
+    auth=AuthUser(),
+)
+async def create_comment(request, slug: str, data: CommentInputSchema):
+    user = await request.auth
+    post = await get_post_object(slug)
+    comment = await Comment.objects.acreate(post=post, author=user, text=data.text)
+    comment.replies_count = 0
+
+    # Create and Send Notification
+    # if user.id != post.author_id:
+    #     notification = await Notification.objects.acreate(
+    #         sender=user, ntype="COMMENT", comment=comment
+    #     )
+    #     await notification.receivers.aadd(post.author)
+
+    #     # Send to websocket
+    #     await send_notification_in_socket(
+    #         request.is_secure(),
+    #         request.get_host(),
+    #         notification,
+    #     )
+
+    return CustomResponse.success(
+        message="Comment Created", data=comment, status_code=201
+    )

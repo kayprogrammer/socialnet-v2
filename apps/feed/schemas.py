@@ -14,7 +14,7 @@ from apps.common.validators import validate_file_type, validate_image_type
 from apps.common.schema_examples import file_upload_data, user_data, latest_message_data
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
-from typing import Any, Literal, LiteralString, Optional, Dict, List
+from typing import Any, Optional, Dict, List
 
 from apps.feed.models import REACTION_CHOICES
 
@@ -100,3 +100,38 @@ class ReactionsResponseSchema(ResponseSchema):
 
 class ReactionResponseSchema(ResponseSchema):
     data: ReactionSchema
+
+
+# COMMENTS AND REPLIES
+
+
+class ReplySchema(BaseModel):
+    author: UserDataSchema
+    slug: str
+    text: str
+
+    class Config:
+        orm_mode = True
+
+
+class CommentSchema(ReplySchema):
+    replies_count: int
+
+    class Config:
+        orm_mode = True
+
+
+class CommentInputSchema(BaseModel):
+    text: str
+
+
+class CommentsResponseDataSchema(PaginatedResponseDataSchema):
+    comments: List[CommentSchema] = Field(..., alias="items")
+
+
+class CommentsResponseSchema(ResponseSchema):
+    data: CommentsResponseDataSchema
+
+
+class CommentResponseSchema(ResponseSchema):
+    data: CommentSchema
