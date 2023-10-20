@@ -423,3 +423,26 @@ async def create_reply(request, slug: str, data: CommentInputSchema):
     #     )
 
     return CustomResponse.success(message="Reply Created", data=reply, status_code=201)
+
+
+@feed_router.put(
+    "/comments/{slug}/",
+    summary="Update Comment",
+    description="""
+        This endpoint updates a particular comment.
+    """,
+    response=CommentResponseSchema,
+    auth=AuthUser(),
+)
+async def put(request, slug: str, data: CommentInputSchema):
+    user = await request.auth
+    comment = await get_comment_object(slug)
+    if comment.author_id != user.id:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_OWNER,
+            err_msg="Not yours to edit",
+            status_code=401,
+        )
+    comment.text = data.text
+    await comment.asave()
+    return CustomResponse.success(message="Comment Updated", data=comment)
