@@ -5147,3 +5147,7 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-20 19:15:02,487 django.request WARNING  Not Found: /static/media/banner2-icon3.png
 2023-10-20 19:15:05,404 jazzmin.utils WARNING  listings not found when generating links
 2023-10-20 19:15:05,407 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-20 19:20:46,781 django.request WARNING  Not Found: /favicon.ico
+2023-10-20 19:20:57,846 django.request WARNING  Unauthorized: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7/
+2023-10-20 19:21:18,833 django.request WARNING  Not Found: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7/
+2023-10-20 19:21:26,648 django.request WARNING  Not Found: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7b/

@@ -434,7 +434,7 @@ async def create_reply(request, slug: str, data: CommentInputSchema):
     response=CommentResponseSchema,
     auth=AuthUser(),
 )
-async def put(request, slug: str, data: CommentInputSchema):
+async def update_comment(request, slug: str, data: CommentInputSchema):
     user = await request.auth
     comment = await get_comment_object(slug)
     if comment.author_id != user.id:
@@ -446,3 +446,37 @@ async def put(request, slug: str, data: CommentInputSchema):
     comment.text = data.text
     await comment.asave()
     return CustomResponse.success(message="Comment Updated", data=comment)
+
+
+@feed_router.delete(
+    "/comments/{slug}/",
+    summary="Delete Comment",
+    description="""
+        This endpoint deletes a comment.
+    """,
+    response=ResponseSchema,
+    auth=AuthUser(),
+)
+async def delete_comment(request, slug: str):
+    user = await request.auth
+    comment = await get_comment_object(slug)
+    if user.id != comment.author_id:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_OWNER,
+            err_msg="Not yours to delete",
+            status_code=401,
+        )
+
+    # # Remove Comment Notification
+    # notification = await Notification.objects.aget_or_none(
+    #     sender=user, ntype="COMMENT", comment_id=comment.id
+    # )
+    # if notification:
+    #     # Send to websocket and delete notification
+    #     await send_notification_in_socket(
+    #         request.is_secure(), request.get_host(), notification, status="DELETED"
+    #     )
+    #     await notification.adelete()
+
+    await comment.adelete()
+    return CustomResponse.success(message="Comment Deleted")
