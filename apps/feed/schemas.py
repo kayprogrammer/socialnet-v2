@@ -121,6 +121,15 @@ class CommentSchema(ReplySchema):
         orm_mode = True
 
 
+class CommentWithRepliesResponseDataSchema(PaginatedResponseDataSchema):
+    items: List[ReplySchema]
+
+
+class CommentWithRepliesSchema(BaseModel):
+    comment: CommentSchema
+    replies: CommentWithRepliesResponseDataSchema
+
+
 class CommentInputSchema(BaseModel):
     text: str
 
@@ -135,3 +144,7 @@ class CommentsResponseSchema(ResponseSchema):
 
 class CommentResponseSchema(ResponseSchema):
     data: CommentSchema
+
+
+class CommentWithRepliesResponseSchema(ResponseSchema):
+    data: CommentWithRepliesSchema

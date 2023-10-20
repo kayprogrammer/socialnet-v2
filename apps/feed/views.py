@@ -17,6 +17,7 @@ from ninja.router import Router
 from .schemas import (
     CommentInputSchema,
     CommentResponseSchema,
+    CommentWithRepliesResponseSchema,
     CommentsResponseSchema,
     PostInputResponseSchema,
     PostInputSchema,
@@ -355,3 +356,37 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
     return CustomResponse.success(
         message="Comment Created", data=comment, status_code=201
     )
+
+
+async def get_comment_object(slug):
+    comment = (
+        await Comment.objects.select_related("author", "author__avatar", "post")
+        .annotate(replies_count=Count("replies"))
+        .aget_or_none(slug=slug)
+    )
+    if not comment:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="Comment does not exist",
+            status_code=404,
+        )
+    return comment
+
+
+@feed_router.get(
+    "comments/{slug}/",
+    summary="Retrieve Comment with replies",
+    description="""
+        This endpoint retrieves a comment with replies.
+    """,
+    response=CommentWithRepliesResponseSchema,
+)
+async def retrieve_comment_with_replies(request, slug: str, page: int = 1):
+    paginator.page_size = 50
+    comment = await get_comment_object(slug)
+    replies = Reply.objects.filter(comment_id=comment.id).select_related(
+        "author", "author__avatar"
+    )
+    paginated_data = await paginator.paginate_queryset(replies, page)
+    data = {"comment": comment, "replies": paginated_data}
+    return CustomResponse.success(message="Comment and Replies Fetched", data=data)
