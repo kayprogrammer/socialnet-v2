@@ -26,6 +26,8 @@ from .schemas import (
     ReactionInputSchema,
     ReactionResponseSchema,
     ReactionsResponseSchema,
+    ReplyResponseSchema,
+    ReplySchema,
 )
 
 feed_router = Router(tags=["Feed"])
@@ -374,7 +376,7 @@ async def get_comment_object(slug):
 
 
 @feed_router.get(
-    "comments/{slug}/",
+    "/comments/{slug}/",
     summary="Retrieve Comment with replies",
     description="""
         This endpoint retrieves a comment with replies.
@@ -390,3 +392,34 @@ async def retrieve_comment_with_replies(request, slug: str, page: int = 1):
     paginated_data = await paginator.paginate_queryset(replies, page)
     data = {"comment": comment, "replies": paginated_data}
     return CustomResponse.success(message="Comment and Replies Fetched", data=data)
+
+
+@feed_router.post(
+    "/comments/{slug}/",
+    summary="Create Reply",
+    description="""
+        This endpoint creates a reply for a comment.
+    """,
+    response={201: ReplyResponseSchema},
+    auth=AuthUser(),
+)
+async def create_reply(request, slug: str, data: CommentInputSchema):
+    user = await request.auth
+    comment = await get_comment_object(slug)
+    reply = await Reply.objects.acreate(author=user, comment=comment, text=data.text)
+
+    # Create and Send Notification
+    # if user.id != comment.author_id:
+    #     notification = await Notification.objects.acreate(
+    #         sender=user, ntype="REPLY", reply=reply
+    #     )
+    #     await notification.receivers.aadd(comment.author)
+
+    #     # Send to websocket
+    #     await send_notification_in_socket(
+    #         request.is_secure(),
+    #         request.get_host(),
+    #         notification,
+    #     )
+
+    return CustomResponse.success(message="Reply Created", data=reply, status_code=201)

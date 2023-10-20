@@ -29,9 +29,16 @@ class PaginatedResponseDataSchema(BaseModel):
 
 
 class UserDataSchema(BaseModel):
-    full_name: str = Field(..., example="John Doe")
-    username: str = Field(..., example="john-doe")
-    avatar: Optional[str] = Field(None, example="https://img.url", alias="get_avatar")
+    full_name: str
+    username: str
+    avatar: str = Field(None, alias="get_avatar")
 
     class Config:
         orm_mode = True
+        schema_extra = {
+            "example": {
+                "full_name": "John Doe",
+                "username": "john-doe",
+                "avatar": "https://img.url",
+            }
+        }

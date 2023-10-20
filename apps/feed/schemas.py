@@ -148,3 +148,7 @@ class CommentResponseSchema(ResponseSchema):
 
 class CommentWithRepliesResponseSchema(ResponseSchema):
     data: CommentWithRepliesSchema
+
+
+class ReplyResponseSchema(ResponseSchema):
+    data: ReplySchema

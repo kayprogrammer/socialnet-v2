@@ -5129,3 +5129,12 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-20 18:09:18,780 jazzmin.utils WARNING  listings not found when generating links
 2023-10-20 18:09:18,788 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-20 18:09:19,001 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-20 18:37:48,367 jazzmin.utils WARNING  listings not found when generating links
+2023-10-20 18:37:48,372 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-20 18:37:48,730 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-20 18:37:53,170 jazzmin.utils WARNING  listings not found when generating links
+2023-10-20 18:37:53,174 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-20 18:37:53,420 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-20 18:38:55,219 django.request WARNING  Method Not Allowed: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7b/
+2023-10-20 18:39:26,695 django.request WARNING  Method Not Allowed: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7b/
+2023-10-20 18:40:21,828 django.request WARNING  Unauthorized: /api/v2/feed/comments/john-doe-0420c45c-7605-4109-976f-4ebe0d80ec7b/
