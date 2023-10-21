@@ -196,27 +196,27 @@ async def create_reaction(request, focus: str, slug: str, data: ReactionInputSch
         reaction = await Reaction.objects.acreate(**data)
 
     # Create and Send Notification
-    # if obj.author_id != user.id:
-    #     ndata = {obj_field: obj}
-    #     notification, created = await Notification.objects.select_related(
-    #         "sender",
-    #         "sender__avatar",
-    #         "post",
-    #         "comment",
-    #         "comment__post",
-    #         "reply",
-    #         "reply__comment",
-    #         "reply__comment__post",
-    #     ).aget_or_create(sender=user, ntype="REACTION", **ndata)
-    #     if created:
-    #         await notification.receivers.aadd(obj.author)
+    if obj.author_id != user.id:
+        ndata = {obj_field: obj}
+        notification, created = await Notification.objects.select_related(
+            "sender",
+            "sender__avatar",
+            "post",
+            "comment",
+            "comment__post",
+            "reply",
+            "reply__comment",
+            "reply__comment__post",
+        ).aget_or_create(sender=user, ntype="REACTION", **ndata)
+        if created:
+            await notification.receivers.aadd(obj.author)
 
-    #         # Send to websocket
-    #         await send_notification_in_socket(
-    #             request.is_secure(),
-    #             request.get_host(),
-    #             notification,
-    #         )
+            # Send to websocket
+            await send_notification_in_socket(
+                request.is_secure(),
+                request.get_host(),
+                notification,
+            )
 
     return CustomResponse.success(
         message="Reaction created", data=reaction, status_code=201
@@ -310,18 +310,18 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
     comment.replies_count = 0
 
     # Create and Send Notification
-    # if user.id != post.author_id:
-    #     notification = await Notification.objects.acreate(
-    #         sender=user, ntype="COMMENT", comment=comment
-    #     )
-    #     await notification.receivers.aadd(post.author)
+    if user.id != post.author_id:
+        notification = await Notification.objects.acreate(
+            sender=user, ntype="COMMENT", comment=comment
+        )
+        await notification.receivers.aadd(post.author_id)
 
-    #     # Send to websocket
-    #     await send_notification_in_socket(
-    #         request.is_secure(),
-    #         request.get_host(),
-    #         notification,
-    #     )
+        # Send to websocket
+        await send_notification_in_socket(
+            request.is_secure(),
+            request.get_host(),
+            notification,
+        )
 
     return CustomResponse.success(
         message="Comment Created", data=comment, status_code=201
@@ -362,18 +362,18 @@ async def create_reply(request, slug: str, data: CommentInputSchema):
     reply = await Reply.objects.acreate(author=user, comment=comment, text=data.text)
 
     # Create and Send Notification
-    # if user.id != comment.author_id:
-    #     notification = await Notification.objects.acreate(
-    #         sender=user, ntype="REPLY", reply=reply
-    #     )
-    #     await notification.receivers.aadd(comment.author)
+    if user.id != comment.author_id:
+        notification = await Notification.objects.acreate(
+            sender=user, ntype="REPLY", reply=reply
+        )
+        await notification.receivers.aadd(comment.author)
 
-    #     # Send to websocket
-    #     await send_notification_in_socket(
-    #         request.is_secure(),
-    #         request.get_host(),
-    #         notification,
-    #     )
+        # Send to websocket
+        await send_notification_in_socket(
+            request.is_secure(),
+            request.get_host(),
+            notification,
+        )
 
     return CustomResponse.success(message="Reply Created", data=reply, status_code=201)
 
@@ -421,15 +421,15 @@ async def delete_comment(request, slug: str):
         )
 
     # # Remove Comment Notification
-    # notification = await Notification.objects.aget_or_none(
-    #     sender=user, ntype="COMMENT", comment_id=comment.id
-    # )
-    # if notification:
-    #     # Send to websocket and delete notification
-    #     await send_notification_in_socket(
-    #         request.is_secure(), request.get_host(), notification, status="DELETED"
-    #     )
-    #     await notification.adelete()
+    notification = await Notification.objects.aget_or_none(
+        sender=user, ntype="COMMENT", comment_id=comment.id
+    )
+    if notification:
+        # Send to websocket and delete notification
+        await send_notification_in_socket(
+            request.is_secure(), request.get_host(), notification, status="DELETED"
+        )
+        await notification.adelete()
 
     await comment.adelete()
     return CustomResponse.success(message="Comment Deleted")
@@ -490,15 +490,15 @@ async def delete_reply(request, slug: str):
         )
 
     # Remove Reply Notification
-    # notification = await Notification.objects.aget_or_none(
-    #     sender=user, ntype="REPLY", reply_id=reply.id
-    # )
-    # if notification:
-    #     # Send to websocket and delete notification
-    #     await send_notification_in_socket(
-    #         request.is_secure(), request.get_host(), notification, status="DELETED"
-    #     )
-    #     await notification.adelete()
+    notification = await Notification.objects.aget_or_none(
+        sender=user, ntype="REPLY", reply_id=reply.id
+    )
+    if notification:
+        # Send to websocket and delete notification
+        await send_notification_in_socket(
+            request.is_secure(), request.get_host(), notification, status="DELETED"
+        )
+        await notification.adelete()
 
     await reply.adelete()
     return CustomResponse.success(message="Reply Deleted")

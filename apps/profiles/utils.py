@@ -1,6 +1,7 @@
 from django.conf import settings
 import websockets
 import json
+from apps.profiles.schemas import NotificationSchema
 
 
 def get_notification_message(obj):
@@ -37,7 +38,7 @@ async def send_notification_in_socket(
     secured: bool, host: str, notification: object, status: str = "CREATED"
 ):
     websocket_scheme = "wss://" if secured else "ws://"
-    uri = f"{websocket_scheme}{host}/api/v1/ws/notifications/"
+    uri = f"{websocket_scheme}{host}/api/v2/ws/notifications/"
     notification_data = {
         "id": str(notification.id),
         "status": status,
@@ -45,13 +46,9 @@ async def send_notification_in_socket(
     }
     if status == "CREATED":
         notification = await sort_notification_slugs(notification)
-        notification_data = None
-        # from apps.profiles.serializers import NotificationSerializer
-
-        # notification_data = NotificationSerializer(notification).data | {
-        #     "status": status
-        # }
-
+        notification_data = notification_data | NotificationSchema.from_orm(
+            notification
+        ).dict(exclude={"id", "ntype"})
     headers = [
         ("Authorization", settings.SOCKET_SECRET),
     ]

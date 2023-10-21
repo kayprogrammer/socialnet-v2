@@ -9,12 +9,12 @@ class NotificationConsumer(BaseConsumer):
     async def connect(self):
         err = self.scope["error"]
         await self.accept()
+        self.room_name = "notifications"
+        self.room_group_name = "notifications"
 
         if err.get("message"):  # Check for auth errors
             await self.send_error_message(err)
             return await self.close(code=4001)
-        self.room_name = "notifications"
-        self.room_group_name = "notifications"
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
 
     async def disconnect(self, close_code):

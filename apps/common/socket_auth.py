@@ -26,7 +26,7 @@ class SocketAuthMiddleware:
             ):  # If the app is making the connection itself
                 scope["user"] = token
             else:
-                user = await sync_to_async(Authentication.decodeAuthorization)(token)
+                user = await Authentication.decodeAuthorization(token[7:])
                 scope["user"] = user
                 if not user:
                     error["message"] = "Auth token is invalid or expired"
