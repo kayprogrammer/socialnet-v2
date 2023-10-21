@@ -1,8 +1,6 @@
 from enum import Enum
 from uuid import UUID
 from pydantic import Field, validator
-from apps.chat.models import CHAT_TYPES
-from apps.common.models import File
 from apps.common.schemas import (
     BaseModel,
     ResponseSchema,
@@ -10,9 +8,8 @@ from apps.common.schemas import (
     PaginatedResponseDataSchema,
 )
 from apps.common.file_processors import FileProcessor
-from apps.common.validators import validate_file_type, validate_image_type
-from apps.common.schema_examples import file_upload_data, user_data, latest_message_data
-from django.utils.translation import gettext_lazy as _
+from apps.common.validators import validate_image_type
+from apps.common.schema_examples import file_upload_data
 from datetime import datetime
 from typing import Any, Optional, Dict, List
 

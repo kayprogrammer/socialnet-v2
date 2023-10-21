@@ -1,9 +1,14 @@
 from uuid import UUID
 from django.db.models import Count
-from asgiref.sync import sync_to_async
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
-from apps.feed.utils import get_reaction_focus_object
+from apps.feed.utils import (
+    get_comment_object,
+    get_post_object,
+    get_reaction_focus_object,
+    get_reactions_queryset,
+    get_reply_object,
+)
 from apps.profiles.models import Notification
 from apps.profiles.utils import send_notification_in_socket
 from .models import Post, Comment, Reply, Reaction, REACTION_CHOICES
@@ -27,7 +32,6 @@ from .schemas import (
     ReactionResponseSchema,
     ReactionsResponseSchema,
     ReplyResponseSchema,
-    ReplySchema,
 )
 
 feed_router = Router(tags=["Feed"])
@@ -77,21 +81,6 @@ async def create_post(request, data: PostInputSchema):
     return CustomResponse.success(message="Post created", data=post, status_code=201)
 
 
-async def get_post_object(slug):
-    post = (
-        await Post.objects.select_related("author", "author__avatar", "image")
-        .annotate(reactions_count=Count("reactions"), comments_count=Count("comments"))
-        .aget_or_none(slug=slug)
-    )
-    if not post:
-        raise RequestError(
-            err_code=ErrorCode.NON_EXISTENT,
-            err_msg="No post with that slug",
-            status_code=404,
-        )
-    return post
-
-
 @feed_router.get(
     "/posts/{slug}/",
     summary="Retrieve Single Post",
@@ -99,7 +88,7 @@ async def get_post_object(slug):
     response={200: PostResponseSchema, 404: ErrorResponseSchema},
 )
 async def retrieve_post(request, slug: str):
-    post = await get_post_object(slug)
+    post = await get_post_object(slug, "detailed")
     return CustomResponse.success(message="Post Detail fetched", data=post)
 
 
@@ -107,11 +96,11 @@ async def retrieve_post(request, slug: str):
     "/posts/{slug}/",
     summary="Update a Post",
     description="This endpoint updates a post",
-    response={200: PostInputResponseSchema},
+    response=PostInputResponseSchema,
     auth=AuthUser(),
 )
 async def update_post(request, slug: str, data: PostInputSchema):
-    post = await get_post_object(slug)
+    post = await get_post_object(slug, "detailed")
     if post.author != await request.auth:
         raise RequestError(
             err_code=ErrorCode.INVALID_OWNER,
@@ -141,28 +130,18 @@ async def update_post(request, slug: str, data: PostInputSchema):
     "/posts/{slug}/",
     summary="Delete a Post",
     description="This endpoint deletes a post",
-    response={200: ResponseSchema},
+    response=ResponseSchema,
     auth=AuthUser(),
 )
 async def delete_post(request, slug: str):
     post = await get_post_object(slug)
-    if post.author != await request.auth:
+    if post.author_id != (await request.auth).id:
         raise RequestError(
             err_code=ErrorCode.INVALID_OWNER,
             err_msg="This Post isn't yours",
         )
     await post.adelete()
     return CustomResponse.success(message="Post deleted")
-
-
-async def get_reactions_queryset(focus, slug, rtype=None):
-    focus_obj = await get_reaction_focus_object(focus, slug)
-    focus_obj_field = f"{focus.lower()}_id"  # Field to filter reactions by (e.g post_id, comment_id, reply_id)
-    filter = {focus_obj_field: focus_obj.id}
-    if rtype:
-        filter["rtype"] = rtype  # Filter by reaction type if the query param is present
-    reactions = Reaction.objects.filter(**filter).select_related("user", "user__avatar")
-    return reactions
 
 
 @feed_router.get(
@@ -295,17 +274,6 @@ async def remove_reaction(request, id: UUID):
 # COMMENTS
 
 
-async def get_post_object(slug):
-    post = await Post.objects.select_related("author").aget_or_none(slug=slug)
-    if not post:
-        raise RequestError(
-            err_code=ErrorCode.NON_EXISTENT,
-            err_msg="Post does not exist",
-            status_code=404,
-        )
-    return post
-
-
 @feed_router.get(
     "/posts/{slug}/comments/",
     summary="Retrieve Post Comments",
@@ -358,21 +326,6 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
     return CustomResponse.success(
         message="Comment Created", data=comment, status_code=201
     )
-
-
-async def get_comment_object(slug):
-    comment = (
-        await Comment.objects.select_related("author", "author__avatar", "post")
-        .annotate(replies_count=Count("replies"))
-        .aget_or_none(slug=slug)
-    )
-    if not comment:
-        raise RequestError(
-            err_code=ErrorCode.NON_EXISTENT,
-            err_msg="Comment does not exist",
-            status_code=404,
-        )
-    return comment
 
 
 @feed_router.get(
@@ -480,19 +433,6 @@ async def delete_comment(request, slug: str):
 
     await comment.adelete()
     return CustomResponse.success(message="Comment Deleted")
-
-
-async def get_reply_object(slug):
-    reply = await Reply.objects.select_related("author", "author__avatar").aget_or_none(
-        slug=slug
-    )
-    if not reply:
-        raise RequestError(
-            err_code=ErrorCode.NON_EXISTENT,
-            err_msg="Reply does not exist",
-            status_code=404,
-        )
-    return reply
 
 
 @feed_router.get(
