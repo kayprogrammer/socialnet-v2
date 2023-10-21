@@ -480,3 +480,85 @@ async def delete_comment(request, slug: str):
 
     await comment.adelete()
     return CustomResponse.success(message="Comment Deleted")
+
+
+async def get_reply_object(slug):
+    reply = await Reply.objects.select_related("author", "author__avatar").aget_or_none(
+        slug=slug
+    )
+    if not reply:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="Reply does not exist",
+            status_code=404,
+        )
+    return reply
+
+
+@feed_router.get(
+    "/replies/{slug}/",
+    summary="Retrieve Reply",
+    description="""
+        This endpoint retrieves a reply.
+    """,
+    response=ReplyResponseSchema,
+)
+async def retrieve_reply(request, slug: str):
+    reply = await get_reply_object(slug)
+    return CustomResponse.success(message="Reply Fetched", data=reply)
+
+
+@feed_router.put(
+    "/replies/{slug}/",
+    summary="Update Reply",
+    description="""
+        This endpoint updates a particular reply.
+    """,
+    response=ReplyResponseSchema,
+    auth=AuthUser(),
+)
+async def update_reply(request, slug: str, data: CommentInputSchema):
+    reply = await get_reply_object(slug)
+    if reply.author_id != (await request.auth).id:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_OWNER,
+            err_msg="Not yours to edit",
+            status_code=401,
+        )
+    reply.text = data.text
+    await reply.asave()
+    return CustomResponse.success(message="Reply Updated", data=reply)
+
+
+@feed_router.delete(
+    "/replies/{slug}/",
+    summary="Delete reply",
+    description="""
+        This endpoint deletes a reply.
+    """,
+    response=ResponseSchema,
+    auth=AuthUser(),
+)
+async def delete_reply(request, slug: str):
+    user = await request.auth
+    reply = await get_reply_object(slug)
+    if user.id != reply.author_id:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_OWNER,
+            err_msg="Not yours to delete",
+            status_code=401,
+        )
+
+    # Remove Reply Notification
+    # notification = await Notification.objects.aget_or_none(
+    #     sender=user, ntype="REPLY", reply_id=reply.id
+    # )
+    # if notification:
+    #     # Send to websocket and delete notification
+    #     await send_notification_in_socket(
+    #         request.is_secure(), request.get_host(), notification, status="DELETED"
+    #     )
+    #     await notification.adelete()
+
+    await reply.adelete()
+    return CustomResponse.success(message="Reply Deleted")
