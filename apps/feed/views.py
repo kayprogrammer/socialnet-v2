@@ -1,5 +1,6 @@
 from uuid import UUID
 from django.db.models import Count
+from ninja import Query
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
 from apps.feed.utils import (
@@ -11,7 +12,7 @@ from apps.feed.utils import (
 )
 from apps.profiles.models import Notification
 from apps.profiles.utils import send_notification_in_socket
-from .models import Post, Comment, Reply, Reaction, REACTION_CHOICES
+from .models import Post, Comment, Reply, Reaction
 from apps.common.models import File
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
@@ -144,6 +145,13 @@ async def delete_post(request, slug: str):
     return CustomResponse.success(message="Post deleted")
 
 
+focus_query = Query(
+    ...,
+    description="Specify the usage. Use any of the three: POST, COMMENT, FEED",
+)
+slug_query = Query(..., description="Enter the slug of the post or comment or reply")
+
+
 @feed_router.get(
     "/reactions/{focus}/{slug}/",
     summary="Retrieve Latest Reactions of a Post, Comment, or Reply",
@@ -153,7 +161,11 @@ async def delete_post(request, slug: str):
     response=ReactionsResponseSchema,
 )
 async def retrieve_reactions(
-    request, focus: str, slug: str, reaction_type: str = None, page: int = 1
+    request,
+    focus: str = focus_query,
+    slug: str = slug_query,
+    reaction_type: str = None,
+    page: int = 1,
 ):
     paginator.page_size = 50
     reactions = await get_reactions_queryset(focus, slug, reaction_type)
@@ -175,7 +187,12 @@ async def retrieve_reactions(
     response={201: ReactionResponseSchema},
     auth=AuthUser(),
 )
-async def create_reaction(request, focus: str, slug: str, data: ReactionInputSchema):
+async def create_reaction(
+    request,
+    data: ReactionInputSchema,
+    focus: str = focus_query,
+    slug: str = slug_query,
+):
     user = await request.auth
     obj = await get_reaction_focus_object(focus, slug)
 
