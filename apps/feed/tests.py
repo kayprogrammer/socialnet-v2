@@ -380,3 +380,54 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_delete_reaction(self):
+        reaction = self.reaction
+
+        # Test for invalid reaction id
+        invalid_id = str(uuid.uuid4())
+        response = await self.client.delete(
+            f"{self.reactions_url}{invalid_id}/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Reaction does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for invalid owner
+        response = await self.client.delete(
+            f"{self.reactions_url}{reaction.id}/",
+            content_type=self.content_type,
+            **self.other_user_bearer,
+        )
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Not yours to delete",
+                "code": ErrorCode.INVALID_OWNER,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.delete(
+            f"{self.reactions_url}{reaction.id}/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reaction deleted",
+            },
+        )

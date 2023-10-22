@@ -6360,3 +6360,14 @@ response -> data -> author -> name
 2023-10-22 18:14:57,221 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
 2023-10-22 18:14:58,059 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
 2023-10-22 18:14:58,072 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-58125449-1083-41b4-a081-c71df0712d84/
+2023-10-22 18:26:51,056 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-e32b8aba-1ee2-463b-bef9-9605392c4e9b/
+2023-10-22 18:26:51,069 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 18:26:51,862 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:26:51,873 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-85be3333-639b-4ffd-b820-eb24969b0239/
+2023-10-22 18:26:52,665 django.request WARNING  Not Found: /api/v2/feed/reactions/36ae4189-bae8-4de6-ac47-433adc59a4d1/
+2023-10-22 18:26:52,673 django.request WARNING  Unauthorized: /api/v2/feed/reactions/4b0d6eaa-142a-4784-965c-5874948698d1/
+2023-10-22 18:26:53,456 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:26:54,986 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-544792d6-d0bf-4d72-99d2-8e205f3f7cf2/
+2023-10-22 18:26:54,995 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 18:26:55,846 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:26:55,867 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-bb2b8955-71ac-4310-9656-c6434534b5e5/
