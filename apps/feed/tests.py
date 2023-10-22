@@ -315,3 +315,68 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_create_reaction(self):
+        post = self.post
+        user = self.verified_user
+
+        reaction_data = {"rtype": "LOVE"}
+
+        # Test for invalid for_value
+        response = await self.client.post(
+            f"{self.reactions_url}invalid_for/{post.slug}/",
+            reaction_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Invalid 'focus' value",
+                "code": ErrorCode.INVALID_VALUE,
+            },
+        )
+
+        # Test for invalid slug
+        response = await self.client.post(
+            f"{self.reactions_url}POST/invalid_slug/",
+            reaction_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Post does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.post(
+            f"{self.reactions_url}POST/{post.slug}/",
+            reaction_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reaction created",
+                "data": {
+                    "id": mock.ANY,
+                    "user": {
+                        "name": user.full_name,
+                        "username": user.username,
+                        "avatar": user.get_avatar,
+                    },
+                    "rtype": reaction_data["rtype"],
+                },
+            },
+        )

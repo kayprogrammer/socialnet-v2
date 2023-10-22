@@ -6348,3 +6348,15 @@ response -> data -> author -> name
 2023-10-22 17:53:26,353 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
 2023-10-22 17:53:27,206 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
 2023-10-22 17:53:27,219 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-c5dccef0-d7a6-4faa-82da-1186b76a2f56/
+2023-10-22 18:12:13,246 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-70d87cb1-6c8e-45fb-862d-8429513aa70f/
+2023-10-22 18:14:23,380 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-bd83d163-b0ef-436b-87f5-ce22bbf2d452/
+2023-10-22 18:14:23,393 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 18:14:53,427 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-81bd4a89-27a2-4f10-9f60-5dc04ae4cee9/
+2023-10-22 18:14:53,439 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 18:14:54,345 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:14:54,375 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-30eefcac-ba30-43d9-bd01-104610a3b20e/
+2023-10-22 18:14:55,378 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:14:57,214 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-3d8331cb-f2f9-443f-9883-d0e986f92679/
+2023-10-22 18:14:57,221 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 18:14:58,059 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 18:14:58,072 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-58125449-1083-41b4-a081-c71df0712d84/
