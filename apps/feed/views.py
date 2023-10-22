@@ -1,6 +1,6 @@
 from uuid import UUID
 from django.db.models import Count
-from ninja import Query
+from ninja import Path
 from apps.common.file_types import ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
 from apps.feed.utils import (
@@ -145,11 +145,11 @@ async def delete_post(request, slug: str):
     return CustomResponse.success(message="Post deleted")
 
 
-focus_query = Query(
+focus_query = Path(
     ...,
     description="Specify the usage. Use any of the three: POST, COMMENT, FEED",
 )
-slug_query = Query(..., description="Enter the slug of the post or comment or reply")
+slug_query = Path(..., description="Enter the slug of the post or comment or reply")
 
 
 @feed_router.get(

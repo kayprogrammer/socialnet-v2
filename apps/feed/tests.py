@@ -116,7 +116,7 @@ class TestFeed(TestCase):
             {
                 "status": "failure",
                 "code": ErrorCode.NON_EXISTENT,
-                "message": "No post with that slug",
+                "message": "Post does not exist",
             },
         )
 
@@ -159,7 +159,7 @@ class TestFeed(TestCase):
             {
                 "status": "failure",
                 "code": ErrorCode.NON_EXISTENT,
-                "message": "No post with that slug",
+                "message": "Post does not exist",
             },
         )
 
@@ -218,7 +218,7 @@ class TestFeed(TestCase):
             {
                 "status": "failure",
                 "code": ErrorCode.NON_EXISTENT,
-                "message": "No post with that slug",
+                "message": "Post does not exist",
             },
         )
 
@@ -250,5 +250,68 @@ class TestFeed(TestCase):
             {
                 "status": "success",
                 "message": "Post deleted",
+            },
+        )
+
+    async def test_retrieve_reactions(self):
+        post = self.post
+        user = self.verified_user
+        reaction = self.reaction
+
+        # Test for invalid focus_value
+        response = await self.client.get(
+            f"{self.reactions_url}invalid_focus/{post.slug}/",
+            content_type=self.content_type,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Invalid 'focus' value",
+                "code": ErrorCode.INVALID_VALUE,
+            },
+        )
+
+        # Test for invalid slug
+        response = await self.client.get(
+            f"{self.reactions_url}POST/invalid_slug/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Post does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.get(
+            f"{self.reactions_url}POST/{post.slug}/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reactions fetched",
+                "data": {
+                    "per_page": 50,
+                    "current_page": 1,
+                    "last_page": 1,
+                    "reactions": [
+                        {
+                            "id": str(reaction.id),
+                            "user": {
+                                "name": user.full_name,
+                                "username": user.username,
+                                "avatar": user.get_avatar,
+                            },
+                            "rtype": reaction.rtype,
+                        }
+                    ],
+                },
             },
         )

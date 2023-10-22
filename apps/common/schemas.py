@@ -29,7 +29,7 @@ class PaginatedResponseDataSchema(BaseModel):
 
 
 class UserDataSchema(BaseModel):
-    full_name: str
+    name: str = Field(..., alias="full_name")
     username: str
     avatar: str = Field(None, alias="get_avatar")
 
@@ -37,7 +37,7 @@ class UserDataSchema(BaseModel):
         orm_mode = True
         schema_extra = {
             "example": {
-                "full_name": "John Doe",
+                "name": "John Doe",
                 "username": "john-doe",
                 "avatar": "https://img.url",
             }

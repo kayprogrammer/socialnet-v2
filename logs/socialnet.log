@@ -6273,3 +6273,78 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-21 22:59:34,910 jazzmin.utils WARNING  listings not found when generating links
 2023-10-21 22:59:34,913 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-21 23:00:47,462 django.request WARNING  Not Found: /api/v2/feed/replies/test-client-a645ca79-6881-4e00-9c16-ca9370c70533/
+2023-10-22 17:36:39,423 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:38:23,581 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:38:23,592 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-01de3700-7c08-4933-be25-aea5b66f919d/
+2023-10-22 17:38:24,388 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:38:25,993 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:38:26,008 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-ecfcd2bd-b512-42dc-acb4-33bfb7b1faa9/
+2023-10-22 17:43:29,948 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:43:29,962 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-44db3100-3b25-4e6c-9174-0c6deadfeae7/
+2023-10-22 17:43:30,758 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:44:43,099 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:44:43,111 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-6afcc19a-73ae-4767-9779-40fed4071ca4/
+2023-10-22 17:44:43,909 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:44:45,479 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/invalid_focus/test-verified-99936eb4-71ee-4a40-8eb7-61b846c844bb/
+2023-10-22 17:46:05,919 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:46:05,929 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-44ad27e0-d63b-45f8-9cf0-c848a7665c9d/
+2023-10-22 17:46:06,742 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:46:08,336 django.request WARNING  Unprocessable Entity: /api/v2/feed/reactions/invalid_focus/test-verified-89468aac-d0a5-41fd-8584-3ee57c29f4f7/
+2023-10-22 17:47:48,440 jazzmin.utils WARNING  listings not found when generating links
+2023-10-22 17:47:48,525 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-22 17:47:49,563 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-22 17:47:50,961 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-22 17:49:10,555 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:49:10,569 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-235d1266-2818-4441-bbd2-d936447de654/
+2023-10-22 17:49:11,366 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:49:12,949 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-3b2be3f3-7ad5-4d8d-b7b2-dbc48cd1d2cf/
+2023-10-22 17:49:12,957 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 17:49:50,150 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:49:50,160 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-6bfdb51b-7937-4a9b-8e2e-e565c58f8ed6/
+2023-10-22 17:49:50,944 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:49:52,503 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-9b2f0c7f-2f16-4da7-ad0b-ebcd571e93bc/
+2023-10-22 17:49:52,513 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 17:52:10,692 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> author -> name
+  field required (type=value_error.missing)
+2023-10-22 17:53:23,282 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:53:23,297 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-6aebf6ce-5b8c-4f3d-9ece-455705ba54a3/
+2023-10-22 17:53:24,308 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:53:26,346 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-8279657c-d998-482c-a682-31da02e337b3/
+2023-10-22 17:53:26,353 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-22 17:53:27,206 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-22 17:53:27,219 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-c5dccef0-d7a6-4faa-82da-1186b76a2f56/
