@@ -47,7 +47,6 @@ paginator = CustomPagination()
     response=PostsResponseSchema,
 )
 async def retrieve_posts(request, page: int = 1):
-    paginator.page_size = 50
     posts = (
         Post.objects.select_related("author", "author__avatar", "image")
         .annotate(reactions_count=Count("reactions"), comments_count=Count("comments"))
@@ -167,7 +166,6 @@ async def retrieve_reactions(
     reaction_type: str = None,
     page: int = 1,
 ):
-    paginator.page_size = 50
     reactions = await get_reactions_queryset(focus, slug, reaction_type)
     paginated_data = await paginator.paginate_queryset(reactions, page)
     return CustomResponse.success(message="Reactions fetched", data=paginated_data)
@@ -300,7 +298,6 @@ async def remove_reaction(request, id: UUID):
     response=CommentsResponseSchema,
 )
 async def retrieve_comments(request, slug: str, page: int = 1):
-    paginator.page_size = 50
     post = await get_post_object(slug)
     comments = (
         Comment.objects.filter(post_id=post.id)
@@ -354,7 +351,6 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
     response=CommentWithRepliesResponseSchema,
 )
 async def retrieve_comment_with_replies(request, slug: str, page: int = 1):
-    paginator.page_size = 50
     comment = await get_comment_object(slug)
     replies = Reply.objects.filter(comment_id=comment.id).select_related(
         "author", "author__avatar"
@@ -391,7 +387,6 @@ async def create_reply(request, slug: str, data: CommentInputSchema):
             request.get_host(),
             notification,
         )
-
     return CustomResponse.success(message="Reply Created", data=reply, status_code=201)
 
 

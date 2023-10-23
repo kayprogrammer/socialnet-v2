@@ -353,7 +353,6 @@ async def accept_or_reject_friend_request(request, data: AcceptFriendRequestSche
     else:
         msg = "Rejected"
         await friend.adelete()
-
     return CustomResponse.success(message=f"Friend Request {msg}", status_code=200)
 
 
@@ -428,7 +427,6 @@ async def retrieve_user_notifications(request, page: int = 1):
     notifications = await get_notifications_queryset(user)
 
     # Return paginated data
-    paginator.page_size = 50
     paginated_data = await paginator.paginate_queryset(notifications, page)
     return CustomResponse.success(message="Notifications fetched", data=paginated_data)
 
@@ -467,5 +465,4 @@ async def read_notification(request, data: ReadNotificationSchema):
             )
         await notification.read_by.aadd(user)
         resp_message = "Notification read"
-
     return CustomResponse.success(message=resp_message)

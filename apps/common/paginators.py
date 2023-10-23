@@ -9,7 +9,7 @@ import math
 
 
 class CustomPagination(PaginationBase):
-    page_size = 10  # Set the default page size here
+    page_size = 50  # Set the default page size here
 
     class Output(Schema):
         items: List[Any]  # `items` is a default attribute

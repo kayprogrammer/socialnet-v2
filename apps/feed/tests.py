@@ -431,3 +431,52 @@ class TestFeed(TestCase):
                 "message": "Reaction deleted",
             },
         )
+
+    async def test_retrieve_comments(self):
+        comment = self.comment
+        post = self.post
+        user = self.verified_user
+
+        # Test for invalid post slug
+        response = await self.client.get(
+            f"{self.posts_url}invalid_slug/comments/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Post does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.get(
+            f"{self.posts_url}{post.slug}/comments/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Comments Fetched",
+                "data": {
+                    "per_page": 50,
+                    "current_page": 1,
+                    "last_page": 1,
+                    "comments": [
+                        {
+                            "author": {
+                                "name": user.full_name,
+                                "username": user.username,
+                                "avatar": user.get_avatar,
+                            },
+                            "slug": comment.slug,
+                            "text": comment.text,
+                            "replies_count": await comment.replies.acount(),
+                        }
+                    ],
+                },
+            },
+        )
