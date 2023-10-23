@@ -529,3 +529,63 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_retrieve_comment_with_replies(self):
+        reply = self.reply
+        comment = reply.comment
+        user = self.verified_user
+
+        # Test for invalid comment slug
+        response = await self.client.get(
+            f"{self.comment_url}invalid_slug/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Comment does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.get(
+            f"{self.comment_url}{comment.slug}/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Comment and Replies Fetched",
+                "data": {
+                    "comment": {
+                        "author": {
+                            "name": user.full_name,
+                            "username": user.username,
+                            "avatar": user.get_avatar,
+                        },
+                        "slug": comment.slug,
+                        "text": comment.text,
+                        "replies_count": await comment.replies.acount(),
+                    },
+                    "replies": {
+                        "per_page": 50,
+                        "current_page": 1,
+                        "last_page": 1,
+                        "items": [
+                            {
+                                "author": {
+                                    "name": user.full_name,
+                                    "username": user.username,
+                                    "avatar": user.get_avatar,
+                                },
+                                "slug": reply.slug,
+                                "text": reply.text,
+                            }
+                        ],
+                    },
+                },
+            },
+        )
