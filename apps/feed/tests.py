@@ -637,3 +637,69 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_update_comment(self):
+        comment = self.comment
+        user = self.verified_user
+
+        comment_data = {"text": "New updated comment"}
+
+        # Test for invalid comment slug
+        response = await self.client.put(
+            f"{self.comment_url}invalid_slug/",
+            comment_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Comment does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for invalid comment owner
+        response = await self.client.put(
+            f"{self.comment_url}{comment.slug}/",
+            comment_data,
+            content_type=self.content_type,
+            **self.other_user_bearer,
+        )
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Not yours to edit",
+                "code": ErrorCode.INVALID_OWNER,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.put(
+            f"{self.comment_url}{comment.slug}/",
+            comment_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Comment Updated",
+                "data": {
+                    "author": {
+                        "name": user.full_name,
+                        "username": user.username,
+                        "avatar": user.get_avatar,
+                    },
+                    "slug": mock.ANY,
+                    "text": comment_data["text"],
+                    "replies_count": mock.ANY,
+                },
+            },
+        )
