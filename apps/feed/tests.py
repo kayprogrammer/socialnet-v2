@@ -858,3 +858,53 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_delete_reply(self):
+        reply = self.reply
+
+        # Test for invalid reply slug
+        response = await self.client.delete(
+            f"{self.reply_url}invalid_slug/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Reply does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for invalid reply owner
+        response = await self.client.delete(
+            f"{self.reply_url}{reply.slug}/",
+            content_type=self.content_type,
+            **self.other_user_bearer,
+        )
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Not yours to delete",
+                "code": ErrorCode.INVALID_OWNER,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.delete(
+            f"{self.reply_url}{reply.slug}/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reply Deleted",
+            },
+        )
