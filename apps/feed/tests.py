@@ -753,3 +753,43 @@ class TestFeed(TestCase):
                 "message": "Comment Deleted",
             },
         )
+
+    async def test_retrieve_reply(self):
+        reply = self.reply
+        user = self.verified_user
+
+        # Test for invalid reply slug
+        response = await self.client.get(
+            f"{self.reply_url}invalid_slug/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Reply does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.get(
+            f"{self.reply_url}{reply.slug}/", content_type=self.content_type
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reply Fetched",
+                "data": {
+                    "author": {
+                        "name": user.full_name,
+                        "username": user.username,
+                        "avatar": user.get_avatar,
+                    },
+                    "slug": reply.slug,
+                    "text": reply.text,
+                },
+            },
+        )
