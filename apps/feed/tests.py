@@ -793,3 +793,68 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_update_reply(self):
+        reply = self.reply
+        user = self.verified_user
+
+        reply_data = {"text": "New updated reply"}
+
+        # Test for invalid reply slug
+        response = await self.client.put(
+            f"{self.reply_url}invalid_slug/",
+            reply_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Reply does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for invalid reply owner
+        response = await self.client.put(
+            f"{self.reply_url}{reply.slug}/",
+            reply_data,
+            content_type=self.content_type,
+            **self.other_user_bearer,
+        )
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Not yours to edit",
+                "code": ErrorCode.INVALID_OWNER,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.put(
+            f"{self.reply_url}{reply.slug}/",
+            reply_data,
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Reply Updated",
+                "data": {
+                    "author": {
+                        "name": user.full_name,
+                        "username": user.username,
+                        "avatar": user.get_avatar,
+                    },
+                    "slug": mock.ANY,
+                    "text": reply_data["text"],
+                },
+            },
+        )
