@@ -703,3 +703,53 @@ class TestFeed(TestCase):
                 },
             },
         )
+
+    async def test_delete_comment(self):
+        comment = self.comment
+
+        # Test for invalid comment slug
+        response = await self.client.delete(
+            f"{self.comment_url}invalid_slug/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Comment does not exist",
+                "code": ErrorCode.NON_EXISTENT,
+            },
+        )
+
+        # Test for invalid comment owner
+        response = await self.client.delete(
+            f"{self.comment_url}{comment.slug}/",
+            content_type=self.content_type,
+            **self.other_user_bearer,
+        )
+        self.assertEqual(response.status_code, 401)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "failure",
+                "message": "Not yours to delete",
+                "code": ErrorCode.INVALID_OWNER,
+            },
+        )
+
+        # Test for valid values
+        response = await self.client.delete(
+            f"{self.comment_url}{comment.slug}/",
+            content_type=self.content_type,
+            **self.bearer,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.json(),
+            {
+                "status": "success",
+                "message": "Comment Deleted",
+            },
+        )
