@@ -1,8 +1,8 @@
-from apps.common.schemas import BaseModel, ResponseSchema
+from apps.common.schemas import Schema, ResponseSchema
 
 
 # Site Details
-class SiteDetailDataSchema(BaseModel):
+class SiteDetailDataSchema(Schema):
     name: str
     email: str
     phone: str
@@ -11,9 +11,6 @@ class SiteDetailDataSchema(BaseModel):
     tw: str
     wh: str
     ig: str
-
-    class Config:
-        orm_mode = True
 
 
 class SiteDetailResponseSchema(ResponseSchema):

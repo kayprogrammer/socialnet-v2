@@ -1,9 +1,11 @@
-from pydantic import Field, BaseModel as _BaseModel
-from typing import Optional
+from ninja import Field, Schema as _Schema
+from apps.common.schema_examples import user_data
 
 
-class BaseModel(_BaseModel):
+class Schema(_Schema):
     class Config:
+        arbitrary_types_allowed = True
+
         @staticmethod
         def schema_extra(schema: dict, _):
             props = {}
@@ -13,7 +15,7 @@ class BaseModel(_BaseModel):
             schema["properties"] = props
 
 
-class ResponseSchema(BaseModel):
+class ResponseSchema(Schema):
     status: str = "success"
     message: str
 
@@ -22,23 +24,16 @@ class ErrorResponseSchema(ResponseSchema):
     status: str = "failure"
 
 
-class PaginatedResponseDataSchema(BaseModel):
+class PaginatedResponseDataSchema(Schema):
     per_page: int
     current_page: int
     last_page: int
 
 
-class UserDataSchema(BaseModel):
+class UserDataSchema(Schema):
     name: str = Field(..., alias="full_name")
     username: str
     avatar: str = Field(None, alias="get_avatar")
 
     class Config:
-        orm_mode = True
-        schema_extra = {
-            "example": {
-                "name": "John Doe",
-                "username": "john-doe",
-                "avatar": "https://img.url",
-            }
-        }
+        schema_extra = {"example": user_data}

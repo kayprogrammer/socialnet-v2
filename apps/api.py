@@ -10,6 +10,8 @@ from apps.general.views import general_router
 from apps.accounts.views import auth_router
 from apps.profiles.views import profiles_router
 from apps.feed.views import feed_router
+from apps.chat.views import chats_router
+
 
 api = NinjaAPI(
     title=settings.SITE_NAME,
@@ -22,6 +24,7 @@ api.add_router("/api/v2/general/", general_router)
 api.add_router("/api/v2/auth/", auth_router)
 api.add_router("/api/v2/profiles/", profiles_router)
 api.add_router("/api/v2/feed/", feed_router)
+api.add_router("/api/v2/chats/", chats_router)
 
 
 @api.get(

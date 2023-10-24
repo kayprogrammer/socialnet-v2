@@ -1,35 +1,31 @@
 from typing import Any, Dict, List, Optional
 from pydantic import EmailStr, validator, Field
 from datetime import datetime, date
-from apps.common.models import File
 from apps.common.schemas import (
-    BaseModel,
+    Schema,
     PaginatedResponseDataSchema,
     ResponseSchema,
     UserDataSchema,
 )
-from apps.common.schema_examples import user_data, file_upload_data
+from apps.common.schema_examples import file_upload_data
 from apps.common.file_processors import FileProcessor
 from uuid import UUID
 
 from apps.common.validators import validate_image_type
 
 
-class CitySchema(BaseModel):
+class CitySchema(Schema):
     id: int
     name: str
     region: str = Field(..., alias="region_name")
     country: str = Field(..., alias="country_name")
-
-    class Config:
-        orm_mode = True
 
 
 class CitiesResponseSchema(ResponseSchema):
     data: List[CitySchema]
 
 
-class ProfileSchema(BaseModel):
+class ProfileSchema(Schema):
     first_name: str = Field(..., example="John")
     last_name: str = Field(..., example="Doe")
     username: str = Field(..., example="john-doe")
@@ -43,11 +39,8 @@ class ProfileSchema(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class ProfileUpdateSchema(BaseModel):
+class ProfileUpdateSchema(Schema):
     first_name: Optional[str] = Field(None, example="John", max_length=50, min_length=1)
     last_name: Optional[str] = Field(None, example="Doe", max_length=50, min_length=1)
     bio: Optional[str] = Field(
@@ -65,7 +58,7 @@ class ProfileUpdateSchema(BaseModel):
         return validate_image_type(v)
 
 
-class DeleteUserSchema(BaseModel):
+class DeleteUserSchema(Schema):
     password: str
 
 
@@ -83,25 +76,23 @@ class ProfileResponseSchema(ResponseSchema):
 
 class ProfileUpdateResponseDataSchema(ProfileSchema):
     avatar: Optional[Any] = Field(..., exclude=True, hidden=True)
-    avatar_id: Optional[UUID] = Field(..., exclude=True, hidden=True)
-    image_upload_status: bool = Field(..., exclude=True, hidden=True)
     file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
 
-    @validator("file_upload_data", always=True)
-    def show_file_upload_data(cls, v, values):
-        if values["image_upload_status"]:
+    @staticmethod
+    def resolve_file_upload_data(obj):
+        if obj.image_upload_status:
             return FileProcessor.generate_file_signature(
-                key=values["avatar_id"],
+                key=obj.avatar_id,
                 folder="avatars",
             )
-        return v
+        return None
 
 
 class ProfileUpdateResponseSchema(ResponseSchema):
     data: ProfileUpdateResponseDataSchema
 
 
-class SendFriendRequestSchema(BaseModel):
+class SendFriendRequestSchema(Schema):
     username: str
 
 
@@ -109,7 +100,7 @@ class AcceptFriendRequestSchema(SendFriendRequestSchema):
     accepted: bool
 
 
-class NotificationSchema(BaseModel):
+class NotificationSchema(Schema):
     id: UUID
     sender: Optional[UserDataSchema]
     ntype: str = Field(..., example="REACTION")
@@ -119,11 +110,8 @@ class NotificationSchema(BaseModel):
     reply_slug: Optional[str]
     is_read: bool = False
 
-    class Config:
-        orm_mode = True
 
-
-class ReadNotificationSchema(BaseModel):
+class ReadNotificationSchema(Schema):
     mark_all_as_read: bool
     id: Optional[UUID]
 

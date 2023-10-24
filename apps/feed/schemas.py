@@ -2,7 +2,7 @@ from enum import Enum
 from uuid import UUID
 from pydantic import Field, validator
 from apps.common.schemas import (
-    BaseModel,
+    Schema,
     ResponseSchema,
     UserDataSchema,
     PaginatedResponseDataSchema,
@@ -16,7 +16,7 @@ from typing import Any, Optional, Dict, List
 from apps.feed.models import REACTION_CHOICES
 
 
-class PostSchema(BaseModel):
+class PostSchema(Schema):
     author: UserDataSchema
     text: str
     slug: str = Field(..., example="john-doe-d10dde64-a242-4ed0-bd75-4c759644b3a6")
@@ -26,11 +26,8 @@ class PostSchema(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        orm_mode = True
 
-
-class PostInputSchema(BaseModel):
+class PostInputSchema(Schema):
     text: str
     file_type: Optional[str] = Field(None, example="image/jpeg")
 
@@ -49,20 +46,18 @@ class PostsResponseSchema(ResponseSchema):
 
 class PostInputResponseDataSchema(PostSchema):
     image: Optional[Any] = Field(..., exclude=True, hidden=True)
-    image_id: Optional[UUID] = Field(..., exclude=True, hidden=True)
-    image_upload_status: bool = Field(..., exclude=True, hidden=True)
     file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
     reactions_count: int = Field(None, exclude=True, hidden=True)
     comments_count: int = Field(None, exclude=True, hidden=True)
 
-    @validator("file_upload_data", always=True)
-    def show_file_upload_data(cls, v, values):
-        if values["image_upload_status"]:
+    @staticmethod
+    def resolve_file_upload_data(obj):
+        if obj.image_upload_status:
             return FileProcessor.generate_file_signature(
-                key=values["image_id"],
+                key=obj.image_id,
                 folder="posts",
             )
-        return v
+        return None
 
 
 class PostInputResponseSchema(ResponseSchema):
@@ -74,16 +69,13 @@ class PostResponseSchema(ResponseSchema):
 
 
 # REACTIONS
-class ReactionSchema(BaseModel):
+class ReactionSchema(Schema):
     id: UUID
     user: UserDataSchema
     rtype: str = "LIKE"
 
-    class Config:
-        orm_mode = True
 
-
-class ReactionInputSchema(BaseModel):
+class ReactionInputSchema(Schema):
     rtype: Enum("ReactionType", REACTION_CHOICES)
 
 
@@ -102,32 +94,26 @@ class ReactionResponseSchema(ResponseSchema):
 # COMMENTS AND REPLIES
 
 
-class ReplySchema(BaseModel):
+class ReplySchema(Schema):
     author: UserDataSchema
     slug: str
     text: str
 
-    class Config:
-        orm_mode = True
-
 
 class CommentSchema(ReplySchema):
     replies_count: int
-
-    class Config:
-        orm_mode = True
 
 
 class CommentWithRepliesResponseDataSchema(PaginatedResponseDataSchema):
     items: List[ReplySchema]
 
 
-class CommentWithRepliesSchema(BaseModel):
+class CommentWithRepliesSchema(Schema):
     comment: CommentSchema
     replies: CommentWithRepliesResponseDataSchema
 
 
-class CommentInputSchema(BaseModel):
+class CommentInputSchema(Schema):
     text: str
 
 

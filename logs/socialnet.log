@@ -6539,3 +6539,919 @@ response -> data -> author -> name
 2023-10-23 13:24:34,153 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
 2023-10-23 13:24:34,925 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
 2023-10-23 13:24:35,824 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-23 13:24:37,470 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-5bd6671b-5df2-4498-b364-868393f50bbb/
+2023-10-23 13:24:37,479 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2023-10-23 13:24:38,662 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2023-10-23 13:24:39,531 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2023-10-23 13:24:39,544 django.request WARNING  Unauthorized: /api/v2/feed/comments/test-verified-9fb1f39c-739c-4860-94d6-5ff4a3e8b3a2/
+2023-10-23 13:24:40,343 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2023-10-23 13:24:40,357 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-62f9dd38-81b0-425d-818f-a9899a879b63/
+2023-10-23 13:24:41,188 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2023-10-23 13:24:41,202 django.request WARNING  Unauthorized: /api/v2/feed/replies/test-verified-e54f8bb0-044d-4b45-96ae-20a8ac8bb3ca/
+2023-10-24 14:10:38,954 django.request WARNING  Not Found: /api/v7/profiles/
+2023-10-24 14:30:46,662 django.request ERROR    Internal Server Error: /openapi.json
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/views.py", line 35, in openapi_json
+    schema = api.get_openapi_schema()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 437, in get_openapi_schema
+    return get_schema(api=self, path_prefix=path_prefix)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 40, in get_schema
+    openapi = OpenAPISchema(api, path_prefix)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 64, in __init__
+    ("paths", self.get_paths()),
+              ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 83, in get_paths
+    path_methods = self.methods(path_view.operations)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 96, in methods
+    operation_details = self.operation_details(op)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 127, in operation_details
+    "responses": self.responses(operation),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 287, in responses
+    schema = self._create_schema_from_model(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 221, in _create_schema_from_model
+    schema = model_schema(
+             ^^^^^^^^^^^^^
+  File "pydantic/schema.py", line 188, in pydantic.schema.model_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 930, in pydantic.schema.field_singleton_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 930, in pydantic.schema.field_singleton_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 952, in pydantic.schema.field_singleton_schema
+ValueError: Value not declarable with JSON Schema, field: name='avatar' type=Optional[File] required=True
+2023-10-24 14:35:50,582 django.request WARNING  Unauthorized: /api/v2/profiles/profile/
+2023-10-24 14:38:13,936 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-24 14:38:16,986 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2023-10-24 14:39:14,654 django.request ERROR    Internal Server Error: /openapi.json
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/views.py", line 35, in openapi_json
+    schema = api.get_openapi_schema()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 437, in get_openapi_schema
+    return get_schema(api=self, path_prefix=path_prefix)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 40, in get_schema
+    openapi = OpenAPISchema(api, path_prefix)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 64, in __init__
+    ("paths", self.get_paths()),
+              ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 83, in get_paths
+    path_methods = self.methods(path_view.operations)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 96, in methods
+    operation_details = self.operation_details(op)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 127, in operation_details
+    "responses": self.responses(operation),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 287, in responses
+    schema = self._create_schema_from_model(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/openapi/schema.py", line 221, in _create_schema_from_model
+    schema = model_schema(
+             ^^^^^^^^^^^^^
+  File "pydantic/schema.py", line 188, in pydantic.schema.model_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 930, in pydantic.schema.field_singleton_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 930, in pydantic.schema.field_singleton_schema
+  File "pydantic/schema.py", line 582, in pydantic.schema.model_process_schema
+  File "pydantic/schema.py", line 623, in pydantic.schema.model_type_schema
+  File "pydantic/schema.py", line 256, in pydantic.schema.field_schema
+  File "pydantic/schema.py", line 528, in pydantic.schema.field_type_schema
+  File "pydantic/schema.py", line 952, in pydantic.schema.field_singleton_schema
+ValueError: Value not declarable with JSON Schema, field: name='avatar' type=Optional[File] required=True
+2023-10-24 14:41:34,830 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data -> avatar
+  str type expected (type=type_error.str)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data -> avatar
+  str type expected (type=type_error.str)
+2023-10-24 14:41:34,867 django.request ERROR    Internal Server Error: /api/v2/profiles/profile/
+2023-10-24 15:29:40,083 django.request WARNING  Unauthorized: /api/v2/chats/
+2023-10-24 15:30:28,404 django.request WARNING  Unauthorized: /api/v2/chats/
+2023-10-24 15:31:56,271 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:31:56,275 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:31:56,955 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:31:57,064 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:31:57,071 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:31:57,547 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:31:58,684 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-24 15:31:59,525 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:31:59,528 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:31:59,731 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:32:01,674 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:32:01,678 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:32:01,890 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:32:10,339 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:32:10,342 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:32:13,469 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:32:14,922 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:32:14,928 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:32:19,306 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:32:19,312 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:32:19,489 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:32:33,635 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:32:33,640 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:32:33,884 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:32:38,994 django       ERROR    3 validation errors for NinjaResponseSchema
+response -> data -> items -> 0 -> name
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> items -> 0 -> description
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> items -> 0 -> get_image
+  none is not an allowed value (type=type_error.none.not_allowed)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 3 validation errors for NinjaResponseSchema
+response -> data -> items -> 0 -> name
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> items -> 0 -> description
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> items -> 0 -> get_image
+  none is not an allowed value (type=type_error.none.not_allowed)
+2023-10-24 15:32:38,997 django.request ERROR    Internal Server Error: /api/v2/chats/
+2023-10-24 15:36:17,095 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:36:17,100 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:36:19,390 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:36:25,647 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:36:25,651 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:36:28,584 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:36:28,587 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:36:31,372 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:36:31,377 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:37:49,152 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:37:49,155 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:37:49,465 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:37:51,238 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:37:51,242 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:37:51,537 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:38:19,538 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:38:19,541 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:38:19,780 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:39:28,322 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:39:28,326 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:39:28,594 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:39:30,429 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:39:30,433 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:39:30,620 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:39:39,290 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:39:39,294 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:39:39,479 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:39:41,071 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:39:41,075 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:39:41,270 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:40:01,697 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:40:01,701 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:40:01,928 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 15:40:24,280 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 15:40:24,286 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 15:40:24,463 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:04:42,245 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:04:42,249 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:04:42,516 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:04:50,145 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:04:50,150 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:04:50,366 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:05:07,154 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:05:07,160 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:05:07,367 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:05:58,617 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:05:58,624 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:05:58,897 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:06:30,895 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:06:30,899 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:06:31,215 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:06:39,615 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:06:39,619 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:06:39,855 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:06:43,407 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:06:43,417 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:06:43,620 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:10:40,346 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:10:40,350 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:10:40,652 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:10:50,986 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:10:50,991 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:10:51,195 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:11:01,556 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:11:01,561 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:11:01,778 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:11:11,806 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:11:11,812 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:11:11,989 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:11:26,591 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:11:26,595 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:11:26,772 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:11:38,065 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:11:38,069 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:11:38,347 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:11:40,110 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:11:40,115 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:11:40,269 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:12:02,357 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:12:02,363 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:12:02,632 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:12:12,365 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:12:12,369 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:12:12,566 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:17:12,289 django       ERROR    name 'F' is not defined
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 26, in get
+    chats = await get_chats_queryset(user)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 36, in get_chats_queryset
+    .filter(created_at=F('latest_timestamp'))
+                       ^
+NameError: name 'F' is not defined
+2023-10-24 16:17:12,292 django.request ERROR    Internal Server Error: /api/v2/chats/
+2023-10-24 16:17:26,977 django       ERROR    more than one row returned by a subquery used as an expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.CardinalityViolation: more than one row returned by a subquery used as an expression
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 28, in get
+    paginated_data = await paginator.paginate_queryset(chats, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 25, in paginate_queryset
+    async_queryset = await sync_to_async(list)(queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+django.db.utils.ProgrammingError: more than one row returned by a subquery used as an expression
+2023-10-24 16:17:27,031 django.request ERROR    Internal Server Error: /api/v2/chats/
+2023-10-24 16:31:21,795 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:31:21,799 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:31:22,037 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:46:42,810 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:46:42,814 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:46:43,012 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:04,034 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:04,038 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:04,348 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:27,564 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:27,567 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:27,758 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:35,113 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:35,118 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:35,301 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:37,745 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:37,750 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:37,949 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:44,626 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:44,630 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:44,841 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:50,431 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:50,438 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:50,644 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:54,422 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:54,425 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:54,635 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:47:56,450 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:47:56,454 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:47:56,627 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:48:06,636 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:48:06,642 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:48:06,818 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:48:10,388 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:48:10,392 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:48:10,545 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:13,868 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:13,873 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:14,172 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:23,874 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:23,878 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:24,064 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:25,388 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:25,392 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:25,546 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:27,764 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:27,773 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:27,983 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:35,639 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:35,642 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:35,806 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:38,257 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:38,261 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:38,436 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:49:58,473 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:49:58,477 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:49:58,677 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:50:15,317 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:50:15,324 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:50:15,592 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:50:17,222 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:50:17,227 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:50:17,423 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:50:24,582 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:50:24,586 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:50:24,833 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:51:53,274 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:51:53,279 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:51:53,478 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:51:54,702 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:51:54,705 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:51:54,915 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:51:58,152 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:51:58,155 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:51:58,338 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:52:05,634 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:52:05,638 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:52:05,835 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:53:25,794 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:53:25,798 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:53:25,982 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:53:27,377 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:53:27,381 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:53:27,643 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:53:30,213 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:53:30,217 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:53:30,398 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:53:44,331 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:53:44,339 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:53:44,558 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:54:22,101 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:54:22,105 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:54:22,327 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:54:23,642 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:54:23,647 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:54:23,891 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:55:10,537 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:55:10,542 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:55:10,865 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:55:32,455 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:55:32,458 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:55:32,681 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:58:57,396 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:58:57,399 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:58:57,566 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:58:58,631 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:58:58,635 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:58:58,814 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:59:00,706 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:59:00,710 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:59:00,951 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:59:09,499 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:59:09,503 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:59:09,656 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:59:11,754 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:59:11,758 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:59:11,943 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 16:59:17,120 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 16:59:17,124 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 16:59:17,327 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:09,095 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:09,099 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:09,301 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:11,151 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:11,155 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:11,378 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:12,810 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:12,814 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:12,998 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:15,388 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:15,393 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:15,580 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:18,135 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:18,139 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:18,329 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:00:26,414 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:00:26,421 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:00:26,703 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:01:53,123 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:01:53,131 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:01:53,298 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:01:54,651 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:01:54,654 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:01:54,873 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:01:56,753 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:01:56,761 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:01:56,990 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:02:06,542 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:02:06,546 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:02:06,755 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:02:33,918 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:02:33,926 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:02:34,098 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:02:35,232 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:02:35,236 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:02:35,460 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:02:37,603 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:02:37,609 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:02:37,847 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:02:47,840 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:02:47,844 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:02:48,044 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:03:59,818 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:03:59,823 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:03:59,995 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:01,141 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:01,146 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:01,395 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:05,599 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:05,602 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:05,781 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:20,978 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:20,981 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:21,169 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:52,704 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:52,708 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:52,894 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:54,337 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:54,342 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:54,509 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:04:56,159 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:04:56,163 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:04:56,329 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:06:46,064 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:06:46,069 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:06:46,298 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:06:53,338 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:06:53,343 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:06:53,517 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:07:52,758 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:07:52,763 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:07:53,079 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:07:59,706 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:07:59,712 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:08:00,000 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:11:59,819 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:11:59,824 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:12:00,061 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:12:02,602 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:12:02,606 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:12:02,786 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:12:05,353 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:12:05,357 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:12:05,556 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:12:07,490 django.request ERROR    Internal Server Error: /admin/chat/message/cd8c0ca0-8500-489a-bf8c-503caad7fa3a/change/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1227, in save_model
+    obj.save()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/models.py", line 78, in save
+    return super().save(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 861, in save_base
+    pre_save.send(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/dispatch/dispatcher.py", line 176, in send
+    return [
+           ^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/dispatch/dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: valid_order() missing 1 required positional argument: 'created'
+2023-10-24 17:12:08,217 django.request WARNING  Not Found: /favicon.ico
+2023-10-24 17:12:36,657 django.request ERROR    Internal Server Error: /admin/chat/message/cd8c0ca0-8500-489a-bf8c-503caad7fa3a/change/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1889, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1227, in save_model
+    obj.save()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 861, in save_base
+    pre_save.send(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/dispatch/dispatcher.py", line 176, in send
+    return [
+           ^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/dispatch/dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: valid_order() missing 1 required positional argument: 'created'
+2023-10-24 17:12:54,831 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:12:54,835 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:12:55,111 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:13:58,942 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:13:58,946 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:14:02,012 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:14:02,015 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:14:02,249 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:14:19,302 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:14:19,305 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:14:19,506 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:14:21,106 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:14:21,110 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:14:21,305 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:14:29,372 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:14:29,376 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:14:29,624 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:15:50,833 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:15:50,838 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:15:51,321 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:15:52,748 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:15:52,752 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:15:53,001 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:16:00,352 django.request ERROR    Internal Server Error: /admin/chat/message/add/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "id" violates not-null constraint
+DETAIL:  Failing row contains (null, 2023-10-24 16:16:00.288551+00, 2023-10-24 16:16:00.288577+00, rtyuiuytre, 19055747-aebc-40d8-989d-a230ab0c72b6, null, 320ae23c-31df-422d-8ff0-32fd4bb299eb).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 688, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/views/decorators/cache.py", line 62, in _wrapper_view_func
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1886, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/decorators.py", line 134, in _wrapper_view
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1747, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1798, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/contrib/admin/options.py", line 1227, in save_model
+    obj.save()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 814, in save
+    self.save_base(
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/psycopg/cursor.py", line 723, in execute
+    raise ex.with_traceback(None)
+django.db.utils.IntegrityError: null value in column "id" violates not-null constraint
+DETAIL:  Failing row contains (null, 2023-10-24 16:16:00.288551+00, 2023-10-24 16:16:00.288577+00, rtyuiuytre, 19055747-aebc-40d8-989d-a230ab0c72b6, null, 320ae23c-31df-422d-8ff0-32fd4bb299eb).
+2023-10-24 17:18:19,130 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:18:19,133 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:18:19,384 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:18:30,439 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:18:30,442 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:18:30,662 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:18:55,984 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:18:55,988 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:18:56,180 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:18:59,128 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:18:59,132 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:18:59,319 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:19:00,814 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:19:00,819 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:19:01,004 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:19:09,564 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:19:09,570 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:19:09,755 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:19:12,761 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:19:12,766 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:19:12,950 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:18,475 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:18,481 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:18,669 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:21,072 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:21,075 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:21,262 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:23,493 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:23,496 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:23,727 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:26,830 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:26,837 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:27,061 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:28,225 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:28,228 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:28,398 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:29,953 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:29,957 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:30,146 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:32,031 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:32,036 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:32,273 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:42,674 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:42,678 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:42,840 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:20:44,231 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:20:44,235 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:20:44,401 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:02,169 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:02,175 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:02,345 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:11,735 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:11,741 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:11,947 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:17,791 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:17,794 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:17,943 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:19,611 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:19,617 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:19,851 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:25,025 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:25,030 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:25,242 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:21:52,451 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:21:52,456 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:21:52,796 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:22:33,032 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:22:33,039 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:22:33,190 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:22:34,658 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:22:34,662 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:22:34,885 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:22:37,086 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:22:37,090 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:22:37,336 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:22:45,570 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:22:45,574 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:22:45,769 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:23:21,805 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:23:21,809 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:23:22,037 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:23:29,970 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:23:29,973 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:23:30,214 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:24:54,737 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:24:54,743 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:24:54,943 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:25:41,888 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:25:41,893 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:25:42,276 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:25:43,959 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:25:43,963 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:25:44,156 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 17:26:00,107 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 17:26:00,115 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 17:26:00,290 django.request WARNING  Not Found: /static/media/banner2-icon3.png

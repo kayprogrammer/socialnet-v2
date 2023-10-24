@@ -1,8 +1,8 @@
 from pydantic import validator, Field, EmailStr
-from apps.common.schemas import BaseModel, ResponseSchema
+from apps.common.schemas import Schema, ResponseSchema
 
 
-class RegisterUserSchema(BaseModel):
+class RegisterUserSchema(Schema):
     first_name: str = Field(..., example="John")
     last_name: str = Field(..., example="Doe")
     email: EmailStr = Field(..., example="johndoe@example.com")
@@ -30,16 +30,16 @@ class RegisterUserSchema(BaseModel):
         return v
 
 
-class VerifyOtpSchema(BaseModel):
+class VerifyOtpSchema(Schema):
     email: EmailStr = Field(..., example="johndoe@example.com")
     otp: int
 
 
-class RequestOtpSchema(BaseModel):
+class RequestOtpSchema(Schema):
     email: EmailStr = Field(..., example="johndoe@example.com")
 
 
-class SetNewPasswordSchema(BaseModel):
+class SetNewPasswordSchema(Schema):
     email: EmailStr = Field(..., example="johndoe@example.com")
     otp: int
     password: str = Field(..., example="newstrongpassword")
@@ -51,12 +51,12 @@ class SetNewPasswordSchema(BaseModel):
         return v
 
 
-class LoginUserSchema(BaseModel):
+class LoginUserSchema(Schema):
     email: EmailStr = Field(..., example="johndoe@example.com")
     password: str = Field(..., example="password")
 
 
-class RefreshTokensSchema(BaseModel):
+class RefreshTokensSchema(Schema):
     refresh: str = Field(
         ...,
         example="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
@@ -67,7 +67,7 @@ class RegisterResponseSchema(ResponseSchema):
     data: RequestOtpSchema
 
 
-class TokensResponseDataSchema(BaseModel):
+class TokensResponseDataSchema(Schema):
     access: str = Field(
         ...,
         example="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
