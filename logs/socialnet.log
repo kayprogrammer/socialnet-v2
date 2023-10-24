@@ -7756,3 +7756,5 @@ response -> data -> messages -> items -> 4 -> get_file
 2023-10-24 19:56:26,727 jazzmin.utils WARNING  listings not found when generating links
 2023-10-24 19:56:26,731 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-24 19:56:26,912 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 20:00:13,267 django.request WARNING  Unauthorized: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 20:00:15,191 django.request WARNING  Unauthorized: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/

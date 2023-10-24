@@ -137,3 +137,4 @@ async def retrieve_messages(request, chat_id: UUID, page: int = 1):
     chat.lmessages = paginated_data["items"][:1]  # Latest message to be used in schema
     data = {"chat": chat, "messages": paginated_data, "users": chat.recipients}
     return CustomResponse.success(message="Messages fetched", data=data)
+
