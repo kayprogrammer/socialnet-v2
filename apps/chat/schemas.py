@@ -42,7 +42,7 @@ class MessageSchema(Schema):
     chat_id: UUID
     sender: UserDataSchema
     text: Optional[str]
-    file: str = Field(..., alias="get_file")
+    file: Optional[str] = Field(..., alias="get_file")
     created_at: datetime
     updated_at: datetime
 
@@ -76,6 +76,16 @@ class MessageCreateSchema(MessageUpdateSchema):
         return v
 
 
+class MessagesResponseDataSchema(PaginatedResponseDataSchema):
+    items: List[MessageSchema]
+
+
+class MessagesSchema(Schema):
+    chat: ChatSchema
+    messages: MessagesResponseDataSchema
+    users: List[UserDataSchema]
+
+
 # RESPONSES
 class ChatsResponseDataSchema(PaginatedResponseDataSchema):
     chats: List[ChatSchema] = Field(..., alias="items")
@@ -83,6 +93,10 @@ class ChatsResponseDataSchema(PaginatedResponseDataSchema):
 
 class ChatsResponseSchema(ResponseSchema):
     data: ChatsResponseDataSchema
+
+
+class ChatResponseSchema(ResponseSchema):
+    data: MessagesSchema
 
 
 class MessageCreateResponseDataSchema(MessageSchema):

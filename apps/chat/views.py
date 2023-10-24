@@ -1,7 +1,8 @@
+from uuid import UUID
 from django.db.models import Q
 from apps.accounts.models import User
 from apps.chat.models import Chat, Message
-from apps.chat.utils import create_file, get_chats_queryset
+from apps.chat.utils import create_file, get_chat_object, get_chats_queryset
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
 from apps.common.file_types import ALLOWED_FILE_TYPES, ALLOWED_IMAGE_TYPES
@@ -10,6 +11,7 @@ from apps.common.responses import CustomResponse
 from apps.common.utils import AuthUser
 from ninja.router import Router
 from .schemas import (
+    ChatResponseSchema,
     ChatsResponseSchema,
     MessageCreateResponseSchema,
     MessageCreateSchema,
@@ -116,3 +118,22 @@ async def send_message(request, data: MessageCreateSchema):
     )
     message.file_upload_status = file_upload_status
     return CustomResponse.success(message="Message sent", data=message, status_code=201)
+
+
+@chats_router.get(
+    "/{chat_id}/",
+    summary="Retrieve messages from a Chat",
+    description="""
+        This endpoint retrieves all messages in a chat.
+    """,
+    response=ChatResponseSchema,
+)
+async def retrieve_messages(request, chat_id: UUID, page: int = 1):
+    user = await request.auth
+    chat = await get_chat_object(user, chat_id)
+
+    paginator.page_size = 400
+    paginated_data = await paginator.paginate_queryset(chat.messages.all(), page)
+    chat.lmessages = paginated_data["items"][:1]  # Latest message to be used in schema
+    data = {"chat": chat, "messages": paginated_data, "users": chat.recipients}
+    return CustomResponse.success(message="Messages fetched", data=data)

@@ -1,5 +1,8 @@
 from django.db.models import Q, Prefetch
+from apps.accounts.models import User
 from apps.chat.models import Chat, Message
+from apps.common.error import ErrorCode
+from apps.common.exceptions import RequestError
 from apps.common.models import File
 
 
@@ -38,3 +41,31 @@ async def get_chats_queryset(user):
         .distinct()
     )
     return chats
+
+
+async def get_chat_object(user, chat_id):
+    chat = (
+        await Chat.objects.filter(Q(owner=user) | Q(users__id=user.id))
+        .select_related("owner", "owner__avatar", "image")
+        .prefetch_related(
+            Prefetch(
+                "messages",
+                queryset=Message.objects.select_related(
+                    "sender", "sender__avatar", "file"
+                ).order_by("-created_at"),
+            ),
+            Prefetch(
+                "users",
+                queryset=User.objects.select_related("avatar"),
+                to_attr="recipients",
+            ),
+        )
+        .aget_or_none(id=chat_id)
+    )
+    if not chat:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="User has no chat with that ID",
+            status_code=404,
+        )
+    return chat

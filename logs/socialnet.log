@@ -7482,3 +7482,277 @@ DETAIL:  Failing row contains (null, 2023-10-24 16:16:00.288551+00, 2023-10-24 1
 2023-10-24 18:53:43,066 jazzmin.utils WARNING  listings not found when generating links
 2023-10-24 18:53:43,070 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-24 18:53:43,288 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 19:32:17,652 django.request WARNING  Unprocessable Entity: /api/v2/chats/id/
+2023-10-24 19:32:18,864 django.request WARNING  Unprocessable Entity: /api/v2/chats/id/
+2023-10-24 19:32:41,105 django       ERROR    ['“AnonymousUser” is not a valid UUID.']
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2688, in to_python
+    return uuid.UUID(**{input_form: value})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/uuid.py", line 175, in __init__
+    hex = hex.replace('urn:', '').replace('uuid:', '')
+          ^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/functional.py", line 268, in inner
+    return func(_wrapped, *args)
+           ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUser' object has no attribute 'replace'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 133, in retrieve_messages
+    chat = await get_chat_object(user, chat_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 48, in get_chat_object
+    await Chat.objects.filter(Q(owner=user) | Q(users__id=user.id))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1534, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1393, in build_filter
+    return self._add_q(
+           ^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1565, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1480, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 1307, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2672, in get_prep_value
+    return self.to_python(value)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/fields/__init__.py", line 2690, in to_python
+    raise exceptions.ValidationError(
+django.core.exceptions.ValidationError: ['“AnonymousUser” is not a valid UUID.']
+2023-10-24 19:32:41,220 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:33:08,384 django       ERROR    'list' object has no attribute 'acount'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 135, in retrieve_messages
+    paginated_data = await paginator.paginate_queryset(chat.lmessages, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 26, in paginate_queryset
+    queryset_count = await queryset.acount()
+                           ^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'acount'
+2023-10-24 19:33:08,393 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:34:29,173 django       ERROR    'list' object has no attribute 'acount'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 136, in retrieve_messages
+    paginated_data = await paginator.paginate_queryset(chat.lmessages, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 26, in paginate_queryset
+    queryset_count = await queryset.acount()
+                           ^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'acount'
+2023-10-24 19:34:29,176 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:40:51,984 django       ERROR    'list' object has no attribute 'acount'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 136, in retrieve_messages
+    paginated_data = await paginator.paginate_queryset(chat.lmessages, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 26, in paginate_queryset
+    queryset_count = await queryset.acount()
+                           ^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'acount'
+2023-10-24 19:40:51,986 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:48:40,336 django       ERROR    'Chat' object has no attribute 'lmessages'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 134, in retrieve_messages
+    print(chat.lmessages)
+          ^^^^^^^^^^^^^^
+AttributeError: 'Chat' object has no attribute 'lmessages'
+2023-10-24 19:48:40,339 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:48:59,383 django       ERROR    'Chat' object has no attribute 'lmessages'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 136, in retrieve_messages
+    paginated_data = await paginator.paginate_queryset(chat.lmessages, page)
+                                                       ^^^^^^^^^^^^^^
+AttributeError: 'Chat' object has no attribute 'lmessages'
+2023-10-24 19:48:59,393 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:49:31,459 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-24 19:49:31,472 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:49:59,776 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-24 19:49:59,782 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:50:21,931 django       ERROR    1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 1 validation error for NinjaResponseSchema
+response -> data
+  value is not a valid list (type=type_error.list)
+2023-10-24 19:50:21,937 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:51:28,452 django       ERROR    'Chat' object has no attribute 'lmessages'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 711, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 339, in pydantic.main.BaseModel.__init__
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 711, in pydantic.main.BaseModel.validate
+  File "pydantic/main.py", line 339, in pydantic.main.BaseModel.__init__
+  File "pydantic/main.py", line 1076, in pydantic.main.validate_model
+  File "pydantic/fields.py", line 884, in pydantic.fields.ModelField.validate
+  File "pydantic/fields.py", line 1101, in pydantic.fields.ModelField._validate_singleton
+  File "pydantic/fields.py", line 1157, in pydantic.fields.ModelField._apply_validators
+  File "pydantic/class_validators.py", line 337, in pydantic.class_validators._generic_validator_basic.lambda13
+  File "pydantic/main.py", line 713, in pydantic.main.BaseModel.validate
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 577, in pydantic.main.BaseModel.from_orm
+  File "pydantic/main.py", line 1055, in pydantic.main.validate_model
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 67, in get
+    return self[key]
+           ~~~~^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 51, in __getitem__
+    item = resolver(getter=self)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 104, in __call__
+    return self._func(getter._obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/schemas.py", line 30, in resolve_latest_message
+    if len(obj.lmessages) > 0:
+           ^^^^^^^^^^^^^
+AttributeError: 'Chat' object has no attribute 'lmessages'
+2023-10-24 19:51:28,464 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:53:18,303 django       ERROR    'messages'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 136, in retrieve_messages
+    chat.lmessages = paginated_data["messages"][:1]
+                     ~~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'messages'
+2023-10-24 19:53:18,307 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:53:36,205 django       ERROR    3 validation errors for NinjaResponseSchema
+response -> data -> messages -> items -> 2 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> messages -> items -> 3 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> messages -> items -> 4 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 3 validation errors for NinjaResponseSchema
+response -> data -> messages -> items -> 2 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> messages -> items -> 3 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+response -> data -> messages -> items -> 4 -> get_file
+  none is not an allowed value (type=type_error.none.not_allowed)
+2023-10-24 19:53:36,210 django.request ERROR    Internal Server Error: /api/v2/chats/fb0df9f2-5608-4aa4-995b-7507fd2cde2c/
+2023-10-24 19:56:24,825 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 19:56:24,829 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 19:56:25,092 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-24 19:56:26,727 jazzmin.utils WARNING  listings not found when generating links
+2023-10-24 19:56:26,731 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-24 19:56:26,912 django.request WARNING  Not Found: /static/media/banner2-icon3.png
