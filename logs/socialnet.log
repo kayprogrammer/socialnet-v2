@@ -8321,3 +8321,17 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-25 15:35:05,302 jazzmin.utils WARNING  listings not found when generating links
 2023-10-25 15:35:05,307 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-25 15:35:05,522 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 21:22:25,363 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:23:33,108 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:27:03,141 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:27:23,973 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:47:18,275 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:47:20,665 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:54:44,399 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:55:23,010 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:55:48,661 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:58:23,030 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:58:36,922 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:58:58,582 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 21:59:37,058 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2023-10-25 22:01:02,122 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/

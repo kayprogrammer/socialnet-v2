@@ -20,6 +20,7 @@ from ninja.router import Router
 from .schemas import (
     ChatResponseSchema,
     ChatsResponseSchema,
+    GroupChatCreateSchema,
     GroupChatInputResponseSchema,
     GroupChatInputSchema,
     MessageCreateResponseSchema,
@@ -300,3 +301,48 @@ async def delete_message(request, message_id: UUID):
     else:
         await message.adelete()
     return CustomResponse.success(message="Message deleted")
+
+
+@chats_router.post(
+    "/groups/group/",
+    summary="Create a group chat",
+    description="""
+        This endpoint creates a group chat.
+        The users_entry field should be a list of usernames you want to add to the group.
+        Note: You cannot add more than 99 users in a group (1 owner + 99 other users = 100 users total)
+    """,
+    response={201: GroupChatInputResponseSchema},
+)
+async def create_group_chat(request, data: GroupChatCreateSchema):
+    user = await request.auth
+    data = data.dict(exclude_none=True)
+    data.update({"owner": user, "ctype": "GROUP"})
+    # Handle File Upload
+    file_type = data.pop("file_type", None)
+    file_upload_status = False
+    if file_type:
+        file_upload_status = True
+        file = await create_file(file_type)
+        data["image"] = file
+
+    # Handle Users Upload or Remove
+    usernames_to_add = data.pop("usernames_to_add")
+    users_to_add = await sync_to_async(list)(
+        User.objects.filter(username__in=usernames_to_add)
+        .exclude(id=user.id)
+        .select_related("avatar")
+    )
+    if len(users_to_add) < 1:
+        raise RequestError(
+            err_code=ErrorCode.INVALID_ENTRY,
+            err_msg="Invalid Entry",
+            data={"usernames_to_add": "Enter at least one valid username"},
+            status_code=422,
+        )
+
+    # Create Chat
+    chat = await Chat.objects.acreate(**data)
+    chat.recipients = users_to_add
+    await sync_to_async(update_group_chat_users)(chat, "add", users_to_add)
+    chat.file_upload_status = file_upload_status
+    return CustomResponse.success(message="Chat created", data=chat, status_code=201)

@@ -87,13 +87,7 @@ class MessagesSchema(Schema):
 
 
 class GroupChatSchema(Schema):
-    name: str
-    description: str
-    image: str = Field(..., alias="get_image")
-    users: List[UserDataSchema]
-
-
-class GroupChatSchema(Schema):
+    id: UUID
     name: str
     description: Optional[str]
     image: Optional[str] = Field(..., alias="get_image")
@@ -113,7 +107,7 @@ class GroupChatInputSchema(Schema):
 
 
 class GroupChatCreateSchema(GroupChatInputSchema):
-    usernames_to_remove: Optional[List[str]] = Field(..., exclude=True, hidden=True)
+    usernames_to_remove: List[str] = Field(None, exclude=True, hidden=True)
 
 
 # RESPONSES
