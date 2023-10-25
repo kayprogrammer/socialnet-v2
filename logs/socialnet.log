@@ -8239,3 +8239,57 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-25 14:40:30,697 jazzmin.utils WARNING  listings not found when generating links
 2023-10-25 14:40:30,700 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-25 14:40:30,922 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:05:44,988 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fa-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:06:22,049 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fa-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:06:22,951 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fa-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:06:24,097 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fa-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:06:52,828 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fe-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:06:56,021 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fe-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:07:31,297 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:07:31,304 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:07:33,173 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:07:36,191 django.request WARNING  Not Found: /static/media/logo.png
+2023-10-25 15:07:41,104 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:07:41,108 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:07:42,319 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:07:45,240 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:07:45,245 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:07:45,896 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:08:12,724 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:08:12,728 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:08:12,937 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:08:16,784 django.request WARNING  Not Found: /api/v2/chats/c5f9e7fe-fb2a-4256-a626-854e7c525c04/
+2023-10-25 15:09:18,037 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:09:18,041 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:09:18,305 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:09:40,357 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:09:40,364 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:09:40,710 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:10:36,999 django.request WARNING  Not Found: /api/v2/chats/d538aab3-fa78-4a4e-81ac-3c61889ccff5/
+2023-10-25 15:10:43,760 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:10:43,765 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:10:43,924 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:10:46,490 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:10:46,493 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:10:46,712 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:10:48,426 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:10:48,433 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:10:48,772 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:11:00,881 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:11:00,918 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:11:01,123 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:11:08,108 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:11:08,113 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:11:08,332 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:11:15,062 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:11:15,066 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:11:15,482 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:11:18,911 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:11:18,915 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:11:19,100 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:18:59,788 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:18:59,794 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:18:59,998 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:19:25,057 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:19:25,060 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:19:25,259 django.request WARNING  Not Found: /static/media/banner2-icon3.png

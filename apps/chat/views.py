@@ -13,6 +13,7 @@ from apps.common.exceptions import RequestError
 from apps.common.file_types import ALLOWED_FILE_TYPES, ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
 from apps.common.responses import CustomResponse
+from apps.common.schemas import ResponseSchema
 from apps.common.utils import AuthUser, set_dict_attr
 from ninja.router import Router
 from .schemas import (
@@ -202,3 +203,24 @@ async def patch(request, chat_id: UUID, data: GroupChatInputSchema):
     chat.recipients = await sync_to_async(list)(chat.users.select_related("avatar"))
     chat.file_upload_status = file_upload_status
     return CustomResponse.success(message="Chat updated", data=chat)
+
+
+@chats_router.delete(
+    "/{chat_id}/",
+    summary="Delete a Group Chat",
+    description="""
+        This endpoint deletes a group chat.
+    """,
+    response=ResponseSchema,
+)
+async def delete(request, chat_id: UUID):
+    user = await request.auth
+    chat = await Chat.objects.aget_or_none(owner=user, id=chat_id, ctype="GROUP")
+    if not chat:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="User owns no group chat with that ID",
+            status_code=404,
+        )
+    await chat.adelete()
+    return CustomResponse.success(message="Group Chat Deleted")
