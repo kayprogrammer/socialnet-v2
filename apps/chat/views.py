@@ -2,20 +2,28 @@ from uuid import UUID
 from django.db.models import Q
 from apps.accounts.models import User
 from apps.chat.models import Chat, Message
-from apps.chat.utils import create_file, get_chat_object, get_chats_queryset
+from apps.chat.utils import (
+    create_file,
+    get_chat_object,
+    get_chats_queryset,
+    update_group_chat_users,
+)
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
 from apps.common.file_types import ALLOWED_FILE_TYPES, ALLOWED_IMAGE_TYPES
 from apps.common.paginators import CustomPagination
 from apps.common.responses import CustomResponse
-from apps.common.utils import AuthUser
+from apps.common.utils import AuthUser, set_dict_attr
 from ninja.router import Router
 from .schemas import (
     ChatResponseSchema,
     ChatsResponseSchema,
+    GroupChatInputResponseSchema,
+    GroupChatInputSchema,
     MessageCreateResponseSchema,
     MessageCreateSchema,
 )
+from asgiref.sync import sync_to_async
 
 chats_router = Router(tags=["Chat"], auth=AuthUser())
 
@@ -138,3 +146,59 @@ async def retrieve_messages(request, chat_id: UUID, page: int = 1):
     data = {"chat": chat, "messages": paginated_data, "users": chat.recipients}
     return CustomResponse.success(message="Messages fetched", data=data)
 
+
+@chats_router.patch(
+    "/{chat_id}/",
+    summary="Update a Group Chat",
+    description="""
+        This endpoint updates a group chat.
+    """,
+    response=GroupChatInputResponseSchema,
+)
+async def patch(request, chat_id: UUID, data: GroupChatInputSchema):
+    user = await request.auth
+    chat = await Chat.objects.select_related("image").aget_or_none(
+        owner=user, id=chat_id, ctype="GROUP"
+    )
+    if not chat:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="User owns no group chat with that ID",
+            status_code=404,
+        )
+
+    data = data.dict(exclude_none=True)
+
+    # Handle File Upload
+    file_type = data.pop("file_type", None)
+    file_upload_status = False
+    if file_type:
+        file_upload_status = True
+        if chat.image:
+            chat.image.resource_type = file_type
+            await chat.image.asave()
+        else:
+            file = await create_file(file_type)
+            data["image"] = file
+
+    # Handle Users Upload or Remove
+    usernames_to_add = data.pop("usernames_to_add", None)
+    usernames_to_remove = data.pop("usernames_to_remove", None)
+
+    if usernames_to_add:
+        users_to_add = await sync_to_async(list)(
+            User.objects.filter(username__in=usernames_to_add).select_related("avatar")
+        )
+        await sync_to_async(update_group_chat_users)(chat, "add", users_to_add)
+
+    if usernames_to_remove:
+        users_to_remove = await sync_to_async(list)(
+            User.objects.filter(username__in=usernames_to_remove)
+        )
+        await sync_to_async(update_group_chat_users)(chat, "remove", users_to_remove)
+
+    chat = set_dict_attr(chat, data)
+    await chat.asave()
+    chat.recipients = await sync_to_async(list)(chat.users.select_related("avatar"))
+    chat.file_upload_status = file_upload_status
+    return CustomResponse.success(message="Chat updated", data=chat)

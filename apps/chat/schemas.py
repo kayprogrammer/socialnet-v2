@@ -11,7 +11,7 @@ from uuid import UUID
 from datetime import datetime
 from apps.common.schema_examples import file_upload_data
 
-from apps.common.validators import validate_file_type
+from apps.common.validators import validate_file_type, validate_image_type
 
 
 class ChatSchema(Schema):
@@ -58,7 +58,7 @@ class MessageUpdateSchema(Schema):
         return v
 
     @validator("file_type", always=True)
-    def validate_img_type(cls, v):
+    def validate_file_type(cls, v):
         return validate_file_type(v)
 
 
@@ -84,6 +84,36 @@ class MessagesSchema(Schema):
     chat: ChatSchema
     messages: MessagesResponseDataSchema
     users: List[UserDataSchema]
+
+
+class GroupChatSchema(Schema):
+    name: str
+    description: str
+    image: str = Field(..., alias="get_image")
+    users: List[UserDataSchema]
+
+
+class GroupChatSchema(Schema):
+    name: str
+    description: Optional[str]
+    image: Optional[str] = Field(..., alias="get_image")
+    users: List[UserDataSchema] = Field(..., alias="recipients")
+
+
+class GroupChatInputSchema(Schema):
+    name: str = Field(..., max_length=100)
+    description: Optional[str] = Field(..., max_length=1000)
+    usernames_to_add: List[str]
+    usernames_to_remove: List[str]
+    file_type: Optional[str] = Field(..., example="image/jpeg")
+
+    @validator("file_type", always=True)
+    def validate_img_type(cls, v):
+        return validate_image_type(v)
+
+
+class GroupChatCreateSchema(GroupChatInputSchema):
+    usernames_to_remove: Optional[List[str]] = Field(..., exclude=True, hidden=True)
 
 
 # RESPONSES
@@ -115,3 +145,21 @@ class MessageCreateResponseDataSchema(MessageSchema):
 
 class MessageCreateResponseSchema(ResponseSchema):
     data: MessageCreateResponseDataSchema
+
+
+class GroupChatInputResponseDataSchema(GroupChatSchema):
+    image: Optional[Any] = Field(..., exclude=True, hidden=True)
+    file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
+
+    @staticmethod
+    def resolve_file_upload_data(obj):
+        if obj.file_upload_status:
+            return FileProcessor.generate_file_signature(
+                key=obj.image_id,
+                folder="groups",
+            )
+        return None
+
+
+class GroupChatInputResponseSchema(ResponseSchema):
+    data: GroupChatInputResponseDataSchema
