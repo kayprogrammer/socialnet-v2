@@ -69,3 +69,16 @@ async def get_chat_object(user, chat_id):
             status_code=404,
         )
     return chat
+
+
+async def get_message_object(message_id, user):
+    message = await Message.objects.select_related(
+        "sender", "chat", "sender__avatar", "file"
+    ).aget_or_none(id=message_id, sender=user)
+    if not message:
+        raise RequestError(
+            err_code=ErrorCode.NON_EXISTENT,
+            err_msg="User has no message with that ID",
+            status_code=404,
+        )
+    return message

@@ -6,6 +6,7 @@ from apps.chat.utils import (
     create_file,
     get_chat_object,
     get_chats_queryset,
+    get_message_object,
     update_group_chat_users,
 )
 from apps.common.error import ErrorCode
@@ -23,6 +24,7 @@ from .schemas import (
     GroupChatInputSchema,
     MessageCreateResponseSchema,
     MessageCreateSchema,
+    MessageUpdateSchema,
 )
 from asgiref.sync import sync_to_async
 
@@ -156,7 +158,7 @@ async def retrieve_messages(request, chat_id: UUID, page: int = 1):
     """,
     response=GroupChatInputResponseSchema,
 )
-async def patch(request, chat_id: UUID, data: GroupChatInputSchema):
+async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
     user = await request.auth
     chat = await Chat.objects.select_related("image").aget_or_none(
         owner=user, id=chat_id, ctype="GROUP"
@@ -213,7 +215,7 @@ async def patch(request, chat_id: UUID, data: GroupChatInputSchema):
     """,
     response=ResponseSchema,
 )
-async def delete(request, chat_id: UUID):
+async def delete_group_chat(request, chat_id: UUID):
     user = await request.auth
     chat = await Chat.objects.aget_or_none(owner=user, id=chat_id, ctype="GROUP")
     if not chat:
@@ -224,3 +226,46 @@ async def delete(request, chat_id: UUID):
         )
     await chat.adelete()
     return CustomResponse.success(message="Group Chat Deleted")
+
+
+@chats_router.put(
+    "/messages/{message_id}/",
+    summary="Update a message",
+    description=f"""
+        This endpoint updates a message.
+        You must either send a text or a file or both.
+        The file_upload_data in the response is what is used for uploading the file to cloudinary from client
+        ALLOWED FILE TYPES: {", ".join(ALLOWED_FILE_TYPES)}
+
+        WEBSOCKET ENDPOINT: /api/v1/ws/chat/:id/ e.g (ws://127.0.0.1:8000/api/v1/ws/chat/b7e23862-a1d8-4e31-8c63-9829b09ea595/) 
+        NOTE:
+        * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
+        * Use chat_id as the path params ID for chat.
+        * Only send message to the socket endpoint after the message has been updated, and any neccessary files has been uploaded.
+        * Fields when sending message through the socket: e.g {{"status": "UPDATED", "id": "fe4e0235-80fc-4c94-b15e-3da63226f8ab"}}
+            * status - This must be either CREATED, UPDATED or DELETED (str type)
+            * id - This is the ID of the message (uuid type)
+    """,
+    response=MessageCreateResponseSchema,
+)
+async def update_message(request, message_id: UUID, data: MessageUpdateSchema):
+    user = await request.auth
+    message = await get_message_object(message_id, user)
+
+    data = data.dict(exclude_none=True)
+    # Handle File Upload
+    file_upload_status = False
+    file_type = data.pop("file_type", None)
+    if file_type:
+        file_upload_status = True
+        if message.file:
+            message.file.resource_type = file_type
+            await message.file.asave()
+        else:
+            file = await create_file(file_type)
+            data["file"] = file
+
+    message = set_dict_attr(message, data)
+    await message.asave()
+    message.file_upload_status = file_upload_status
+    return CustomResponse.success(message="Message updated", data=message)
