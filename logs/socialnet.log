@@ -8314,3 +8314,10 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-25 15:30:51,453 jazzmin.utils WARNING  listings not found when generating links
 2023-10-25 15:30:51,457 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-25 15:30:51,675 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:34:42,923 django.request WARNING  Not Found: /api/v2/chats/messages/afec5786-6de2-4b57-bd1d-563035fcf315/
+2023-10-25 15:34:57,411 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:34:57,418 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:34:57,775 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2023-10-25 15:35:05,302 jazzmin.utils WARNING  listings not found when generating links
+2023-10-25 15:35:05,307 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2023-10-25 15:35:05,522 django.request WARNING  Not Found: /static/media/banner2-icon3.png

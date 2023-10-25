@@ -269,3 +269,34 @@ async def update_message(request, message_id: UUID, data: MessageUpdateSchema):
     await message.asave()
     message.file_upload_status = file_upload_status
     return CustomResponse.success(message="Message updated", data=message)
+
+
+@chats_router.delete(
+    "/messages/{message_id}/",
+    summary="Delete a message",
+    description="""
+        This endpoint deletes a message.
+
+        WEBSOCKET ENDPOINT: /api/v1/ws/chat/:id/ e.g (ws://127.0.0.1:8000/api/v1/ws/chat/b7e23862-a1d8-4e31-8c63-9829b09ea595/) 
+        NOTE:
+        * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
+        * Use chat_id as the path params ID for chat.
+        * Only send message to the socket endpoint after the message has been deleted.
+        * Fields when sending message through the socket: e.g {"status": "DELETED", "id": "fe4e0235-80fc-4c94-b15e-3da63226f8ab"}
+            * status - This must be either CREATED, UPDATED or DELETED (str type)
+            * id - This is the ID of the message (uuid type)
+    """,
+    response=ResponseSchema,
+)
+async def delete_message(request, message_id: UUID):
+    user = await request.auth
+    message = await get_message_object(message_id, user)
+    chat = message.chat
+    messages_count = await chat.messages.acount()
+
+    # Delete message and chat if its the last message in the dm being deleted
+    if messages_count == 1 and chat.ctype == "DM":
+        await chat.adelete()  # Message deletes if chat gets deleted (CASCADE)
+    else:
+        await message.adelete()
+    return CustomResponse.success(message="Message deleted")
