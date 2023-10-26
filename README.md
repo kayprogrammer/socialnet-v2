@@ -1,10 +1,10 @@
-# SOCIALNET V2 (WORK IN PROGRESS)
+# SOCIALNET V2
 
 ![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/ninja.png?raw=true)
 
 
 #### DJANGO DOCS: [Documentation](https://docs.djangoproject.com/en/4.2/)
-#### DJANGO REST FRAMEWORK DOCS: [Documentation](https://www.django-rest-framework.org/)
+#### DJANGO NINJA REST FRAMEWORK DOCS: [Documentation](https://django-ninja.dev/)
 
 #### PG ADMIN: [Documentation](https://pgadmin.org) 
 
@@ -51,7 +51,7 @@ OR
 
 <!-- ## Docs -->
 <!-- #### API Url: [Socialnet Docs](http://127.0.0.1:8000/)  -->
-<!-- #### Swagger: [Documentation](https://swagger.io/docs/)
+#### Swagger: [Documentation](https://swagger.io/docs/)
 
 ![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/display1.png?raw=true)
 
@@ -71,7 +71,10 @@ OR
 
 ![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/display9.png?raw=true)
 
-![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/display10.png?raw=true) -->
+![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/display10.png?raw=true) 
+
+![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/display11.png?raw=true) 
+
 
 <!-- ## ADMIN PAGE
 ![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/admin.png?raw=true) -->
