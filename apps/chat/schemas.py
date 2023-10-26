@@ -48,7 +48,7 @@ class MessageSchema(Schema):
 
 
 class MessageUpdateSchema(Schema):
-    file_type: Optional[str] = Field(None, example="image/jpeg")
+    file_type: str = Field(None, example="image/jpeg")
     text: Optional[str]
 
     @validator("text", always=True)
@@ -96,10 +96,10 @@ class GroupChatSchema(Schema):
 
 class GroupChatInputSchema(Schema):
     name: str = Field(..., max_length=100)
-    description: Optional[str] = Field(..., max_length=1000)
-    usernames_to_add: List[str]
-    usernames_to_remove: List[str]
-    file_type: Optional[str] = Field(..., example="image/jpeg")
+    description: str = Field(None, max_length=1000)
+    usernames_to_add: Optional[List[str]]
+    usernames_to_remove: Optional[List[str]]
+    file_type: str = Field(None, example="image/jpeg")
 
     @validator("file_type", always=True)
     def validate_img_type(cls, v):
@@ -107,6 +107,7 @@ class GroupChatInputSchema(Schema):
 
 
 class GroupChatCreateSchema(GroupChatInputSchema):
+    usernames_to_add: List[str]
     usernames_to_remove: List[str] = Field(None, exclude=True, hidden=True)
 
 

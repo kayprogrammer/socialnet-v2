@@ -423,6 +423,7 @@ async def get_notifications_queryset(current_user):
     auth=AuthUser(),
 )
 async def retrieve_user_notifications(request, page: int = 1):
+    paginator.page_size = 50
     user = await request.auth
     notifications = await get_notifications_queryset(user)
 
