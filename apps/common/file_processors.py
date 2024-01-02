@@ -4,7 +4,7 @@ import cloudinary
 import cloudinary.uploader
 import mimetypes
 
-BASE_FOLDER = "socialnet-v1/"
+BASE_FOLDER = "socialnet-v2/"
 
 # FILES CONFIG WITH CLOUDINARY
 cloudinary.config(
