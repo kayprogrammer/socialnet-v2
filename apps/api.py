@@ -50,7 +50,9 @@ def request_exc_handler(request, exc):
 
 @api.exception_handler(AuthenticationError)
 def request_exc_handler(request, exc):
-    if request.resolver_match.url_name == "retrieve_users":
+    if (
+        request.resolver_match.url_name == "retrieve_users"
+    ):  # For guest auth in that profiles retrieval endpoint
         request.auth = None
         return None
     return Response(

@@ -8528,3 +8528,33 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2023-10-26 11:22:54,896 jazzmin.utils WARNING  listings not found when generating links
 2023-10-26 11:22:54,957 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
 2023-10-26 11:22:55,369 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:03:46,293 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:03:48,225 django.request WARNING  Not Found: /static/media/logo.png
+2024-01-05 14:03:53,787 jazzmin.utils WARNING  listings not found when generating links
+2024-01-05 14:03:53,792 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-05 14:03:54,044 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:04:03,389 jazzmin.utils WARNING  listings not found when generating links
+2024-01-05 14:04:03,393 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-05 14:04:03,795 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:04:34,202 jazzmin.utils WARNING  listings not found when generating links
+2024-01-05 14:04:34,206 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-05 14:04:34,911 jazzmin.utils WARNING  listings not found when generating links
+2024-01-05 14:04:34,915 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-05 14:04:40,487 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:05:09,827 jazzmin.utils WARNING  listings not found when generating links
+2024-01-05 14:05:09,832 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-05 14:05:12,098 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:06:46,833 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-05 14:08:24,394 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2024-01-05 14:12:58,730 django       ERROR    object NoneType can't be used in 'await' expression
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/profiles/views.py", line 90, in retrieve_users
+    user = await request.auth
+           ^^^^^^^^^^^^^^^^^^
+TypeError: object NoneType can't be used in 'await' expression
+2024-01-05 14:12:58,836 django.request ERROR    Internal Server Error: /api/v2/profiles/
+2024-01-05 14:15:12,151 django.request WARNING  Unauthorized: /api/v2/profiles/
+2024-01-05 14:15:31,422 django.request WARNING  Unauthorized: /api/v2/profiles/

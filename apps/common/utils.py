@@ -1,7 +1,4 @@
-from django.contrib.auth.models import AnonymousUser
-from typing import Any, Optional
 from ninja.security import HttpBearer
-from ninja.security.http import HttpAuthBase
 from apps.accounts.auth import Authentication
 from apps.accounts.models import User
 from apps.common.error import ErrorCode
@@ -21,6 +18,7 @@ async def get_user(token):
 
 class AuthUser(HttpBearer):
     async def authenticate(self, request, token):
+        print(token)
         if not token:
             raise RequestError(
                 err_code=ErrorCode.INVALID_AUTH,
