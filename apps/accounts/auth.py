@@ -45,9 +45,7 @@ class Authentication:
             return None
         user = await User.objects.select_related(
             "city", "city__region", "city__country", "avatar"
-        ).aget_or_none(id=decoded["user_id"])
+        ).aget_or_none(id=decoded["user_id"], access=token)
         if not user:
-            return None
-        if user.access != token:
             return None
         return user
