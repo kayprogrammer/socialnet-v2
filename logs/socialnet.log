@@ -8558,3 +8558,123 @@ TypeError: object NoneType can't be used in 'await' expression
 2024-01-05 14:12:58,836 django.request ERROR    Internal Server Error: /api/v2/profiles/
 2024-01-05 14:15:12,151 django.request WARNING  Unauthorized: /api/v2/profiles/
 2024-01-05 14:15:31,422 django.request WARNING  Unauthorized: /api/v2/profiles/
+2024-01-18 19:54:47,928 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:54:55,888 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:54:55,974 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:54:56,272 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:13,883 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:13,887 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:14,132 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:15,743 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:15,747 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:17,611 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:20,355 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:20,359 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:22,501 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:22,505 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:22,750 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:41,796 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:41,802 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:42,012 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:45,873 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:45,877 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:46,025 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:47,724 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:47,728 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:47,910 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:50,639 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:50,642 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:50,791 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:55:54,524 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:55:54,528 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:55:54,742 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:05,965 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:05,969 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:06,147 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:09,943 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:09,947 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:10,155 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:34,871 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:34,876 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:35,093 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:39,469 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:39,473 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:39,678 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:42,375 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:42,379 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:42,561 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:53,289 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:53,294 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 19:56:53,501 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 19:56:57,746 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 19:56:57,750 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 20:00:59,682 django.request WARNING  Not Found: /api/v2/feed/posts/kenechi-ifeanyi-4d2c1e5b-7aac-4330-89da-dafb166948/comments/
+2024-01-18 20:01:06,431 jazzmin.utils WARNING  listings not found when generating links
+2024-01-18 20:01:06,435 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-18 20:01:06,623 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-18 20:01:19,678 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> replies_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> replies_count
+  field required (type=value_error.missing)
+2024-01-18 20:01:19,711 django.request ERROR    Internal Server Error: /api/v2/feed/posts/john-doe-7659b559-2f05-4e23-a389-000d349ea387/comments/
+2024-01-18 20:03:38,122 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> replies_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> replies_count
+  field required (type=value_error.missing)
+2024-01-18 20:03:38,126 django.request ERROR    Internal Server Error: /api/v2/feed/posts/john-doe-7659b559-2f05-4e23-a389-000d349ea387/comments/
+2024-01-18 20:05:19,140 django       ERROR    2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 266, in run
+    return self._result_to_response(request, result, temporal_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 202, in _result_to_response
+    result = response_model.from_orm(resp_object).dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/schema.py", line 164, in from_orm
+    return super().from_orm(obj)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "pydantic/main.py", line 579, in pydantic.main.BaseModel.from_orm
+pydantic.error_wrappers.ValidationError: 2 validation errors for NinjaResponseSchema
+response -> data -> reactions_count
+  field required (type=value_error.missing)
+response -> data -> comments_count
+  field required (type=value_error.missing)
+2024-01-18 20:05:19,144 django.request ERROR    Internal Server Error: /api/v2/feed/posts/

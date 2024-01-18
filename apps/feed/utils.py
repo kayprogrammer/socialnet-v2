@@ -64,7 +64,7 @@ async def get_reactions_queryset(focus, slug, rtype=None):
 async def get_comment_object(slug):
     comment = (
         await Comment.objects.select_related("author", "author__avatar", "post")
-        .annotate(replies_count=Count("replies"))
+        .annotate(replies_count=Count("replies"), reactions_count=Count("reactions"))
         .aget_or_none(slug=slug)
     )
     if not comment:
@@ -77,8 +77,10 @@ async def get_comment_object(slug):
 
 
 async def get_reply_object(slug):
-    reply = await Reply.objects.select_related("author", "author__avatar").aget_or_none(
-        slug=slug
+    reply = (
+        await Reply.objects.select_related("author", "author__avatar")
+        .annotate(reactions_count=Count("reactions"))
+        .aget_or_none(slug=slug)
     )
     if not reply:
         raise RequestError(

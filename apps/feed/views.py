@@ -302,7 +302,7 @@ async def retrieve_comments(request, slug: str, page: int = 1):
     comments = (
         Comment.objects.filter(post_id=post.id)
         .select_related("author", "author__avatar")
-        .annotate(replies_count=Count("replies"))
+        .annotate(replies_count=Count("replies"), reactions_count=Count("reactions"))
     )
     paginated_data = await paginator.paginate_queryset(comments, page)
     return CustomResponse.success(message="Comments Fetched", data=paginated_data)
@@ -321,7 +321,6 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
     user = await request.auth
     post = await get_post_object(slug)
     comment = await Comment.objects.acreate(post=post, author=user, text=data.text)
-    comment.replies_count = 0
 
     # Create and Send Notification
     if user.id != post.author_id:
@@ -352,8 +351,10 @@ async def create_comment(request, slug: str, data: CommentInputSchema):
 )
 async def retrieve_comment_with_replies(request, slug: str, page: int = 1):
     comment = await get_comment_object(slug)
-    replies = Reply.objects.filter(comment_id=comment.id).select_related(
-        "author", "author__avatar"
+    replies = (
+        Reply.objects.filter(comment_id=comment.id)
+        .annotate(reactions_count=Count("reactions"))
+        .select_related("author", "author__avatar")
     )
     paginated_data = await paginator.paginate_queryset(replies, page)
     data = {"comment": comment, "replies": paginated_data}

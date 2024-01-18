@@ -20,8 +20,8 @@ class PostSchema(Schema):
     author: UserDataSchema
     text: str
     slug: str = Field(..., example="john-doe-d10dde64-a242-4ed0-bd75-4c759644b3a6")
-    reactions_count: int
-    comments_count: int
+    reactions_count: int = 0
+    comments_count: int = 0
     image: Optional[str] = Field(..., example="https://img.url", alias="get_image")
     created_at: datetime
     updated_at: datetime
@@ -47,8 +47,6 @@ class PostsResponseSchema(ResponseSchema):
 class PostInputResponseDataSchema(PostSchema):
     image: Optional[Any] = Field(..., exclude=True, hidden=True)
     file_upload_data: Optional[Dict] = Field(None, example=file_upload_data)
-    reactions_count: int = Field(None, exclude=True, hidden=True)
-    comments_count: int = Field(None, exclude=True, hidden=True)
 
     @staticmethod
     def resolve_file_upload_data(obj):
@@ -98,10 +96,11 @@ class ReplySchema(Schema):
     author: UserDataSchema
     slug: str
     text: str
+    reactions_count: int = 0
 
 
 class CommentSchema(ReplySchema):
-    replies_count: int
+    replies_count: int = 0
 
 
 class CommentWithRepliesResponseDataSchema(PaginatedResponseDataSchema):

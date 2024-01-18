@@ -35,7 +35,7 @@ class CustomPagination(PaginationBase):
             )
 
         last_page = math.ceil(queryset_count / page_size)
-        last_page = 1 if last_page == 0 else last_page 
+        last_page = 1 if last_page == 0 else last_page
         return {
             "items": items,
             "per_page": page_size,
