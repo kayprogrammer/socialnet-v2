@@ -97,7 +97,7 @@ async def retrieve_users(request, page: int = 1):
 @profiles_router.get(
     "/cities/",
     summary="Retrieve cities based on query params",
-    description="This endpoint retrieves a first 10 cities that matches the query params",
+    description="This endpoint retrieves the first 10 cities that matches the query params",
     response=CitiesResponseSchema,
 )
 async def retrieve_cities(request, name: str = None):
@@ -187,7 +187,7 @@ async def update_profile(request, data: ProfileUpdateSchema):
 @profiles_router.post(
     "/profile/",
     summary="Delete user's account",
-    description="This endpoint deletes a particular user's account",
+    description="This endpoint deletes a particular user's account (irreversible)",
     response=ResponseSchema,
     auth=AuthUser(),
 )
@@ -302,14 +302,16 @@ async def send_or_delete_friend_request(request, data: SendFriendRequestSchema):
     if friend:
         status_code = 200
         message = "Friend Request removed"
-        if user.id != friend.requester_id:
+        if friend.status == "ACCEPTED":
+            message = "This user is already your friend"
+        elif user.id != friend.requester_id:
             raise RequestError(
                 err_code=ErrorCode.NOT_ALLOWED,
                 err_msg="The user already sent you a friend request!",
                 status_code=403,
             )
-
-        await friend.adelete()
+        else:
+            await friend.adelete()
     else:
         await Friend.objects.acreate(requester=user, requestee=other_user)
 
