@@ -337,7 +337,7 @@ async def accept_or_reject_friend_request(request, data: AcceptFriendRequestSche
         raise RequestError(
             err_code=ErrorCode.NON_EXISTENT,
             err_msg="No pending friend request exist between you and that user",
-            status_code=401,
+            status_code=404,
         )
     if friend.requester_id == user.id:
         raise RequestError(
