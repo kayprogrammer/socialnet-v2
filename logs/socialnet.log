@@ -8678,3 +8678,229 @@ response -> data -> reactions_count
 response -> data -> comments_count
   field required (type=value_error.missing)
 2024-01-18 20:05:19,144 django.request ERROR    Internal Server Error: /api/v2/feed/posts/
+2024-01-27 02:59:49,664 django.request WARNING  Unauthorized: /api/v2/chats/
+2024-01-27 03:00:29,946 django       ERROR    'Query' object is not iterable
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 50, in retrieve_user_chats
+    paginated_data = await paginator.paginate_queryset(chats, page)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/paginators.py", line 25, in paginate_queryset
+    async_queryset = await sync_to_async(list)(queryset)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/current_thread_executor.py", line 40, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'Query' object is not iterable
+2024-01-27 03:00:30,006 django.request ERROR    Internal Server Error: /api/v2/chats/
+2024-01-27 03:03:50,912 django       ERROR    Field Chat.image cannot be both deferred and traversed using select_related at the same time.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 48, in retrieve_user_chats
+    chats = await get_chats_queryset(user)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 43, in get_chats_queryset
+    print(chats.query)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 280, in __str__
+    sql, params = self.sql_with_params()
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/query.py", line 288, in sql_with_params
+    return self.get_compiler(DEFAULT_DB_ALIAS).as_sql()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 736, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 84, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 73, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 279, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1211, in get_related_selections
+    if not select_related_descend(f, restricted, requested, select_mask):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query_utils.py", line 347, in select_related_descend
+    raise FieldError(
+django.core.exceptions.FieldError: Field Chat.image cannot be both deferred and traversed using select_related at the same time.
+2024-01-27 03:03:50,956 django.request ERROR    Internal Server Error: /api/v2/chats/
+2024-01-28 02:25:06,264 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:25:06,750 django.request WARNING  Not Found: /static/media/logo.png
+2024-01-28 02:26:09,260 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:26:09,301 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:26:09,548 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:26:53,707 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:26:53,712 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:26:54,091 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:29:04,114 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:29:04,118 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:29:04,312 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:29:40,841 django       ERROR    'coroutine' object has no attribute 'name'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 197, in update_group_chat
+    chat = set_dict_attr(chat, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/utils.py", line 33, in set_dict_attr
+    setattr(obj, attr, value)
+AttributeError: 'coroutine' object has no attribute 'name'
+2024-01-28 02:29:40,899 django.request ERROR    Internal Server Error: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:29:52,623 django       ERROR    'coroutine' object has no attribute 'name'
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 197, in update_group_chat
+    chat = set_dict_attr(chat, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/common/utils.py", line 33, in set_dict_attr
+    setattr(obj, attr, value)
+AttributeError: 'coroutine' object has no attribute 'name'
+2024-01-28 02:29:52,629 django.request ERROR    Internal Server Error: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:30:34,715 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 194, in update_group_chat
+    chat = await usernames_to_add_and_remove_validations(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 92, in usernames_to_add_and_remove_validations
+    expected_user_total = len(original_existing_user_ids)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 285, in __iter__
+    for row in compiler.results_iter(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1513, in results_iter
+    results = self.execute_sql(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2024-01-28 02:30:34,814 django.request ERROR    Internal Server Error: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:30:50,229 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 194, in update_group_chat
+    chat = await usernames_to_add_and_remove_validations(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 92, in usernames_to_add_and_remove_validations
+    expected_user_total = len(original_existing_user_ids)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 285, in __iter__
+    for row in compiler.results_iter(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1513, in results_iter
+    results = self.execute_sql(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2024-01-28 02:30:50,240 django.request ERROR    Internal Server Error: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:31:08,735 django       ERROR    You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 194, in update_group_chat
+    chat = await usernames_to_add_and_remove_validations(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/utils.py", line 92, in usernames_to_add_and_remove_validations
+    expected_user_total = len(original_existing_user_ids)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/query.py", line 285, in __iter__
+    for row in compiler.results_iter(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1513, in results_iter
+    results = self.execute_sql(
+              ^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/utils/asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2024-01-28 02:31:08,741 django.request ERROR    Internal Server Error: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:34:18,866 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:34:18,870 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:34:19,102 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:34:20,906 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:34:20,912 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:34:24,166 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:34:25,674 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:34:25,680 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:34:49,464 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:34:49,469 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:34:49,635 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:35:26,701 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:35:26,705 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:35:26,933 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:35:32,121 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:35:32,125 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:35:34,229 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:35:41,439 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:35:41,446 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:35:43,569 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:36:02,229 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:36:02,239 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:36:05,881 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:36:05,884 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:36:06,040 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:42:16,222 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:42:16,226 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:42:16,501 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:43:17,624 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:43:17,628 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:43:17,777 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:43:42,967 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 02:43:42,971 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 02:43:43,175 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 02:50:11,594 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:50:42,927 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:52:32,077 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:53:59,077 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:54:57,852 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:55:46,753 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:56:07,905 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 02:59:32,141 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 03:18:08,872 jazzmin.utils WARNING  listings not found when generating links
+2024-01-28 03:18:09,018 jazzmin.templatetags.jazzmin WARNING  avatar field must be an ImageField/URLField on the user model, or a callable
+2024-01-28 03:18:16,198 django.request WARNING  Not Found: /static/media/banner2-icon3.png
+2024-01-28 03:29:03,039 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/
+2024-01-28 03:29:34,429 django.request WARNING  Unprocessable Entity: /api/v2/chats/f6019566-b669-4a0d-8d9c-5c832989a1fc/

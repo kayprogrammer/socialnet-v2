@@ -1,8 +1,5 @@
-import json
-
 from django.conf import settings
 from apps.accounts.auth import Authentication
-from asgiref.sync import sync_to_async
 
 
 class SocketAuthMiddleware:

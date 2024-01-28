@@ -18,7 +18,6 @@ async def get_user(token):
 
 class AuthUser(HttpBearer):
     async def authenticate(self, request, token):
-        print(token)
         if not token:
             raise RequestError(
                 err_code=ErrorCode.INVALID_AUTH,

@@ -190,7 +190,6 @@ class TestChat(TestCase):
             content_type=self.content_type,
             **self.bearer,
         )
-        print(response.json())
         self.assertEqual(response.status_code, 404)
         self.assertEqual(
             response.json(),

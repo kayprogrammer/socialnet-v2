@@ -353,4 +353,3 @@ SOCKET_SECRET = config("SOCKET_SECRET")
 # TODO
 # You can set a file limit to your cloudinary so that the presigned data can only accept a particular file size range to upload image. You can also add file type validations
 # Only create notifications for recent comments and replies after 1 hour
-# wscat -c ws://127.0.0.1:8000/api/v2/ws/notifications/ -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDAzMjUzMzYsInVzZXJfaWQiOiIxYzRmYTgxOC1iNmEwLTQ3YzYtOTA0YS1lZjcyZjA1YTQ5MmIiLCJ1c2VybmFtZSI6InRlc3QtYWRtaW4ifQ.Uv_51dxlV_bexReA2EJak8gVyvckg4itmpEdgvryBkA"

@@ -1,5 +1,5 @@
 from typing import Any, Dict, List, Optional
-from pydantic import Field, ValidationError, root_validator, validator
+from pydantic import Field, validator
 from apps.common.file_processors import FileProcessor
 from apps.common.schemas import (
     PaginatedResponseDataSchema,
@@ -94,20 +94,37 @@ class GroupChatSchema(Schema):
     users: List[UserDataSchema] = Field(..., alias="recipients")
 
 
+username_field = Field(None, min_items=1, max_items=99, example=["john-doe"])
+
+
 class GroupChatInputSchema(Schema):
     name: str = Field(..., max_length=100)
     description: str = Field(None, max_length=1000)
-    usernames_to_add: Optional[List[str]]
-    usernames_to_remove: Optional[List[str]]
+    usernames_to_add: Optional[List[str]] = username_field
+    usernames_to_remove: Optional[List[str]] = username_field
     file_type: str = Field(None, example="image/jpeg")
 
     @validator("file_type", always=True)
     def validate_img_type(cls, v):
         return validate_image_type(v)
 
+    @validator("usernames_to_remove", always=True)
+    def validate_usernames_to_remove(cls, v, values):
+        usernames_to_add = values.get("usernames_to_add")
+        if v and usernames_to_add:
+            # Convert lists to sets and check for intersection
+            intersection = set(v) & set(usernames_to_add)
+            if intersection:
+                raise ValueError(
+                    "Must not have any matching items with usernames to add"
+                )
+        return v
+
 
 class GroupChatCreateSchema(GroupChatInputSchema):
-    usernames_to_add: List[str]
+    usernames_to_add: List[str] = Field(
+        ..., min_items=1, max_items=99, example=["john-doe"]
+    )
     usernames_to_remove: List[str] = Field(None, exclude=True, hidden=True)
 
 

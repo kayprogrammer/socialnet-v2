@@ -8,6 +8,7 @@ from apps.chat.utils import (
     get_chats_queryset,
     get_message_object,
     update_group_chat_users,
+    usernames_to_add_and_remove_validations,
 )
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
@@ -43,7 +44,7 @@ paginator = CustomPagination()
     """,
     response=ChatsResponseSchema,
 )
-async def get(request, page: int = 1):
+async def retrieve_user_chats(request, page: int = 1):
     user = await request.auth
     chats = await get_chats_queryset(user)
     paginator.page_size = 200
@@ -161,8 +162,10 @@ async def retrieve_messages(request, chat_id: UUID, page: int = 1):
 )
 async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
     user = await request.auth
-    chat = await Chat.objects.select_related("image").aget_or_none(
-        owner=user, id=chat_id, ctype="GROUP"
+    chat = (
+        await Chat.objects.select_related("image")
+        .prefetch_related("users")
+        .aget_or_none(owner=user, id=chat_id, ctype="GROUP")
     )
     if not chat:
         raise RequestError(
@@ -188,19 +191,9 @@ async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
     # Handle Users Upload or Remove
     usernames_to_add = data.pop("usernames_to_add", None)
     usernames_to_remove = data.pop("usernames_to_remove", None)
-
-    if usernames_to_add:
-        users_to_add = await sync_to_async(list)(
-            User.objects.filter(username__in=usernames_to_add).select_related("avatar")
-        )
-        await sync_to_async(update_group_chat_users)(chat, "add", users_to_add)
-
-    if usernames_to_remove:
-        users_to_remove = await sync_to_async(list)(
-            User.objects.filter(username__in=usernames_to_remove)
-        )
-        await sync_to_async(update_group_chat_users)(chat, "remove", users_to_remove)
-
+    chat = await usernames_to_add_and_remove_validations(
+        chat, usernames_to_add, usernames_to_remove
+    )
     chat = set_dict_attr(chat, data)
     await chat.asave()
     chat.recipients = await sync_to_async(list)(chat.users.select_related("avatar"))

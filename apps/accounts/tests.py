@@ -42,7 +42,6 @@ class TestAccounts(TestCase):
         response = await self.client.post(
             self.register_url, user_in, content_type=self.content_type
         )
-        print(response.json())
         self.assertEqual(response.status_code, 201)
         self.assertEqual(
             response.json(),
