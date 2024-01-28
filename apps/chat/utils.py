@@ -116,7 +116,7 @@ async def usernames_to_add_and_remove_validations(
         )
         expected_user_total -= len(users_to_remove)
 
-    if expected_user_total > 7:
+    if expected_user_total > 99:
         raise RequestError(
             err_code=ErrorCode.INVALID_ENTRY,
             err_msg="Invalid Entry",
