@@ -123,7 +123,6 @@ async def usernames_to_add_and_remove_validations(
             status_code=422,
             data={"usernames_to_add": "99 users limit reached"},
         )
-    print(users_to_add, users_to_remove)
 
     if users_to_add:
         await sync_to_async(update_group_chat_users)(chat, "add", users_to_add)
