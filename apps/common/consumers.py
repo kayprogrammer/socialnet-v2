@@ -5,20 +5,20 @@ import json
 
 
 class BaseConsumer(AsyncWebsocketConsumer):
-    async def validate_entry(self, entry_data, serializer_class):
+    async def validate_entry(self, entry_data, schema_class):
         err = None
         try:
-            data_json = json.loads(entry_data)
-            serializer = serializer_class(data=data_json)
-            serializer.is_valid(raise_exception=True)
+            data = json.loads(entry_data)  # Ensure its a valid json
+            data = schema_class(**data)
         except Exception as e:
             err = await self.err_handler(e)
 
         if err:
             return err, False
-        return serializer.data, True
+        return data, True
 
     async def err_handler(self, exc):
+        print(exc)
         err = {}
         if isinstance(exc, json.decoder.JSONDecodeError) or exc.detail.get(
             "non_field_errors"

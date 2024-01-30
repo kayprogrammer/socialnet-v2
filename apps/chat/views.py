@@ -1,6 +1,7 @@
 from uuid import UUID
 from django.db.models import Q
 from apps.accounts.models import User
+from apps.chat.consumers import send_chat_deletion_in_socket
 from apps.chat.models import Chat, Message
 from apps.chat.utils import (
     create_file,
@@ -12,7 +13,7 @@ from apps.chat.utils import (
 )
 from apps.common.error import ErrorCode
 from apps.common.exceptions import RequestError
-from apps.common.file_types import ALLOWED_FILE_TYPES, ALLOWED_IMAGE_TYPES
+from apps.common.file_types import ALLOWED_FILE_TYPES
 from apps.common.paginators import CustomPagination
 from apps.common.responses import CustomResponse
 from apps.common.schemas import ResponseSchema
@@ -62,16 +63,6 @@ async def retrieve_user_chats(request, page: int = 1):
         If chat_id is available, then ignore username and set the correct chat_id
         The file_upload_data in the response is what is used for uploading the file to cloudinary from client
         ALLOWED FILE TYPES: {", ".join(ALLOWED_FILE_TYPES)}
-
-        WEBSOCKET ENDPOINT: /api/v2/ws/chat/:id/ e.g (ws://127.0.0.1:8000/api/v2/ws/chat/b7e23862-a1d8-4e31-8c63-9829b09ea595/) 
-        NOTE:
-        * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
-        * Use chat_id as the ID for existing chat or user id if its the first message in a DM.
-        * You cannot read realtime messages from a user_id that doesn't belong to the current user, but you can surely send messages
-        * Only send message to the socket endpoint after the message has been created, and files has been uploaded.
-        * Fields when sending message through the socket: e.g {{"status": "CREATED", "id": "fe4e0235-80fc-4c94-b15e-3da63226f8ab"}}
-            * status - This must be either CREATED, UPDATED or DELETED (str type)
-            * id - This is the ID of the message (uuid type)
     """,
     response={201: MessageCreateResponseSchema},
 )
@@ -230,15 +221,6 @@ async def delete_group_chat(request, chat_id: UUID):
         You must either send a text or a file or both.
         The file_upload_data in the response is what is used for uploading the file to cloudinary from client
         ALLOWED FILE TYPES: {", ".join(ALLOWED_FILE_TYPES)}
-
-        WEBSOCKET ENDPOINT: /api/v1/ws/chat/:id/ e.g (ws://127.0.0.1:8000/api/v1/ws/chat/b7e23862-a1d8-4e31-8c63-9829b09ea595/) 
-        NOTE:
-        * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
-        * Use chat_id as the path params ID for chat.
-        * Only send message to the socket endpoint after the message has been updated, and any neccessary files has been uploaded.
-        * Fields when sending message through the socket: e.g {{"status": "UPDATED", "id": "fe4e0235-80fc-4c94-b15e-3da63226f8ab"}}
-            * status - This must be either CREATED, UPDATED or DELETED (str type)
-            * id - This is the ID of the message (uuid type)
     """,
     response=MessageCreateResponseSchema,
 )
@@ -270,15 +252,6 @@ async def update_message(request, message_id: UUID, data: MessageUpdateSchema):
     summary="Delete a message",
     description="""
         This endpoint deletes a message.
-
-        WEBSOCKET ENDPOINT: /api/v1/ws/chat/:id/ e.g (ws://127.0.0.1:8000/api/v1/ws/chat/b7e23862-a1d8-4e31-8c63-9829b09ea595/) 
-        NOTE:
-        * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
-        * Use chat_id as the path params ID for chat.
-        * Only send message to the socket endpoint after the message has been deleted.
-        * Fields when sending message through the socket: e.g {"status": "DELETED", "id": "fe4e0235-80fc-4c94-b15e-3da63226f8ab"}
-            * status - This must be either CREATED, UPDATED or DELETED (str type)
-            * id - This is the ID of the message (uuid type)
     """,
     response=ResponseSchema,
 )
@@ -287,6 +260,9 @@ async def delete_message(request, message_id: UUID):
     message = await get_message_object(message_id, user)
     chat = message.chat
     messages_count = await chat.messages.acount()
+
+    # Send chat deletion socket
+    await send_chat_deletion_in_socket(request.is_secure(), request.get_host(), chat.id)
 
     # Delete message and chat if its the last message in the dm being deleted
     if messages_count == 1 and chat.ctype == "DM":

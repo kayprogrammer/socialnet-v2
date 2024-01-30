@@ -415,11 +415,6 @@ async def get_notifications_queryset(current_user):
             - Use post slug to navigate to the post.
             - Use comment slug to navigate to the comment.
             - Use reply slug to navigate to the reply.
-
-        WEBSOCKET ENDPOINT: /api/v2/ws/notifications/ e.g (ws://{host}/api/v2/ws/notifications/) 
-            NOTE:
-            * This endpoint requires authorization, so pass in the Authorization header with Bearer and its value.
-            * You can only read and not send notification messages into this socket.
     """,
     response=NotificationsResponseSchema,
     auth=AuthUser(),
