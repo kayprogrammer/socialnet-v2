@@ -1,7 +1,7 @@
 from uuid import UUID
 from django.db.models import Q
 from apps.accounts.models import User
-from apps.chat.consumers import send_chat_deletion_in_socket
+from apps.chat.consumers import send_message_deletion_in_socket
 from apps.chat.models import Chat, Message
 from apps.chat.utils import (
     create_file,
@@ -261,8 +261,8 @@ async def delete_message(request, message_id: UUID):
     chat = message.chat
     messages_count = await chat.messages.acount()
 
-    # Send chat deletion socket
-    await send_chat_deletion_in_socket(request.is_secure(), request.get_host(), chat.id)
+    # Send message deletion socket
+    await send_message_deletion_in_socket(request.is_secure(), request.get_host(), chat.id, message.id)
 
     # Delete message and chat if its the last message in the dm being deleted
     if messages_count == 1 and chat.ctype == "DM":
