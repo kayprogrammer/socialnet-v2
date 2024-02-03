@@ -167,6 +167,13 @@ async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
 
     data = data.dict(exclude_none=True)
 
+    # Handle Users Upload or Remove
+    usernames_to_add = data.pop("usernames_to_add", None)
+    usernames_to_remove = data.pop("usernames_to_remove", None)
+    chat = await usernames_to_add_and_remove_validations(
+        chat, usernames_to_add, usernames_to_remove
+    )
+    
     # Handle File Upload
     file_type = data.pop("file_type", None)
     file_upload_status = False
@@ -179,12 +186,6 @@ async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
             file = await create_file(file_type)
             data["image"] = file
 
-    # Handle Users Upload or Remove
-    usernames_to_add = data.pop("usernames_to_add", None)
-    usernames_to_remove = data.pop("usernames_to_remove", None)
-    chat = await usernames_to_add_and_remove_validations(
-        chat, usernames_to_add, usernames_to_remove
-    )
     chat = set_dict_attr(chat, data)
     await chat.asave()
     chat.recipients = await sync_to_async(list)(chat.users.select_related("avatar"))
