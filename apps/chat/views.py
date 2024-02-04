@@ -287,13 +287,6 @@ async def create_group_chat(request, data: GroupChatCreateSchema):
     user = await request.auth
     data = data.dict(exclude_none=True)
     data.update({"owner": user, "ctype": "GROUP"})
-    # Handle File Upload
-    file_type = data.pop("file_type", None)
-    file_upload_status = False
-    if file_type:
-        file_upload_status = True
-        file = await create_file(file_type)
-        data["image"] = file
 
     # Handle Users Upload or Remove
     usernames_to_add = data.pop("usernames_to_add")
@@ -309,6 +302,14 @@ async def create_group_chat(request, data: GroupChatCreateSchema):
             data={"usernames_to_add": "Enter at least one valid username"},
             status_code=422,
         )
+    
+    # Handle File Upload
+    file_type = data.pop("file_type", None)
+    file_upload_status = False
+    if file_type:
+        file_upload_status = True
+        file = await create_file(file_type)
+        data["image"] = file
 
     # Create Chat
     chat = await Chat.objects.acreate(**data)
