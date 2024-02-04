@@ -288,7 +288,7 @@ async def create_group_chat(request, data: GroupChatCreateSchema):
     data = data.dict(exclude_none=True)
     data.update({"owner": user, "ctype": "GROUP"})
 
-    # Handle Users Upload or Remove
+    # Handle Users Upload
     usernames_to_add = data.pop("usernames_to_add")
     users_to_add = await sync_to_async(list)(
         User.objects.filter(username__in=usernames_to_add)
