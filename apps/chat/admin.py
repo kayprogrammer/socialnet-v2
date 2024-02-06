@@ -20,14 +20,14 @@ class ChatForm(forms.ModelForm):
 
 class ChatAdmin(admin.ModelAdmin):
     list_display = ("name", "owner", "ctype", "created_at", "updated_at")
-    list_filter = ("name", "owner", "ctype", "created_at", "updated_at")
+    list_filter = list_display
     list_display_links = ("name", "owner")
     form = ChatForm
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ("chat", "sender", "text", "file", "updated_at")
-    list_filter = ("chat", "sender", "text", "file", "updated_at")
+    list_display = ("chat", "sender", "text", "updated_at")
+    list_filter = list_display
 
 
 admin.site.register(Chat, ChatAdmin)

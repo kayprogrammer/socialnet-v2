@@ -4,26 +4,26 @@ from apps.feed.models import Comment, Post, Reaction, Reply
 
 class ReactionAdmin(admin.ModelAdmin):
     list_display = ("user", "rtype")
-    list_filter = ("user", "rtype")
+    list_filter = list_display
 
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ("author", "slug", "created_at", "updated_at")
-    list_filter = ("author", "slug", "created_at", "updated_at")
+    list_filter = list_display
 
     readonly_fields = ("slug",)
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ("author", "created_at", "updated_at")
-    list_filter = ("author", "created_at", "updated_at")
+    list_filter = list_display
 
     readonly_fields = ("slug",)
 
 
 class ReplyAdmin(admin.ModelAdmin):
     list_display = ("author", "created_at", "updated_at")
-    list_filter = ("author", "created_at", "updated_at")
+    list_filter = list_display
 
     readonly_fields = ("slug",)
 
