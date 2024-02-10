@@ -5,10 +5,11 @@ from apps.chat.models import Chat, Message
 from apps.common.schemas import UserDataSchema
 from apps.common.utils import TestUtil
 from apps.common.error import ErrorCode
-import uuid
+import uuid, os
 
 
 class TestChat(TestCase):
+    os.environ["ENVIRONMENT"] = "TESTING"
     chats_url = "/api/v2/chats/"
     messages_url = "/api/v2/chats/messages/"
     groups_url = "/api/v2/chats/groups/group/"
@@ -347,7 +348,7 @@ class TestChat(TestCase):
             "usernames_to_add": ["invalid_username"],
         }
 
-        # Verify the requests fails with invalid username id
+        # Verify the requests fails with invalid username
         response = await self.client.post(
             self.groups_url,
             chat_data,
@@ -365,7 +366,7 @@ class TestChat(TestCase):
             },
         )
 
-        # Verify the requests suceeds with valid chat id
+        # Verify the requests suceeds with valid username
         chat_data["usernames_to_add"] = [other_user.username]
         response = await self.client.post(
             self.groups_url,

@@ -4,10 +4,11 @@ from unittest import mock
 from apps.feed.models import Post, Reaction, Comment, Reply
 from apps.common.utils import TestUtil
 from apps.common.error import ErrorCode
-import uuid
+import uuid, os
 
 
 class TestFeed(TestCase):
+    os.environ["ENVIRONMENT"] = "TESTING"
     posts_url = "/api/v2/feed/posts/"
     reactions_url = "/api/v2/feed/reactions/"
     comment_url = "/api/v2/feed/comments/"
@@ -98,6 +99,8 @@ class TestFeed(TestCase):
                     "slug": mock.ANY,
                     "created_at": mock.ANY,
                     "updated_at": mock.ANY,
+                    "reactions_count": 0,
+                    "comments_count": 0,
                     "file_upload_data": None,
                 },
             },
@@ -199,6 +202,8 @@ class TestFeed(TestCase):
                     "slug": mock.ANY,
                     "created_at": mock.ANY,
                     "updated_at": mock.ANY,
+                    "reactions_count": mock.ANY,
+                    "comments_count": mock.ANY,
                     "file_upload_data": None,
                 },
             },
@@ -474,6 +479,7 @@ class TestFeed(TestCase):
                             },
                             "slug": comment.slug,
                             "text": comment.text,
+                            "reactions_count": await comment.reactions.acount(),
                             "replies_count": await comment.replies.acount(),
                         }
                     ],
@@ -525,6 +531,7 @@ class TestFeed(TestCase):
                     },
                     "slug": mock.ANY,
                     "text": comment_data["text"],
+                    "reactions_count": 0,
                     "replies_count": 0,
                 },
             },
@@ -568,6 +575,7 @@ class TestFeed(TestCase):
                         },
                         "slug": comment.slug,
                         "text": comment.text,
+                        "reactions_count": await comment.reactions.acount(),
                         "replies_count": await comment.replies.acount(),
                     },
                     "replies": {
@@ -583,6 +591,7 @@ class TestFeed(TestCase):
                                 },
                                 "slug": reply.slug,
                                 "text": reply.text,
+                                "reactions_count": 0,
                             }
                         ],
                     },
@@ -634,6 +643,7 @@ class TestFeed(TestCase):
                     },
                     "slug": mock.ANY,
                     "text": reply_data["text"],
+                    "reactions_count": 0,
                 },
             },
         )
@@ -699,6 +709,7 @@ class TestFeed(TestCase):
                     },
                     "slug": mock.ANY,
                     "text": comment_data["text"],
+                    "reactions_count": 0,
                     "replies_count": mock.ANY,
                 },
             },
@@ -790,6 +801,7 @@ class TestFeed(TestCase):
                     },
                     "slug": reply.slug,
                     "text": reply.text,
+                    "reactions_count": 0,
                 },
             },
         )
@@ -855,6 +867,7 @@ class TestFeed(TestCase):
                     },
                     "slug": mock.ANY,
                     "text": reply_data["text"],
+                    "reactions_count": 0,
                 },
             },
         )

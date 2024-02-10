@@ -205,7 +205,7 @@ class TestProfile(TestCase):
     async def test_retrieve_friends(self):
         friend = self.friend.requestee
 
-        # Test for valid response for non-existent city name query
+        # Test for valid response
         response = await self.client.get(
             self.friends_url, content_type=self.content_type, **self.bearer
         )

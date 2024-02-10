@@ -173,7 +173,7 @@ async def update_group_chat(request, chat_id: UUID, data: GroupChatInputSchema):
     chat = await usernames_to_add_and_remove_validations(
         chat, usernames_to_add, usernames_to_remove
     )
-    
+
     # Handle File Upload
     file_type = data.pop("file_type", None)
     file_upload_status = False
@@ -263,7 +263,9 @@ async def delete_message(request, message_id: UUID):
     messages_count = await chat.messages.acount()
 
     # Send message deletion socket
-    await send_message_deletion_in_socket(request.is_secure(), request.get_host(), chat.id, message.id)
+    await send_message_deletion_in_socket(
+        request.is_secure(), request.get_host(), chat.id, message.id
+    )
 
     # Delete message and chat if its the last message in the dm being deleted
     if messages_count == 1 and chat.ctype == "DM":
@@ -302,7 +304,7 @@ async def create_group_chat(request, data: GroupChatCreateSchema):
             data={"usernames_to_add": "Enter at least one valid username"},
             status_code=422,
         )
-    
+
     # Handle File Upload
     file_type = data.pop("file_type", None)
     file_upload_status = False

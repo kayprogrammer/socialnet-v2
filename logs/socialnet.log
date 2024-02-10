@@ -8976,3 +8976,175 @@ django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an as
 2024-01-30 01:55:23,533 django.request WARNING  Not Found: /static/media/banner2-icon3.png
 2024-01-30 01:55:35,978 django.request WARNING  Unauthorized: /api/v2/feed/reactions/POST/john-doe-0a3913d6-75cf-46cf-8bb5-a111e8ff57d2/
 2024-01-30 02:04:42,561 django.request WARNING  Not Found: /api/v2/feed/reactions/3d77d8a0-d138-4367-bd58-30eef7357627/
+2024-02-11 00:22:05,865 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2024-02-11 00:22:06,694 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:22:07,066 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:22:08,162 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2024-02-11 00:22:08,932 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2024-02-11 00:22:10,061 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2024-02-11 00:22:10,799 django.request WARNING  Not Found: /api/v2/auth/resend-verification-email/
+2024-02-11 00:22:11,540 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:22:11,550 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:22:12,667 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2024-02-11 00:22:13,489 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2024-02-11 00:22:14,296 django.request WARNING  Not Found: /api/v2/chats/dbe68006-0202-493e-8c2b-ecee9cfecf05/
+2024-02-11 00:22:15,064 django.request WARNING  Not Found: /api/v2/chats/messages/5551e632-e179-4a86-a26d-7022b8bd1262/
+2024-02-11 00:22:15,140 django.request ERROR    Internal Server Error: /api/v2/chats/messages/4e208339-38ae-4871-84ec-e3d9dd66aed0/
+Traceback (most recent call last):
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/asgiref/sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 390, in _async_view
+    return await cast(AsyncOperation, operation).run(request, *a, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 268, in run
+    return self.api.on_exception(request, e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/main.py", line 471, in on_exception
+    return handler(request, exc)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/errors.py", line 104, in _default_exception
+    raise exc  # let django deal with it
+    ^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/ninja/operation.py", line 265, in run
+    result = await self.view_func(request, **values)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/views.py", line 266, in delete_message
+    await send_message_deletion_in_socket(request.is_secure(), request.get_host(), chat.id, message.id)
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/apps/chat/consumers.py", line 144, in send_message_deletion_in_socket
+    async with websockets.connect(uri, extra_headers=headers) as websocket:
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/websockets/legacy/client.py", line 637, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/websockets/legacy/client.py", line 655, in __await_impl_timeout__
+    return await self.__await_impl__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kayprogrammer/Documents/Projects/Django/socialnet-v2/env/lib/python3.11/site-packages/websockets/legacy/client.py", line 659, in __await_impl__
+    _transport, _protocol = await self._create_connection()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1045, in create_connection
+    infos = await self._ensure_resolved(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1419, in _ensure_resolved
+    return await loop.getaddrinfo(host, port, family=family, type=type,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+2024-02-11 00:34:49,363 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2024-02-11 00:34:50,110 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:34:50,471 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:34:51,606 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2024-02-11 00:34:52,353 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2024-02-11 00:34:53,451 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2024-02-11 00:34:54,188 django.request WARNING  Not Found: /api/v2/auth/resend-verification-email/
+2024-02-11 00:34:54,910 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:34:54,918 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:34:56,005 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2024-02-11 00:34:56,794 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2024-02-11 00:34:57,560 django.request WARNING  Not Found: /api/v2/chats/0bf44ba2-08e6-4a49-86a5-9854a3ecf417/
+2024-02-11 00:34:58,334 django.request WARNING  Not Found: /api/v2/chats/messages/f56b25b4-a26d-472b-ace6-2ecdbce12717/
+2024-02-11 00:34:59,108 django.request WARNING  Not Found: /api/v2/chats/640e9140-db0e-4a7b-87d8-c5bbbe62e337/
+2024-02-11 00:35:00,648 django.request WARNING  Not Found: /api/v2/chats/
+2024-02-11 00:35:01,416 django.request WARNING  Not Found: /api/v2/chats/94a0af60-3647-42be-b50d-b2c026786616/
+2024-02-11 00:35:02,204 django.request WARNING  Not Found: /api/v2/chats/messages/9be4c9b0-a6f4-40fa-80a6-54a64829bd60/
+2024-02-11 00:35:02,965 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
+2024-02-11 00:36:26,609 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2024-02-11 00:36:27,502 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:36:27,931 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:36:29,122 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2024-02-11 00:36:29,850 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2024-02-11 00:36:30,945 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2024-02-11 00:36:31,693 django.request WARNING  Not Found: /api/v2/auth/resend-verification-email/
+2024-02-11 00:36:32,415 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:36:32,421 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:36:33,506 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2024-02-11 00:36:34,282 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2024-02-11 00:36:35,053 django.request WARNING  Not Found: /api/v2/chats/01b141c7-3023-41df-ae5d-3e2e34c78b3b/
+2024-02-11 00:36:35,808 django.request WARNING  Not Found: /api/v2/chats/messages/c4f4d0f3-f476-4694-a48c-6a371ecb3b70/
+2024-02-11 00:36:36,567 django.request WARNING  Not Found: /api/v2/chats/d25ee1ce-c728-4cb6-89c6-c02b1f7e6c9a/
+2024-02-11 00:36:38,147 django.request WARNING  Not Found: /api/v2/chats/
+2024-02-11 00:36:38,915 django.request WARNING  Not Found: /api/v2/chats/606ed6c7-d567-461d-9256-73b1e0c04993/
+2024-02-11 00:36:39,684 django.request WARNING  Not Found: /api/v2/chats/messages/855e9365-7ff9-450e-829d-60d97a324a6f/
+2024-02-11 00:36:40,435 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
+2024-02-11 00:36:41,904 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-3cc06ddf-6fbe-4831-aad9-325bf317859a/
+2024-02-11 00:36:41,915 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2024-02-11 00:36:42,666 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:36:43,418 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:36:43,432 django.request WARNING  Unauthorized: /api/v2/feed/comments/test-verified-6345671f-0988-421f-9426-de63be3dafa0/
+2024-02-11 00:36:44,188 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:36:44,198 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-34f0ecfd-5f9a-445b-b3d2-0a57d54cb096/
+2024-02-11 00:36:45,017 django.request WARNING  Not Found: /api/v2/feed/reactions/e9b53b73-018a-426c-9fea-66266d351c6a/
+2024-02-11 00:36:45,028 django.request WARNING  Unauthorized: /api/v2/feed/reactions/7d188f94-8d33-4e25-99e4-b05bc8d46322/
+2024-02-11 00:36:45,773 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2024-02-11 00:36:45,783 django.request WARNING  Unauthorized: /api/v2/feed/replies/test-verified-1d1894ce-bf0c-4020-a34e-21e337d7dc24/
+2024-02-11 00:36:46,529 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:36:47,275 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
+2024-02-11 00:36:48,024 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:36:49,624 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-488bc706-2dc8-4739-8a32-1a84cdcb10a5/
+2024-02-11 00:36:49,635 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2024-02-11 00:36:50,521 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2024-02-11 00:36:51,324 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:36:51,339 django.request WARNING  Unauthorized: /api/v2/feed/comments/test-verified-23b8fc1c-7948-4bcc-81c5-49fd7ee9082c/
+2024-02-11 00:36:52,114 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:36:52,129 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-cfbc48ea-341c-485b-82c1-e1fbfa860921/
+2024-02-11 00:37:49,275 django.request WARNING  Not Found: /api/v2/auth/send-password-reset-otp/
+2024-02-11 00:37:49,999 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:37:50,396 django.request WARNING  Unauthorized: /api/v2/auth/login/
+2024-02-11 00:37:51,488 django.request WARNING  Unauthorized: /api/v2/auth/logout/
+2024-02-11 00:37:52,308 django.request WARNING  Unauthorized: /api/v2/auth/refresh/
+2024-02-11 00:37:53,507 django.request WARNING  Unprocessable Entity: /api/v2/auth/register/
+2024-02-11 00:37:54,387 django.request WARNING  Not Found: /api/v2/auth/resend-verification-email/
+2024-02-11 00:37:55,214 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:37:55,224 django.request WARNING  Not Found: /api/v2/auth/set-new-password/
+2024-02-11 00:37:56,576 django.request WARNING  Not Found: /api/v2/auth/verify-email/
+2024-02-11 00:37:57,570 django.request WARNING  Unprocessable Entity: /api/v2/chats/groups/group/
+2024-02-11 00:37:58,416 django.request WARNING  Not Found: /api/v2/chats/ca4c502f-339c-442e-92fc-1eabded172c0/
+2024-02-11 00:37:59,271 django.request WARNING  Not Found: /api/v2/chats/messages/d8c6cc74-9f93-4d1d-b57e-d148edb69f15/
+2024-02-11 00:38:00,210 django.request WARNING  Not Found: /api/v2/chats/a1487b65-c6a5-414f-9060-6a68f7a6b647/
+2024-02-11 00:38:01,974 django.request WARNING  Not Found: /api/v2/chats/
+2024-02-11 00:38:02,980 django.request WARNING  Not Found: /api/v2/chats/d1b803fa-27d0-4015-b01b-ec4374d9ef88/
+2024-02-11 00:38:03,863 django.request WARNING  Not Found: /api/v2/chats/messages/de27a69d-89b3-4684-81bf-a6403b202550/
+2024-02-11 00:38:04,705 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
+2024-02-11 00:38:06,599 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_for/test-verified-1c5d5744-bc36-4716-90ba-857f7b680bb2/
+2024-02-11 00:38:06,618 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2024-02-11 00:38:07,507 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:38:08,410 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:38:08,428 django.request WARNING  Unauthorized: /api/v2/feed/comments/test-verified-25fa3220-2c74-4787-9deb-92c0a4842b82/
+2024-02-11 00:38:09,241 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:38:09,253 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-c9ca2e79-9705-4310-bc82-567f26873331/
+2024-02-11 00:38:10,114 django.request WARNING  Not Found: /api/v2/feed/reactions/9c146c7f-17af-45d6-aa5f-5f5e50f1e354/
+2024-02-11 00:38:10,129 django.request WARNING  Unauthorized: /api/v2/feed/reactions/a902eba7-d178-47f9-9a2a-c9f4f9abdce4/
+2024-02-11 00:38:11,018 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2024-02-11 00:38:11,027 django.request WARNING  Unauthorized: /api/v2/feed/replies/test-verified-f1b2bfdc-a78a-4ced-9622-480e81ae5764/
+2024-02-11 00:38:11,974 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:38:12,729 django.request WARNING  Not Found: /api/v2/feed/posts/invalid_slug/comments/
+2024-02-11 00:38:13,570 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:38:15,367 django.request WARNING  Not Found: /api/v2/feed/reactions/invalid_focus/test-verified-a290b6b8-7d67-4d35-9378-0ca235600d12/
+2024-02-11 00:38:15,428 django.request WARNING  Not Found: /api/v2/feed/reactions/POST/invalid_slug/
+2024-02-11 00:38:16,261 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2024-02-11 00:38:17,149 django.request WARNING  Not Found: /api/v2/feed/comments/invalid_slug/
+2024-02-11 00:38:17,165 django.request WARNING  Unauthorized: /api/v2/feed/comments/test-verified-a72c74b4-ed95-4b1b-9edd-1e169494cfa1/
+2024-02-11 00:38:17,932 django.request WARNING  Not Found: /api/v2/feed/posts/invalid-slug/
+2024-02-11 00:38:17,946 django.request WARNING  Bad Request: /api/v2/feed/posts/test-verified-4d13240c-e4b3-4872-b3b2-fc67585566be/
+2024-02-11 00:38:18,697 django.request WARNING  Not Found: /api/v2/feed/replies/invalid_slug/
+2024-02-11 00:38:18,709 django.request WARNING  Unauthorized: /api/v2/feed/replies/test-verified-2e2d13f4-f355-4e68-afc6-05f48080e063/
+2024-02-11 00:38:19,564 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
+2024-02-11 00:38:20,677 django.request WARNING  Unprocessable Entity: /api/v2/profiles/profile/
+2024-02-11 00:38:21,882 django.request WARNING  Not Found: /api/v2/profiles/notifications/
+2024-02-11 00:38:24,899 django.request WARNING  Not Found: /api/v2/profiles/profile/invalid_username/
+2024-02-11 00:38:25,993 django.request WARNING  Not Found: /api/v2/profiles/friends/requests/
