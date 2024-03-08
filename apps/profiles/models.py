@@ -107,6 +107,18 @@ class Notification(BaseModel):
             text = get_notification_message(self)
         return text
 
+    @property
+    def post_slug(self):
+        return self.post.slug if self.post else None
+
+    @property
+    def comment_slug(self):
+        return self.comment.slug if self.comment else None
+
+    @property
+    def reply_slug(self):
+        return self.reply.slug if self.reply else None
+    
     # Set constraints
     class Meta:
         _space = "&ensp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;"
