@@ -1,4 +1,4 @@
-# SOCIALNET V2
+# SOCIALNET V2 | Social Networking API in Django Ninja Rest Framework
 
 ![alt text](https://github.com/kayprogrammer/socialnet-v2/blob/main/display/ninja.png?raw=true)
 
